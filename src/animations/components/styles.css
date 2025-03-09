@@ -1,0 +1,124 @@
+/* Общие стили для анимационных компонентов */
+.motion-fade,
+.motion-slide,
+.motion-zoom {
+  display: block;
+  will-change: transform, opacity;
+}
+
+/* Классы для длительностей */
+.duration-none {
+  transition-duration: 0ms;
+}
+
+.duration-small {
+  transition-duration: 110ms;
+}
+
+.duration-medium {
+  transition-duration: 150ms;
+}
+
+.duration-large {
+  transition-duration: 240ms;
+}
+
+.duration-xlarge {
+  transition-duration: 400ms;
+}
+
+/* Особые эффекты для контейнера с каскадной анимацией */
+.staggered-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Пример использования с обычными CSS-правилами */
+.fade-example {
+  opacity: 0;
+  transition: opacity var(--duration-moderate-01) var(--motion-entrance-productive);
+}
+
+.fade-example.visible {
+  opacity: 1;
+}
+
+.slide-example {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: 
+    transform var(--duration-moderate-01) var(--motion-entrance-productive),
+    opacity var(--duration-moderate-01) var(--motion-entrance-productive);
+}
+
+.slide-example.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.zoom-example {
+  transform: scale(0.8);
+  opacity: 0;
+  transition: 
+    transform var(--duration-moderate-01) var(--motion-entrance-expressive),
+    opacity var(--duration-moderate-01) var(--motion-entrance-expressive);
+}
+
+.zoom-example.visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Вспомогательные классы для анимации */
+.delay-01 {
+  transition-delay: 50ms;
+}
+
+.delay-02 {
+  transition-delay: 100ms;
+}
+
+.delay-03 {
+  transition-delay: 150ms;
+}
+
+.delay-04 {
+  transition-delay: 200ms;
+}
+
+/* Анимация для последовательно появляющихся элементов */
+@media (prefers-reduced-motion: no-preference) {
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 
+      opacity var(--duration-moderate-01) var(--motion-entrance-productive),
+      transform var(--duration-moderate-01) var(--motion-entrance-productive);
+  }
+  
+  .stagger-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Классы для стилизации анимации выхода элемента */
+  .shrink-exit {
+    transform: scale(1);
+    opacity: 1;
+    height: auto;
+    transition: 
+      transform var(--duration-fast-02) var(--motion-exit-productive),
+      opacity var(--duration-fast-02) var(--motion-exit-productive),
+      height var(--duration-fast-02) var(--motion-exit-productive);
+  }
+  
+  .shrink-exit.active {
+    transform: scale(0.8);
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+} 

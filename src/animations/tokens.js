@@ -5,52 +5,69 @@
  * - Длительность: 70-700мс оптимальный диапазон
  * - Easing: нелинейные кривые для естественного движения
  * - Задержки: минимальные, для последовательного появления элементов
- * 
- * Совместимость с Carbon Design System animation tokens
  */
 
-// Импортируем токены Carbon для обеспечения совместимости
-import { duration as carbonDuration, motion, easings } from './carbonTokens';
+// Импорт дополнительных модулей
+import { motion } from 'framer-motion';
 
-// Длительность анимаций (в секундах) - соответствие с Carbon
+// Длительность анимаций (в секундах)
 export const Duration = {
-  XS: carbonDuration.fast01,    // 70ms - микро-анимации, незначительные изменения (ховер)
-  S: carbonDuration.fast02,     // 110ms - небольшие UI-изменения (кнопки, переключатели)
-  M: carbonDuration.moderate01, // 150ms - стандартные переходы (подсказки, модальные окна)
-  L: carbonDuration.moderate02, // 240ms - крупные изменения (переходы между экранами)
-  XL: carbonDuration.slow01     // 400ms - сложные/выразительные анимации, декоративные эффекты
+  XS: 0.07,    // 70ms - микро-анимации, незначительные изменения (ховер)
+  S: 0.11,     // 110ms - небольшие UI-изменения (кнопки, переключатели)
+  M: 0.15,     // 150ms - стандартные переходы (подсказки, модальные окна)
+  L: 0.24,     // 240ms - крупные изменения (переходы между экранами)
+  XL: 0.4,     // 400ms - сложные/выразительные анимации
+  XXL: 0.7     // 700ms - особо выразительные анимации
 };
 
-// Кривые ускорения (easing) - соответствие с Carbon
+// Кривые ускорения (easing)
 export const Easing = {
-  // Стандартная кривая для большинства случаев - плавное начало и конец
-  standard: easings.standard.productive,
+  // Базовые кривые
+  Standard: [0.2, 0, 0.38, 0.9],    // Стандартная кривая
+  Entrance: [0, 0, 0.38, 0.9],      // Для появления элементов
+  Exit: [0.2, 0, 1, 0.9],           // Для исчезновения элементов
   
-  // Для появления элементов - быстрый старт, плавное торможение
-  entrance: easings.entrance.productive,
-  
-  // Для исчезновения элементов - медленный старт, резкое ускорение к концу
-  exit: easings.exit.productive,
-  
-  // Пружинная динамика для эмоциональных эффектов (сохраняем для обратной совместимости)
-  spring: [0.43, 0.28, 0.52, 1.23]
+  // Дополнительные кривые
+  ExpressiveStandard: [0.4, 0.14, 0.3, 1],     // Более выразительная стандартная
+  ExpressiveEntrance: [0, 0, 0.3, 1],          // Более выразительное появление
+  ExpressiveExit: [0.4, 0.14, 1, 1],           // Более выразительное исчезновение
+  Spring: [0.43, 0.28, 0.52, 1.23],            // Пружинная кривая
 };
 
 // Строковые значения для CSS
 export const EasingCSS = {
-  standard: `cubic-bezier(${Easing.standard.join(', ')})`,
-  entrance: `cubic-bezier(${Easing.entrance.join(', ')})`,
-  exit: `cubic-bezier(${Easing.exit.join(', ')})`,
-  spring: `cubic-bezier(${Easing.spring.join(', ')})`
+  standard: `cubic-bezier(${Easing.Standard.join(', ')})`,
+  entrance: `cubic-bezier(${Easing.Entrance.join(', ')})`,
+  exit: `cubic-bezier(${Easing.Exit.join(', ')})`,
+  spring: `cubic-bezier(${Easing.Spring.join(', ')})`
 };
 
 // Задержки анимаций (в секундах)
 export const Delay = {
-  none: 0,
-  short: 0.05,   // 50ms - для последовательного появления элементов
-  medium: 0.1,    // 100ms - средняя задержка
-  long: 0.2      // 200ms - для более ощутимой паузы
+  None: 0,
+  XS: 0.05,    // 50ms - минимальная заметная задержка
+  S: 0.1,      // 100ms - для небольших последовательностей
+  M: 0.2,      // 200ms - стандартная задержка
+  L: 0.4,      // 400ms - большая задержка
+  XL: 0.7      // 700ms - максимальная рекомендуемая задержка
 };
+
+/**
+ * Создает конфигурацию анимации для Framer Motion
+ */
+export const createAnimationConfig = ({
+  duration = Duration.M,
+  easing = Easing.Standard,
+  delay = Delay.None,
+  ...rest
+}) => ({
+  transition: {
+    duration,
+    ease: easing,
+    delay,
+    ...rest
+  }
+});
 
 /**
  * Типы анимаций по назначению
@@ -77,17 +94,17 @@ export const ComponentAnimations = {
   button: {
     hover: {
       duration: Duration.XS,
-      easing: Easing.standard,
-      delay: Delay.none
+      easing: Easing.Standard,
+      delay: Delay.None
     },
     press: {
       duration: Duration.S,
-      easing: Easing.standard,
-      delay: Delay.none
+      easing: Easing.Standard,
+      delay: Delay.None
     },
     icon: {
       duration: Duration.S,
-      easing: Easing.spring
+      easing: Easing.Spring
     }
   },
   
@@ -95,18 +112,18 @@ export const ComponentAnimations = {
   modal: {
     appear: {
       duration: Duration.L,
-      easing: Easing.entrance,
-      delay: Delay.none
+      easing: Easing.Entrance,
+      delay: Delay.None
     },
     disappear: {
       duration: Duration.M,
-      easing: Easing.exit,
-      delay: Delay.none
+      easing: Easing.Exit,
+      delay: Delay.None
     },
     // Фоновая подложка обычно имеет отдельную анимацию
     overlay: {
       duration: Duration.M,
-      easing: Easing.standard
+      easing: Easing.Standard
     }
   },
   
@@ -114,99 +131,73 @@ export const ComponentAnimations = {
   dropdown: {
     appear: {
       duration: Duration.M,
-      easing: Easing.entrance
+      easing: Easing.Entrance
     },
     disappear: {
       duration: Duration.M,
-      easing: Easing.exit
+      easing: Easing.Exit
     }
   },
   
   // Переключатели, чекбоксы
   toggle: {
     duration: Duration.S,
-    easing: Easing.standard
+    easing: Easing.Standard
   },
   
-  // Аккордион, раскрывающиеся списки
+  // Аккордеоны, раскрывающиеся блоки
   accordion: {
     expand: {
       duration: Duration.M,
-      easing: Easing.entrance
+      easing: Easing.Entrance
     },
     collapse: {
       duration: Duration.M,
-      easing: Easing.exit
+      easing: Easing.Exit
     }
   },
   
-  // Для последовательной анимации элементов в списке
+  // Последовательная анимация элементов
   stagger: {
-    delay: Delay.short
+    delay: Delay.XS
   }
 };
 
-/**
- * Функции-помощники для создания объектов конфигурации анимации
- * Используйте их при настройке анимаций компонентов
- */
-
-// Создает объект анимации для Framer Motion
-export const createAnimationConfig = (duration, easing, delay = 0) => ({
-  type: "tween",
-  duration,
-  ease: easing,
-  delay
-});
-
-// Создает объект transition для CSS
-export const createCSSTransition = (property, duration, easing, delay = 0) => 
-  `${property} ${duration}s ${Array.isArray(easing) ? `cubic-bezier(${easing.join(', ')})` : easing} ${delay}s`;
-
-// Примеры конфигураций анимаций для распространенных компонентов
-export const animationConfig = {
-  // Для стандартной кнопки
-  buttonHoverAnimation: {
-    whileHover: { scale: 1.05 },
-    whileTap: { scale: 0.95 },
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 20,
-      duration: Duration.S
+// Пресеты для Framer Motion
+export const MotionPresets = {
+  // Простое появление с масштабированием
+  scaleIn: {
+    initial: { opacity: 0, scale: 0.9 },
+    animate: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        duration: Duration.L,
+        ease: Easing.Entrance
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      scale: 0.95,
+      transition: {
+        duration: Duration.M,
+        ease: Easing.Standard
+      }
     }
   },
   
-  // Для модального окна
-  modalAnimation: {
-    initial: { opacity: 0, y: -20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -10 },
-    transition: {
-      duration: Duration.L,
-      ease: Easing.entrance
-    }
-  },
-  
-  // Для выпадающего меню
-  dropdownAnimation: {
-    initial: { opacity: 0, scaleY: 0.7, transformOrigin: "top" },
-    animate: { opacity: 1, scaleY: 1 },
-    exit: { opacity: 0, scaleY: 0.7 },
-    transition: {
-      duration: Duration.M,
-      ease: Easing.standard
-    }
-  },
-  
-  // Для аккордеона
-  accordionAnimation: {
-    initial: { height: 0, opacity: 0 },
-    animate: { height: "auto", opacity: 1 },
-    exit: { height: 0, opacity: 0 },
-    transition: {
-      duration: Duration.M,
-      ease: Easing.standard
+  // Слайд снизу вверх
+  slideUp: {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: Duration.M,
+        ease: Easing.Standard
+      }
     }
   }
-}; 
+};
+
+export { motion }; 

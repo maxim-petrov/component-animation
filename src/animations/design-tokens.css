@@ -1,40 +1,44 @@
+/**
+ * Дизайн-токены анимации
+ * Переменные CSS для использования в проекте
+ */
+
 :root {
-  /* Длительности анимаций */
+  /* Токены длительности (в ms) */
   --duration-fast-01: 70ms;
   --duration-fast-02: 110ms;
   --duration-moderate-01: 150ms;
   --duration-moderate-02: 240ms;
   --duration-slow-01: 400ms;
   --duration-slow-02: 700ms;
-  
-  /* Кривые ускорения */
-  /* Стандартные */
+
+  /* Токены easing (cubic-bezier) */
+  /* Стандартный режим - рабочие интерфейсы */
   --motion-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
   --motion-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
-  
-  /* Для появления */
+
+  /* Анимации появления */
   --motion-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
   --motion-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
-  
-  /* Для исчезновения */
+
+  /* Анимации исчезновения */
   --motion-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
   --motion-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
 }
 
-/* Вспомогательные классы для продуктивных анимаций */
-.motion-standard-productive {
+/* Классы для применения токенов */
+.motion-standard {
   transition-timing-function: var(--motion-standard-productive);
 }
 
-.motion-entrance-productive {
+.motion-entrance {
   transition-timing-function: var(--motion-entrance-productive);
 }
 
-.motion-exit-productive {
+.motion-exit {
   transition-timing-function: var(--motion-exit-productive);
 }
 
-/* Вспомогательные классы для выразительных анимаций */
 .motion-standard-expressive {
   transition-timing-function: var(--motion-standard-expressive);
 }
@@ -47,7 +51,7 @@
   transition-timing-function: var(--motion-exit-expressive);
 }
 
-/* Классы для длительностей */
+/* Классы длительности */
 .duration-fast-01 {
   transition-duration: var(--duration-fast-01);
 }

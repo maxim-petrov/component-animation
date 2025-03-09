@@ -1,20 +1,18 @@
 /**
  * CSS-токены анимаций
  * Содержит CSS-переменные и утилитарные классы для анимаций
- * 
- * Обновлено для совместимости с Carbon Design System
  */
 
 :root {
   /* Токены длительности анимаций */
-  --motion-duration-xs: 70ms;   /* 70ms (Carbon fast01) - микро-анимации, ховер */
-  --motion-duration-s: 110ms;   /* 110ms (Carbon fast02) - небольшие UI-изменения */
-  --motion-duration-m: 150ms;   /* 150ms (Carbon moderate01) - стандартные переходы */
-  --motion-duration-l: 240ms;   /* 240ms (Carbon moderate02) - крупные изменения */
-  --motion-duration-xl: 400ms;  /* 400ms (Carbon slow01) - сложные анимации */
-  --motion-duration-xxl: 700ms; /* 700ms (Carbon slow02) - особо выразительные анимации */
+  --motion-duration-xs: 70ms;   /* 70ms - микро-анимации, ховер */
+  --motion-duration-s: 110ms;   /* 110ms - небольшие UI-изменения */
+  --motion-duration-m: 150ms;   /* 150ms - стандартные переходы */
+  --motion-duration-l: 240ms;   /* 240ms - крупные изменения */
+  --motion-duration-xl: 400ms;  /* 400ms - сложные анимации */
+  --motion-duration-xxl: 700ms; /* 700ms - особо выразительные анимации */
   
-  /* Carbon-совместимые имена переменных */
+  /* Альтернативные имена переменных */
   --duration-fast-01: 70ms;
   --duration-fast-02: 110ms;
   --duration-moderate-01: 150ms;
@@ -22,13 +20,13 @@
   --duration-slow-01: 400ms;
   --duration-slow-02: 700ms;
 
-  /* Токены easing (cubic-bezier) - обновлены значения до Carbon */
+  /* Токены easing (cubic-bezier) */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0.38, 0.9); /* Стандартная кривая */
   --motion-easing-entrance: cubic-bezier(0, 0, 0.38, 0.9);   /* Для появления */
   --motion-easing-exit: cubic-bezier(0.2, 0, 1, 0.9);        /* Для исчезновения */
-  --motion-easing-spring: cubic-bezier(0.43, 0.28, 0.52, 1.23); /* Пружинная (сохранена) */
+  --motion-easing-spring: cubic-bezier(0.43, 0.28, 0.52, 1.23); /* Пружинная */
 
-  /* Carbon-совместимые имена переменных */
+  /* Альтернативные имена переменных */
   --motion-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
   --motion-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
   --motion-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
@@ -40,54 +38,62 @@
   --motion-delay-none: 0s;
   --motion-delay-short: 0.05s; /* 50ms - для последовательности */
   --motion-delay-medium: 0.1s; /* 100ms - средняя задержка */
-  --motion-delay-long: 0.2s;   /* 200ms - ощутимая пауза */
+  --motion-delay-long: 0.2s;   /* 200ms - для более ощутимой паузы */
 }
 
-/* Утилитарные классы для наиболее часто используемых анимаций */
+/* Утилиты для добавления переходов */
 .animate-fade-in {
-  animation: fadeIn var(--motion-duration-m) var(--motion-entrance-productive) forwards;
+  animation: fadeIn var(--motion-duration-m) var(--motion-easing-entrance) forwards;
 }
 
 .animate-fade-out {
-  animation: fadeOut var(--motion-duration-m) var(--motion-exit-productive) forwards;
+  animation: fadeOut var(--motion-duration-m) var(--motion-easing-exit) forwards;
 }
 
 .transition-standard {
-  transition: all var(--motion-duration-m) var(--motion-standard-productive);
+  transition-property: all;
+  transition-duration: var(--motion-duration-m);
+  transition-timing-function: var(--motion-easing-standard);
 }
 
 .transition-fast {
-  transition: all var(--motion-duration-s) var(--motion-standard-productive);
+  transition-property: all;
+  transition-duration: var(--motion-duration-s);
+  transition-timing-function: var(--motion-easing-standard);
 }
 
-/* Hover-эффекты для кнопок и интерактивных элементов */
 .hover-scale {
-  transition: transform var(--motion-duration-xs) var(--motion-standard-productive);
+  transition: transform var(--motion-duration-s) var(--motion-easing-standard);
 }
+
 .hover-scale:hover {
   transform: scale(1.05);
 }
+
 .hover-scale:active {
-  transform: scale(0.98);
+  transform: scale(0.95);
+  transition-duration: var(--motion-duration-xs);
 }
 
-/* Анимации для модальных окон */
+/* Утилиты для модальных окон */
 .modal-enter {
-  animation: modalEnter var(--motion-duration-l) var(--motion-entrance-productive) forwards;
+  animation: modalEnter var(--motion-duration-l) var(--motion-easing-entrance) forwards;
 }
+
 .modal-exit {
-  animation: modalExit var(--motion-duration-m) var(--motion-exit-productive) forwards;
+  animation: modalExit var(--motion-duration-m) var(--motion-easing-exit) forwards;
 }
 
-/* Анимации выпадающих меню */
+/* Утилиты для выпадающих меню */
 .dropdown-enter {
-  animation: dropdownEnter var(--motion-duration-m) var(--motion-entrance-productive) forwards;
-}
-.dropdown-exit {
-  animation: dropdownExit var(--motion-duration-m) var(--motion-exit-productive) forwards;
+  animation: dropdownEnter var(--motion-duration-m) var(--motion-easing-entrance) forwards;
 }
 
-/* Carbon-совместимые классы */
+.dropdown-exit {
+  animation: dropdownExit var(--motion-duration-m) var(--motion-easing-exit) forwards;
+}
+
+/* Альтернативные классы для совместимости */
 .motion-standard-productive {
   transition-timing-function: var(--motion-standard-productive);
 }
@@ -136,7 +142,7 @@
   transition-duration: var(--duration-slow-02);
 }
 
-/* Keyframes для анимаций */
+/* Ключевые кадры анимаций */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -148,49 +154,49 @@
 }
 
 @keyframes modalEnter {
-  from { 
-    opacity: 0; 
+  from {
+    opacity: 0;
     transform: translateY(-20px);
   }
-  to { 
-    opacity: 1; 
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes modalExit {
-  from { 
-    opacity: 1; 
+  from {
+    opacity: 1;
     transform: translateY(0);
   }
-  to { 
-    opacity: 0; 
+  to {
+    opacity: 0;
     transform: translateY(-10px);
   }
 }
 
 @keyframes dropdownEnter {
-  from { 
+  from {
     opacity: 0;
     transform: scaleY(0.7);
-    transform-origin: top;
+    transform-origin: top center;
   }
-  to { 
+  to {
     opacity: 1;
     transform: scaleY(1);
-    transform-origin: top;
+    transform-origin: top center;
   }
 }
 
 @keyframes dropdownExit {
-  from { 
+  from {
     opacity: 1;
     transform: scaleY(1);
-    transform-origin: top;
+    transform-origin: top center;
   }
-  to { 
+  to {
     opacity: 0;
     transform: scaleY(0.7);
-    transform-origin: top;
+    transform-origin: top center;
   }
 } 
