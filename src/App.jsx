@@ -4,6 +4,7 @@ import './global.css'
 import Accordion from './components/Accordion'
 import Tabs from './components/Tabs'
 import Cards from './components/Cards'
+import Banners from './components/Banners'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +28,11 @@ function App() {
       <h1>Cards Component</h1>
       <div className="content">
         <Cards />
+      </div>
+
+      <h1>Banners Component</h1>
+      <div className="content">
+        <Banners />
       </div>
     </div>
   )
