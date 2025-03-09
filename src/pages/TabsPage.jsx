@@ -10,7 +10,7 @@ const TabsPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1>Tabs Component</h1>
+      <h1>Tabs</h1>
       <div className="component-demo">
         <Tabs />
       </div>

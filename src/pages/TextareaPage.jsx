@@ -10,7 +10,7 @@ const TextareaPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1>Textarea Component</h1>
+      <h1>Textarea</h1>
       <div className="component-demo">
         <Textarea />
       </div>

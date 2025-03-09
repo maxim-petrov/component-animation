@@ -10,7 +10,7 @@ const DropdownButtonPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1>Dropdown Button Component</h1>
+      <h1>Dropdown Button</h1>
       <div className="component-demo">
         <DropdownButton />
       </div>

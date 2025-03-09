@@ -10,7 +10,7 @@ const CheckboxPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1>Checkbox Component</h1>
+      <h1>Checkbox</h1>
       <div className="component-demo">
         <Checkbox />
       </div>

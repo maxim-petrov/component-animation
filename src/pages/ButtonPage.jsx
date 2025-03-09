@@ -10,7 +10,7 @@ const ButtonPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1>Button Component</h1>
+      <h1>Button</h1>
       <div className="component-demo">
         <Button text="Кнопка" />
       </div>

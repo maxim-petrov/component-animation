@@ -10,7 +10,7 @@ const CardsPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1>Cards Component</h1>
+      <h1>Cards</h1>
       <div className="component-demo">
         <Cards />
       </div>

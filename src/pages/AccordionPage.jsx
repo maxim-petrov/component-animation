@@ -10,7 +10,7 @@ const AccordionPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1>Accordion Component</h1>
+      <h1>Accordion</h1>
       <div className="component-demo">
         <Accordion 
           title="Заголовок"

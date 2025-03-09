@@ -10,7 +10,7 @@ const MultipleButtonSelectPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1>Multiple Button Select Component</h1>
+      <h1>Multiple Button Select</h1>
       <div className="component-demo">
         <MultipleButtonSelect />
       </div>

@@ -10,7 +10,7 @@ const SearchBoxPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1>Search Box Component</h1>
+      <h1>Search Box</h1>
       <div className="component-demo">
         <SearchBox />
       </div>
