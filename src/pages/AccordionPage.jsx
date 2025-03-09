@@ -11,7 +11,7 @@ const AccordionPage = () => {
       transition={{ duration: 0.5 }}
     >
       <h1>Accordion</h1>
-      <div className="component-demo">
+      <div className="component-demo accordion-demo">
         <div className="component-demo-inner">
           <Accordion 
             title="Заголовок"

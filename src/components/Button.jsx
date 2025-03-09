@@ -30,7 +30,7 @@ const Button = ({
 
   return (
     <div className="_Gq5_ ql7Up" data-e2e-id="button-default">
-      <div className="CqkE8" style={{ marginBottom: '20px' }}>
+      <div className="CqkE8">
         <motion.button 
           className={`btn-root-119-18-1-1 btn-${variant}-a30-18-1-1 btn-${size}-9e4-18-1-1 btn-typeButtonReset-268-18-1-1 btn-withIcon-a49-18-1-1`} 
           type={type}
