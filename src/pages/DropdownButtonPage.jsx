@@ -12,7 +12,9 @@ const DropdownButtonPage = () => {
     >
       <h1>Dropdown Button</h1>
       <div className="component-demo">
-        <DropdownButton />
+        <div className="component-demo-inner">
+          <DropdownButton />
+        </div>
       </div>
       <div className="component-description">
         <h2>Описание</h2>

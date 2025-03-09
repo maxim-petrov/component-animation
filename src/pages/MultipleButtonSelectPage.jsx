@@ -12,7 +12,9 @@ const MultipleButtonSelectPage = () => {
     >
       <h1>Multiple Button Select</h1>
       <div className="component-demo">
-        <MultipleButtonSelect />
+        <div className="component-demo-inner">
+          <MultipleButtonSelect />
+        </div>
       </div>
       <div className="component-description">
         <h2>Описание</h2>

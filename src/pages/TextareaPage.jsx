@@ -12,7 +12,9 @@ const TextareaPage = () => {
     >
       <h1>Textarea</h1>
       <div className="component-demo">
-        <Textarea />
+        <div className="component-demo-inner">
+          <Textarea />
+        </div>
       </div>
       <div className="component-description">
         <h2>Описание</h2>

@@ -12,7 +12,9 @@ const CardsPage = () => {
     >
       <h1>Cards</h1>
       <div className="component-demo">
-        <Cards />
+        <div className="component-demo-inner">
+          <Cards />
+        </div>
       </div>
       <div className="component-description">
         <h2>Описание</h2>

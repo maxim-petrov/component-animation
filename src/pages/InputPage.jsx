@@ -12,7 +12,9 @@ const InputPage = () => {
     >
       <h1>Input</h1>
       <div className="component-demo">
-        <Input />
+        <div className="component-demo-inner">
+          <Input />
+        </div>
       </div>
       <div className="component-description">
         <h2>Описание</h2>

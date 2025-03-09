@@ -12,7 +12,9 @@ const ButtonPage = () => {
     >
       <h1>Button</h1>
       <div className="component-demo">
-        <Button text="Кнопка" />
+        <div className="component-demo-inner">
+          <Button text="Кнопка" />
+        </div>
       </div>
       <div className="component-variations">
         <h2>Варианты</h2>

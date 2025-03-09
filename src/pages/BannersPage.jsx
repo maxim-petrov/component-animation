@@ -12,7 +12,9 @@ const BannersPage = () => {
     >
       <h1>Banners</h1>
       <div className="component-demo">
-        <Banners />
+        <div className="component-demo-inner">
+          <Banners />
+        </div>
       </div>
       <div className="component-description">
         <h2>Описание</h2>

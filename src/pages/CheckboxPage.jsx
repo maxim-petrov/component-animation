@@ -12,7 +12,9 @@ const CheckboxPage = () => {
     >
       <h1>Checkbox</h1>
       <div className="component-demo">
-        <Checkbox />
+        <div className="component-demo-inner">
+          <Checkbox />
+        </div>
       </div>
       <div className="component-description">
         <h2>Описание</h2>

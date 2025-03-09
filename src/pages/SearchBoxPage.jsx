@@ -12,7 +12,9 @@ const SearchBoxPage = () => {
     >
       <h1>Search Box</h1>
       <div className="component-demo">
-        <SearchBox />
+        <div className="component-demo-inner">
+          <SearchBox />
+        </div>
       </div>
       <div className="component-description">
         <h2>Описание</h2>
