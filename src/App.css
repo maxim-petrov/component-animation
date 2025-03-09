@@ -723,6 +723,7 @@ h1 {
 .component-page h1 {
   text-align: left;
   margin-bottom: 1.5rem;
+  color: #333;
 }
 
 .component-demo {
@@ -754,6 +755,22 @@ h1 {
 .component-description h2 {
   color: #333;
   margin-top: 0;
+}
+
+.component-description h3 {
+  color: #333;
+}
+
+.component-description p {
+  color: #333;
+}
+
+.component-description ul {
+  color: #333;
+}
+
+.component-description li {
+  color: #333;
 }
 
 .component-description code {
