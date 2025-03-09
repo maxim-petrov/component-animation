@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { accordionAnimationConfig, arrowAnimation, contentAnimation } from '../animations/accordionAnimations';
 import '../global.css';
 
 const Accordion = ({ title = 'Заголовок', subtitle = 'Подзаголовок', content = 'Оригинал документа, на основании которого продавец стал собственником квартиры. Например, договор купли-продажи, договор долевого участия, договор дарения и другие (находится у собственника)' }) => {
@@ -7,15 +8,6 @@ const Accordion = ({ title = 'Заголовок', subtitle = 'Подзагол�
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
-  };
-
-  // Animation configuration based on requirements
-  const animationConfig = {
-    type: "spring",
-    stiffness: 290,
-    damping: 22.22,
-    mass: 1,
-    duration: 0.54
   };
 
   return (
@@ -51,7 +43,7 @@ const Accordion = ({ title = 'Заголовок', subtitle = 'Подзагол�
             <motion.div 
               className="acr-arrow-60f-12-2-0"
               animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={animationConfig}
+              transition={accordionAnimationConfig}
             >
               <div className="icon-root-864-6-0-3 acr-icon-ea7-12-2-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
@@ -69,11 +61,7 @@ const Accordion = ({ title = 'Заголовок', subtitle = 'Подзагол�
             {isOpen && (
               <motion.div 
                 className="acr-content-c3a-12-2-0"
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={animationConfig}
-                style={{ overflow: "hidden" }}
+                {...contentAnimation}
               >
                 <div 
                   className="tg-body-standard-regular-bdb-7-0-3"

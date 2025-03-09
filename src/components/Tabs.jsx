@@ -1,21 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Tab from './Tab';
+import { tabsAnimationConfig, tabContentAnimation, scrollArrowAnimation } from '../animations/tabsAnimations';
 import '../global.css';
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState('value-0');
   const [showRightArrow, setShowRightArrow] = useState(false);
   const buttonsRef = useRef(null);
-
-  // Animation configuration
-  const animationConfig = {
-    type: "spring",
-    stiffness: 290,
-    damping: 22.22,
-    mass: 1,
-    duration: 0.54
-  };
 
   // Check if scroll is needed
   useEffect(() => {
@@ -63,10 +55,11 @@ const Tabs = () => {
     <div className="tabs-tabs-d69-15-1-1 tabs-primary-9de-15-1-1" data-e2e-id="example-default">
       <div className="tabs-head-8e7-15-1-1 tabs-headMobileOffset-fe8-15-1-1">
         {showRightArrow && (
-          <div 
+          <motion.div 
             className="tabs-arrow-d5b-15-1-1 tabs-arrowRight-c14-15-1-1" 
             data-e2e-id="example-default-right-arrow"
             onClick={scrollRight}
+            {...scrollArrowAnimation}
           >
             <div className="icon-root-864-6-0-3 tabs-arrowIcon-a77-15-1-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
@@ -78,7 +71,7 @@ const Tabs = () => {
                 />
               </svg>
             </div>
-          </div>
+          </motion.div>
         )}
         <div className="tabs-headInner-892-15-1-1 tabs-headInnerDivider-028-15-1-1">
           <div className="tabs-buttons-fc1-15-1-1" ref={buttonsRef}>
@@ -101,10 +94,7 @@ const Tabs = () => {
             <div key={tab.id} className="tabs-content-cfb-15-1-1 tabs-contentActive-b38-15-1-1">
               <motion.div 
                 className="FeC6G"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={animationConfig}
+                {...tabContentAnimation}
               >
                 {tab.content}
               </motion.div>
