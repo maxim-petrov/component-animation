@@ -19,7 +19,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <h2>Components</h2>
+        <h2>Анимации</h2>
       </div>
       <nav className="sidebar-nav">
         <ul>
