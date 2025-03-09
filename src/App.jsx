@@ -10,6 +10,7 @@ import Input from './components/Input'
 import Checkbox from './components/Checkbox'
 import SearchBox from './components/SearchBox'
 import Textarea from './components/Textarea'
+import MultipleButtonSelect from './components/MultipleButtonSelect'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -63,6 +64,11 @@ function App() {
       <h1>Textarea Component</h1>
       <div className="content">
         <Textarea />
+      </div>
+
+      <h1>Multiple Button Select Component</h1>
+      <div className="content">
+        <MultipleButtonSelect />
       </div>
     </div>
   )
