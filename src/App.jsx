@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import './global.css'
+import Button from './components/Button'
 import Accordion from './components/Accordion'
 import Tabs from './components/Tabs'
 import Cards from './components/Cards'
@@ -17,6 +18,11 @@ function App() {
 
   return (
     <div className="app-container">
+      <h1>Button Component</h1>
+      <div className="content">
+        <Button text="Кнопка" />
+      </div>
+
       <h1>Accordion Component</h1>
       <div className="content">
         <Accordion 
