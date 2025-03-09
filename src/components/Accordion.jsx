@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { slideToggle } from '../utils/utils';
 import '../global.css';
 
 const Accordion = ({ title = 'Заголовок', subtitle = 'Подзаголовок', content = 'Оригинал документа, на основании которого продавец стал собственником квартиры. Например, договор купли-продажи, договор долевого участия, договор дарения и другие (находится у собственника)' }) => {
