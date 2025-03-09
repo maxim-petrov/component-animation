@@ -713,6 +713,24 @@ h1 {
   border-left: 3px solid #009e36;
 }
 
+.sidebar-divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 1rem 1.5rem;
+}
+
+.sidebar-link-tokens {
+  font-weight: 500;
+  color: #4a6cf7 !important;
+  margin-top: 0.5rem;
+}
+
+.sidebar-link-tokens:hover,
+.sidebar-link-tokens.active {
+  color: #3451b2 !important;
+  background-color: rgba(74, 108, 247, 0.08);
+}
+
 /* Component Page Styles */
 .component-page {
   max-width: 900px;
@@ -853,4 +871,31 @@ h1 {
   .variations-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Стили для страницы токенов */
+.token-group {
+  margin: 1.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.token-item {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #4a6cf7;
+}
+
+.token-item h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.token-item p {
+  margin: 0;
+  font-size: 0.9rem;
 }

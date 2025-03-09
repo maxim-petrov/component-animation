@@ -35,6 +35,21 @@ const Sidebar = () => {
               </NavLink>
             </li>
           ))}
+          
+          {/* Разделитель */}
+          <li className="sidebar-divider"></li>
+          
+          {/* Ссылка на страницу токенов */}
+          <li>
+            <NavLink 
+              to="/tokens"
+              className={({ isActive }) => 
+                isActive ? 'sidebar-link active sidebar-link-tokens' : 'sidebar-link sidebar-link-tokens'
+              }
+            >
+              Токены анимации
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </aside>
