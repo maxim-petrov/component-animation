@@ -6,6 +6,7 @@ import Tabs from './components/Tabs'
 import Cards from './components/Cards'
 import Banners from './components/Banners'
 import DropdownButton from './components/DropdownButton'
+import Input from './components/Input'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -39,6 +40,11 @@ function App() {
       <h1>Dropdown Button Component</h1>
       <div className="content">
         <DropdownButton />
+      </div>
+
+      <h1>Input Component</h1>
+      <div className="content">
+        <Input />
       </div>
     </div>
   )
