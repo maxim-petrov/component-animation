@@ -16,31 +16,6 @@ const ButtonPage = () => {
           <Button text="Кнопка" />
         </div>
       </div>
-      <div className="component-variations">
-        <h2>Варианты</h2>
-        <div className="variations-grid">
-          <div className="variation">
-            <h3>Primary</h3>
-            <Button text="Primary Button" variant="primary" />
-          </div>
-          <div className="variation">
-            <h3>Secondary</h3>
-            <Button text="Secondary Button" variant="secondary" />
-          </div>
-          <div className="variation">
-            <h3>Small</h3>
-            <Button text="Small Button" size="small" />
-          </div>
-          <div className="variation">
-            <h3>Medium</h3>
-            <Button text="Medium Button" size="medium" />
-          </div>
-          <div className="variation">
-            <h3>Large</h3>
-            <Button text="Large Button" size="large" />
-          </div>
-        </div>
-      </div>
       <div className="component-description">
         <h2>Описание</h2>
         <p>
