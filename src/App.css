@@ -15,10 +15,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #009e36aa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #009e36aa);
 }
 
 @keyframes logo-spin {
@@ -708,8 +708,8 @@ h1 {
 
 .sidebar-link.active {
   background-color: #f1f1f1;
-  color: #646cff;
-  border-left: 3px solid #646cff;
+  color: #009e36;
+  border-left: 3px solid #009e36;
 }
 
 /* Component Page Styles */
