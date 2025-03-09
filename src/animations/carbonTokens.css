@@ -1,0 +1,115 @@
+:root {
+  /* Длительности анимаций */
+  --duration-fast-01: 70ms;
+  --duration-fast-02: 110ms;
+  --duration-moderate-01: 150ms;
+  --duration-moderate-02: 240ms;
+  --duration-slow-01: 400ms;
+  --duration-slow-02: 700ms;
+  
+  /* Кривые ускорения */
+  /* Стандартные */
+  --motion-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --motion-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+  
+  /* Для появления */
+  --motion-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
+  --motion-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
+  
+  /* Для исчезновения */
+  --motion-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
+  --motion-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
+}
+
+/* Вспомогательные классы для продуктивных анимаций */
+.motion-standard-productive {
+  transition-timing-function: var(--motion-standard-productive);
+}
+
+.motion-entrance-productive {
+  transition-timing-function: var(--motion-entrance-productive);
+}
+
+.motion-exit-productive {
+  transition-timing-function: var(--motion-exit-productive);
+}
+
+/* Вспомогательные классы для выразительных анимаций */
+.motion-standard-expressive {
+  transition-timing-function: var(--motion-standard-expressive);
+}
+
+.motion-entrance-expressive {
+  transition-timing-function: var(--motion-entrance-expressive);
+}
+
+.motion-exit-expressive {
+  transition-timing-function: var(--motion-exit-expressive);
+}
+
+/* Классы для длительностей */
+.duration-fast-01 {
+  transition-duration: var(--duration-fast-01);
+}
+
+.duration-fast-02 {
+  transition-duration: var(--duration-fast-02);
+}
+
+.duration-moderate-01 {
+  transition-duration: var(--duration-moderate-01);
+}
+
+.duration-moderate-02 {
+  transition-duration: var(--duration-moderate-02);
+}
+
+.duration-slow-01 {
+  transition-duration: var(--duration-slow-01);
+}
+
+.duration-slow-02 {
+  transition-duration: var(--duration-slow-02);
+}
+
+/* Комбинированные классы переходов */
+.transition-standard-productive-01 {
+  transition: all var(--duration-fast-01) var(--motion-standard-productive);
+}
+
+.transition-standard-productive-02 {
+  transition: all var(--duration-fast-02) var(--motion-standard-productive);
+}
+
+.transition-entrance-expressive-01 {
+  transition: all var(--duration-moderate-01) var(--motion-entrance-expressive);
+}
+
+.transition-exit-expressive-01 {
+  transition: all var(--duration-moderate-01) var(--motion-exit-expressive);
+}
+
+/* Примеры для конкретных компонентов */
+.button-hover {
+  transition: transform var(--duration-fast-02) var(--motion-standard-productive);
+}
+
+.button-hover:hover {
+  transform: scale(1.05);
+}
+
+.dropdown-appear {
+  transition: opacity var(--duration-moderate-01) var(--motion-entrance-productive),
+              transform var(--duration-moderate-01) var(--motion-entrance-productive);
+  transform-origin: top;
+}
+
+.accordion-expand {
+  transition: height var(--duration-moderate-01) var(--motion-entrance-productive),
+              opacity var(--duration-moderate-01) var(--motion-entrance-productive);
+}
+
+.card-hover {
+  transition: transform var(--duration-fast-02) var(--motion-standard-expressive),
+              box-shadow var(--duration-fast-02) var(--motion-standard-expressive);
+} 

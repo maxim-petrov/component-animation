@@ -899,3 +899,118 @@ h1 {
   margin: 0;
   font-size: 0.9rem;
 }
+
+/* Стили для демонстрации кривых и длительностей на странице токенов */
+.token-item-wide {
+  grid-column: 1 / -1;
+}
+
+.token-easing-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.token-easing {
+  flex: 1;
+}
+
+.token-easing h5 {
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+}
+
+.token-easing p {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-family: monospace;
+}
+
+.token-demo {
+  margin-top: 0.5rem;
+  height: 6px;
+  width: 100%;
+  background-color: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.token-demo-bar {
+  height: 100%;
+  width: 0;
+  background-color: #4a6cf7;
+  border-radius: 3px;
+  animation: demo-width 2s infinite;
+}
+
+@keyframes demo-width {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.duration-fast-01 {
+  animation-duration: 70ms;
+}
+
+.duration-fast-02 {
+  animation-duration: 110ms;
+}
+
+.duration-moderate-01 {
+  animation-duration: 150ms;
+}
+
+.duration-moderate-02 {
+  animation-duration: 240ms;
+}
+
+.duration-slow-01 {
+  animation-duration: 400ms;
+}
+
+.duration-slow-02 {
+  animation-duration: 700ms;
+}
+
+.easing-demo {
+  width: 50px;
+  height: 50px;
+  background-color: #4a6cf7;
+  border-radius: 50%;
+  margin: 1rem 0;
+  animation: demo-move 2s infinite;
+}
+
+@keyframes demo-move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(200px); }
+}
+
+.easing-standard-productive {
+  animation-timing-function: cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+
+.easing-standard-expressive {
+  animation-timing-function: cubic-bezier(0.4, 0.14, 0.3, 1);
+}
+
+.easing-entrance-productive {
+  animation-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
+}
+
+.easing-entrance-expressive {
+  animation-timing-function: cubic-bezier(0, 0, 0.3, 1);
+}
+
+.easing-exit-productive {
+  animation-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
+}
+
+.easing-exit-expressive {
+  animation-timing-function: cubic-bezier(0.4, 0.14, 1, 1);
+}
+
+.token-table {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
