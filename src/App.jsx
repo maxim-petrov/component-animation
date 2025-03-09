@@ -7,6 +7,7 @@ import Cards from './components/Cards'
 import Banners from './components/Banners'
 import DropdownButton from './components/DropdownButton'
 import Input from './components/Input'
+import Checkbox from './components/Checkbox'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -45,6 +46,11 @@ function App() {
       <h1>Input Component</h1>
       <div className="content">
         <Input />
+      </div>
+
+      <h1>Checkbox Component</h1>
+      <div className="content">
+        <Checkbox />
       </div>
     </div>
   )
