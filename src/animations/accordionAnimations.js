@@ -4,15 +4,15 @@ import { Duration, Easing, ComponentAnimations } from './tokens';
 export const accordionAnimationConfig = {
   type: "tween",
   duration: Duration.M,
-  ease: Easing.standard
+  ease: Easing.Standard
 };
 
 // Анимация для стрелки
 export const arrowAnimation = {
-  animate: (isOpen) => ({ rotate: isOpen ? 180 : 0 }),
   transition: {
     duration: Duration.S,
-    ease: Easing.standard
+    ease: Easing.Standard,
+    type: "tween"
   }
 };
 
@@ -28,7 +28,7 @@ export const contentAnimation = {
     },
     opacity: {
       duration: Duration.S,
-      ease: Easing.standard
+      ease: Easing.Standard
     }
   },
   style: { overflow: "hidden" }

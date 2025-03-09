@@ -40,22 +40,26 @@ const Accordion = ({ title = 'Заголовок', subtitle = 'Подзагол�
                 </div>
               </div>
             </div>
-            <motion.div 
-              className="acr-arrow-60f-12-2-0"
-              animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={accordionAnimationConfig}
-            >
+            <div className="acr-arrow-60f-12-2-0">
               <div className="icon-root-864-6-0-3 acr-icon-ea7-12-2-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
+                <motion.svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="16" 
+                  height="16" 
+                  fill="none"
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={arrowAnimation.transition}
+                  style={{ transformOrigin: 'center' }}
+                >
                   <path 
                     fill="currentColor" 
                     fillRule="evenodd"
                     d="M7.41 11.09a.833.833 0 0 0 1.18 0l5-5a.833.833 0 0 0-1.18-1.18L8 9.322l-4.41-4.41A.833.833 0 0 0 2.41 6.09l5 5Z"
                     clipRule="evenodd"
                   />
-                </svg>
+                </motion.svg>
               </div>
-            </motion.div>
+            </div>
           </div>
           <AnimatePresence initial={false}>
             {isOpen && (
