@@ -8,6 +8,7 @@ import Banners from './components/Banners'
 import DropdownButton from './components/DropdownButton'
 import Input from './components/Input'
 import Checkbox from './components/Checkbox'
+import SearchBox from './components/SearchBox'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -51,6 +52,11 @@ function App() {
       <h1>Checkbox Component</h1>
       <div className="content">
         <Checkbox />
+      </div>
+
+      <h1>SearchBox Component</h1>
+      <div className="content">
+        <SearchBox />
       </div>
     </div>
   )
