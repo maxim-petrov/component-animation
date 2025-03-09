@@ -472,3 +472,60 @@ h1 {
 .sb-groupTitleInner-644-18-2-0 {
   display: inline-block;
 }
+
+/* Стили для Textarea */
+.AwMFO {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.txar-textarea-221-11-1-0 {
+  position: relative;
+  display: grid;
+  border-color: #e0e0e0;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.txar-field-ea3-11-1-0 {
+  grid-area: field;
+  width: 100%;
+  min-height: 40px;
+  max-height: 300px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: inherit;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: height 0.2s ease;
+  overflow-y: hidden;
+}
+
+.txar-field-ea3-11-1-0::placeholder {
+  color: #757575;
+  transition: opacity 0.2s ease;
+}
+
+.txar-field-ea3-11-1-0:focus::placeholder {
+  opacity: 0.6;
+}
+
+.txar-fieldHidden-bb9-11-1-0 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  height: auto;
+  min-height: 0;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: inherit;
+  width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  border: none;
+}

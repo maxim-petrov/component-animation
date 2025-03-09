@@ -9,6 +9,7 @@ import DropdownButton from './components/DropdownButton'
 import Input from './components/Input'
 import Checkbox from './components/Checkbox'
 import SearchBox from './components/SearchBox'
+import Textarea from './components/Textarea'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -57,6 +58,11 @@ function App() {
       <h1>SearchBox Component</h1>
       <div className="content">
         <SearchBox />
+      </div>
+
+      <h1>Textarea Component</h1>
+      <div className="content">
+        <Textarea />
       </div>
     </div>
   )
