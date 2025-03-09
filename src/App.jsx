@@ -1,83 +1,58 @@
-import { useState } from 'react'
-import './App.css'
-import './global.css'
-import Button from './components/Button'
-import Accordion from './components/Accordion'
-import Tabs from './components/Tabs'
-import Cards from './components/Cards'
-import Banners from './components/Banners'
-import DropdownButton from './components/DropdownButton'
-import Input from './components/Input'
-import Checkbox from './components/Checkbox'
-import SearchBox from './components/SearchBox'
-import Textarea from './components/Textarea'
-import MultipleButtonSelect from './components/MultipleButtonSelect'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import './App.css';
+import './global.css';
+
+// Layout
+import Layout from './components/Layout';
+import Home from './components/Home';
+
+// Pages
+import ButtonPage from './pages/ButtonPage';
+import AccordionPage from './pages/AccordionPage';
+import MultipleButtonSelectPage from './pages/MultipleButtonSelectPage';
+import TabsPage from './pages/TabsPage';
+import CardsPage from './pages/CardsPage';
+import BannersPage from './pages/BannersPage';
+import DropdownButtonPage from './pages/DropdownButtonPage';
+import InputPage from './pages/InputPage';
+import CheckboxPage from './pages/CheckboxPage';
+import SearchBoxPage from './pages/SearchBoxPage';
+import TextareaPage from './pages/TextareaPage';
+
+// Import pages for other components when ready
+// import TabsPage from './pages/TabsPage';
+// import CardsPage from './pages/CardsPage';
+// import BannersPage from './pages/BannersPage';
+// import DropdownButtonPage from './pages/DropdownButtonPage';
+// import InputPage from './pages/InputPage';
+// import CheckboxPage from './pages/CheckboxPage';
+// import SearchBoxPage from './pages/SearchBoxPage';
+// import TextareaPage from './pages/TextareaPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="app-container">
-      <h1>Button Component</h1>
-      <div className="content">
-        <Button text="Кнопка" />
-      </div>
-
-      <h1>Accordion Component</h1>
-      <div className="content">
-        <Accordion 
-          title="Заголовок"
-          subtitle="Подзаголовок"
-          content="Оригинал документа, на основании которого продавец стал собственником квартиры. Например, договор купли-продажи, договор долевого участия, договор дарения и другие (находится у собственника)"
-        />
-      </div>
-      
-      <h1>Tabs Component</h1>
-      <div className="content">
-        <Tabs />
-      </div>
-
-      <h1>Cards Component</h1>
-      <div className="content">
-        <Cards />
-      </div>
-
-      <h1>Banners Component</h1>
-      <div className="content">
-        <Banners />
-      </div>
-
-      <h1>Dropdown Button Component</h1>
-      <div className="content">
-        <DropdownButton />
-      </div>
-
-      <h1>Input Component</h1>
-      <div className="content">
-        <Input />
-      </div>
-
-      <h1>Checkbox Component</h1>
-      <div className="content">
-        <Checkbox />
-      </div>
-
-      <h1>SearchBox Component</h1>
-      <div className="content">
-        <SearchBox />
-      </div>
-
-      <h1>Textarea Component</h1>
-      <div className="content">
-        <Textarea />
-      </div>
-
-      <h1>Multiple Button Select Component</h1>
-      <div className="content">
-        <MultipleButtonSelect />
-      </div>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="button" element={<ButtonPage />} />
+          <Route path="accordion" element={<AccordionPage />} />
+          <Route path="multiple-button-select" element={<MultipleButtonSelectPage />} />
+          <Route path="tabs" element={<TabsPage />} />
+          <Route path="cards" element={<CardsPage />} />
+          <Route path="banners" element={<BannersPage />} />
+          <Route path="dropdown-button" element={<DropdownButtonPage />} />
+          <Route path="input" element={<InputPage />} />
+          <Route path="checkbox" element={<CheckboxPage />} />
+          <Route path="search-box" element={<SearchBoxPage />} />
+          <Route path="textarea" element={<TextareaPage />} />
+          
+          {/* Redirect any unknown paths to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
