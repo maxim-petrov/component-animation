@@ -5,6 +5,7 @@ import Accordion from './components/Accordion'
 import Tabs from './components/Tabs'
 import Cards from './components/Cards'
 import Banners from './components/Banners'
+import DropdownButton from './components/DropdownButton'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -33,6 +34,11 @@ function App() {
       <h1>Banners Component</h1>
       <div className="content">
         <Banners />
+      </div>
+
+      <h1>Dropdown Button Component</h1>
+      <div className="content">
+        <DropdownButton />
       </div>
     </div>
   )

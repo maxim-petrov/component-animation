@@ -156,3 +156,76 @@ h1 {
     width: 90%;
   }
 }
+
+/* Стили для DropdownButton */
+.N1H3G {
+  position: relative;
+  display: inline-block;
+}
+
+.dd-btn-root-4f6-8-3-0 {
+  position: relative;
+}
+
+.dd-btn-button-376-8-3-0 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.dd-btn-button-primary-78f-8-3-0:hover {
+  background-color: #375de0;
+}
+
+.dd-btn-title-7d3-8-3-0 {
+  margin-right: 8px;
+}
+
+.dd-btn-arrow-2cb-8-3-0 {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.dd-btn-open-357-8-3-0 .dd-btn-arrow-2cb-8-3-0 {
+  transform: rotate(180deg);
+}
+
+.ppr-root-43f-12-2-0 {
+  background-color: white;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.list-cell-root-0ea-2-2-1 {
+  display: block;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.list-cell-root-0ea-2-2-1:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.list-cell-selected-faf-2-2-1 {
+  background-color: rgba(74, 108, 247, 0.1);
+}
+
+.list-cell-wrapper-1a8-2-2-1 {
+  display: flex;
+  align-items: center;
+}
+
+.list-cell-title-64d-2-2-1 {
+  font-size: 16px;
+  color: #333;
+}
