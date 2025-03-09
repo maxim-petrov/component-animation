@@ -75,7 +75,10 @@ const Accordion = ({ title = 'Заголовок', subtitle = 'Подзагол�
                 transition={animationConfig}
                 style={{ overflow: "hidden" }}
               >
-                <div className="tg-body-standard-regular-bdb-7-0-3">{content}</div>
+                <div 
+                  className="tg-body-standard-regular-bdb-7-0-3"
+                  style={{ padding: "0 24px 24px" }}
+                >{content}</div>
               </motion.div>
             )}
           </AnimatePresence>
