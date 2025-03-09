@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import './global.css';
+import './animations/tokens.css';
 
 // Layout
 import Layout from './components/Layout';

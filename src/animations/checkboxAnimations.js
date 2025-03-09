@@ -1,10 +1,10 @@
+import { Duration, Easing, ComponentAnimations } from './tokens';
+
 // Конфигурация анимации для компонента Checkbox
 export const checkboxAnimationConfig = {
-  type: "spring",
-  stiffness: 290,
-  damping: 22.22,
-  mass: 1,
-  duration: 0.54
+  type: "tween",
+  duration: Duration.S,
+  ease: Easing.standard
 };
 
 // Анимация для чекбокса при наведении
@@ -14,9 +14,8 @@ export const checkboxHoverAnimation = {
     boxShadow: "0px 0px 4px rgba(74, 108, 247, 0.5)"
   },
   transition: {
-    type: "spring",
-    stiffness: 400,
-    damping: 17
+    duration: Duration.XS,
+    ease: Easing.standard
   }
 };
 
@@ -33,8 +32,8 @@ export const checkIconAnimation = {
     pathLength: 1
   },
   transition: {
-    ...checkboxAnimationConfig,
-    duration: 0.2
+    duration: ComponentAnimations.toggle.duration,
+    ease: Easing.entrance
   }
 };
 
@@ -48,7 +47,10 @@ export const iconContainerAnimation = {
     backgroundColor: "#4a6cf7",
     borderColor: "#4a6cf7"
   },
-  transition: checkboxAnimationConfig
+  transition: {
+    duration: Duration.S,
+    ease: Easing.standard
+  }
 };
 
 // Анимация для текста чекбокса
@@ -57,6 +59,7 @@ export const checkboxTextAnimation = {
     color: "#4a6cf7"
   },
   transition: {
-    duration: 0.2
+    duration: Duration.XS,
+    ease: Easing.standard
   }
 }; 

@@ -1,10 +1,10 @@
+import { Duration, Easing, Delay, ComponentAnimations } from './tokens';
+
 // Конфигурация анимации для компонента SearchBox
 export const searchBoxAnimationConfig = {
-  type: "spring",
-  stiffness: 290,
-  damping: 22.22,
-  mass: 1,
-  duration: 0.54
+  type: "tween",
+  duration: Duration.S,
+  ease: Easing.standard
 };
 
 // Анимация для иконки поиска
@@ -17,8 +17,8 @@ export const searchIconAnimation = {
     color: "#4a6cf7"
   },
   transition: {
-    ...searchBoxAnimationConfig,
-    stiffness: 350
+    duration: Duration.S,
+    ease: Easing.standard
   }
 };
 
@@ -39,12 +39,13 @@ export const dropdownAnimation = {
     y: -10,
     scaleY: 0.95,
     transition: {
-      duration: 0.2
+      duration: Duration.S,
+      ease: Easing.exit
     }
   },
   transition: {
-    ...searchBoxAnimationConfig,
-    stiffness: 350
+    duration: ComponentAnimations.dropdown.appear.duration,
+    ease: ComponentAnimations.dropdown.appear.easing
   }
 };
 
@@ -59,8 +60,9 @@ export const listItemAnimation = {
     x: 0
   },
   transition: (custom) => ({
-    ...searchBoxAnimationConfig,
-    delay: custom * 0.05 // Последовательное появление элементов
+    duration: Duration.S,
+    ease: Easing.entrance,
+    delay: custom * Delay.short // Последовательное появление элементов
   })
 };
 
@@ -75,8 +77,8 @@ export const groupTitleAnimation = {
     y: 0
   },
   transition: {
-    ...searchBoxAnimationConfig,
-    stiffness: 350,
-    delay: 0.1
+    duration: Duration.S,
+    ease: Easing.standard,
+    delay: Delay.medium
   }
 }; 

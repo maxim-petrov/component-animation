@@ -1,16 +1,19 @@
+import { Duration, Easing, ComponentAnimations } from './tokens';
+
 // Конфигурация анимации для компонента Accordion
 export const accordionAnimationConfig = {
-  type: "spring",
-  stiffness: 290,
-  damping: 22.22,
-  mass: 1,
-  duration: 0.54
+  type: "tween",
+  duration: Duration.M,
+  ease: Easing.standard
 };
 
 // Анимация для стрелки
 export const arrowAnimation = {
   animate: (isOpen) => ({ rotate: isOpen ? 180 : 0 }),
-  transition: accordionAnimationConfig
+  transition: {
+    duration: Duration.S,
+    ease: Easing.standard
+  }
 };
 
 // Анимация для контента
@@ -18,6 +21,15 @@ export const contentAnimation = {
   initial: { height: 0, opacity: 0 },
   animate: { height: "auto", opacity: 1 },
   exit: { height: 0, opacity: 0 },
-  transition: accordionAnimationConfig,
+  transition: {
+    height: {
+      duration: ComponentAnimations.accordion.expand.duration,
+      ease: ComponentAnimations.accordion.expand.easing
+    },
+    opacity: {
+      duration: Duration.S,
+      ease: Easing.standard
+    }
+  },
   style: { overflow: "hidden" }
 }; 

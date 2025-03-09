@@ -1,10 +1,10 @@
+import { Duration, Easing, Delay } from './tokens';
+
 // Конфигурация анимации для компонента Cards
 export const cardAnimationConfig = {
-  type: "spring",
-  stiffness: 290,
-  damping: 22.22,
-  mass: 1,
-  duration: 0.54
+  type: "tween",
+  duration: Duration.M,
+  ease: Easing.standard
 };
 
 // Анимация для карточки при наведении
@@ -17,9 +17,8 @@ export const cardHoverAnimation = {
     scale: 0.98 
   },
   transition: {
-    type: "spring",
-    stiffness: 400,
-    damping: 17
+    duration: Duration.XS,
+    ease: Easing.standard
   }
 };
 
@@ -33,9 +32,8 @@ export const heartIconAnimation = {
     scale: 0.9 
   },
   transition: {
-    type: "spring",
-    stiffness: 500,
-    damping: 15
+    duration: Duration.S,
+    ease: Easing.spring
   }
 };
 
@@ -44,7 +42,8 @@ export const cardAppearAnimation = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   transition: (custom) => ({
-    ...cardAnimationConfig,
-    delay: custom * 0.1 // Последовательное появление карточек
+    duration: Duration.M,
+    ease: Easing.entrance,
+    delay: custom * Delay.short // Последовательное появление карточек
   })
 }; 

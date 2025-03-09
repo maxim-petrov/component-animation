@@ -1,10 +1,12 @@
+import { Duration, Easing } from './tokens';
+
 // Конфигурация анимации для компонента Button
 export const buttonAnimationConfig = {
   type: "spring",
   stiffness: 290,
   damping: 22.22,
   mass: 1,
-  duration: 0.54
+  duration: Duration.M
 };
 
 // Анимация для кнопки при наведении
@@ -19,7 +21,8 @@ export const buttonHoverAnimation = {
   transition: {
     type: "spring",
     stiffness: 400,
-    damping: 17
+    damping: 17,
+    duration: Duration.S
   }
 };
 
@@ -34,12 +37,19 @@ export const iconAnimation = {
     transition: {
       rotate: {
         repeat: 0,
-        duration: 0.5
+        duration: Duration.S
+      },
+      scale: {
+        duration: Duration.XS,
+        ease: Easing.spring
       }
     }
   },
   tap: { 
     scale: 0.9
   },
-  transition: buttonAnimationConfig
+  transition: {
+    duration: Duration.S,
+    ease: Easing.spring
+  }
 }; 

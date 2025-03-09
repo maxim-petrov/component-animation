@@ -1,10 +1,10 @@
+import { Duration, Easing } from './tokens';
+
 // Конфигурация анимации для компонента Tabs
 export const tabsAnimationConfig = {
-  type: "spring",
-  stiffness: 290,
-  damping: 22.22,
-  mass: 1,
-  duration: 0.54
+  type: "tween",
+  duration: Duration.M,
+  ease: Easing.standard
 };
 
 // Анимация для контента табов
@@ -12,7 +12,14 @@ export const tabContentAnimation = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
   exit: { opacity: 0 },
-  transition: tabsAnimationConfig
+  transition: {
+    duration: Duration.M,
+    ease: Easing.entrance,
+    exit: {
+      duration: Duration.S,
+      ease: Easing.exit
+    }
+  }
 };
 
 // Анимация для стрелки прокрутки
@@ -22,6 +29,7 @@ export const scrollArrowAnimation = {
   transition: {
     type: "spring",
     stiffness: 400,
-    damping: 17
+    damping: 17,
+    duration: Duration.XS
   }
 }; 

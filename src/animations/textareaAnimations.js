@@ -1,10 +1,10 @@
+import { Duration, Easing } from './tokens';
+
 // Конфигурация анимации для компонента Textarea
 export const textareaAnimationConfig = {
-  type: "spring",
-  stiffness: 290,
-  damping: 22.22,
-  mass: 1,
-  duration: 0.54
+  type: "tween",
+  duration: Duration.S,
+  ease: Easing.standard
 };
 
 // Анимация для фокуса на текстовой области
@@ -17,16 +17,17 @@ export const focusAnimation = {
     borderColor: "#4a6cf7",
     boxShadow: "0 0 0 2px rgba(74, 108, 247, 0.2)"
   },
-  transition: textareaAnimationConfig
+  transition: {
+    duration: Duration.S,
+    ease: Easing.standard
+  }
 };
 
 // Анимация для изменения высоты текстовой области
 export const heightAnimation = {
   transition: {
-    type: "spring",
-    stiffness: 500,
-    damping: 30,
-    mass: 1
+    duration: Duration.M,
+    ease: Easing.standard
   }
 };
 
@@ -39,6 +40,7 @@ export const placeholderAnimation = {
     opacity: 0.6
   },
   transition: {
-    duration: 0.2
+    duration: Duration.XS,
+    ease: Easing.standard
   }
 }; 

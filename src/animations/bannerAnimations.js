@@ -1,10 +1,10 @@
+import { Duration, Easing, Delay } from './tokens';
+
 // Конфигурация анимации для компонента Banners
 export const bannerAnimationConfig = {
-  type: "spring",
-  stiffness: 290,
-  damping: 22.22,
-  mass: 1,
-  duration: 0.54
+  type: "tween",
+  duration: Duration.M,
+  ease: Easing.standard
 };
 
 // Анимация для баннера при наведении
@@ -19,9 +19,8 @@ export const bannerHoverAnimation = {
     y: 0
   },
   transition: {
-    type: "spring",
-    stiffness: 400,
-    damping: 15
+    duration: Duration.S,
+    ease: Easing.spring
   }
 };
 
@@ -33,9 +32,8 @@ export const bannerIconAnimation = {
     color: "#ff4157"
   },
   transition: {
-    type: "spring",
-    stiffness: 500,
-    damping: 10
+    duration: Duration.S,
+    ease: Easing.spring
   }
 };
 
@@ -44,7 +42,8 @@ export const bannerAppearAnimation = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
   transition: (custom) => ({
-    ...bannerAnimationConfig,
-    delay: custom * 0.15 // Последовательное появление баннеров с большей задержкой
+    duration: Duration.M,
+    ease: Easing.entrance,
+    delay: custom * Delay.medium // Последовательное появление баннеров
   })
 }; 

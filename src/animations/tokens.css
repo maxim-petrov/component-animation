@@ -1,0 +1,128 @@
+/**
+ * CSS-токены анимаций
+ * Содержит CSS-переменные и утилитарные классы для анимаций
+ */
+
+:root {
+  /* Токены длительности анимаций */
+  --motion-duration-xs: 0.1s;  /* 100ms - микро-анимации, ховер */
+  --motion-duration-s: 0.15s;  /* 150ms - небольшие UI-изменения */
+  --motion-duration-m: 0.25s;  /* 250ms - стандартные переходы */
+  --motion-duration-l: 0.3s;   /* 300ms - крупные изменения */
+  --motion-duration-xl: 0.4s;  /* 400ms+ - сложные анимации */
+
+  /* Токены easing (cubic-bezier) */
+  --motion-easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1.0); /* Стандартная кривая */
+  --motion-easing-entrance: cubic-bezier(0.0, 0.0, 0.3, 1.0); /* Для появления */
+  --motion-easing-exit: cubic-bezier(0.4, 0.14, 1.0, 1.0);    /* Для исчезновения */
+  --motion-easing-spring: cubic-bezier(0.43, 0.28, 0.52, 1.23); /* Пружинная */
+
+  /* Токены задержки */
+  --motion-delay-none: 0s;
+  --motion-delay-short: 0.05s; /* 50ms - для последовательности */
+  --motion-delay-medium: 0.1s; /* 100ms - средняя задержка */
+  --motion-delay-long: 0.2s;   /* 200ms - ощутимая пауза */
+}
+
+/* Утилитарные классы для наиболее часто используемых анимаций */
+.animate-fade-in {
+  animation: fadeIn var(--motion-duration-m) var(--motion-easing-entrance) forwards;
+}
+
+.animate-fade-out {
+  animation: fadeOut var(--motion-duration-m) var(--motion-easing-exit) forwards;
+}
+
+.transition-standard {
+  transition: all var(--motion-duration-m) var(--motion-easing-standard);
+}
+
+.transition-fast {
+  transition: all var(--motion-duration-s) var(--motion-easing-standard);
+}
+
+/* Hover-эффекты для кнопок и интерактивных элементов */
+.hover-scale {
+  transition: transform var(--motion-duration-xs) var(--motion-easing-standard);
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+.hover-scale:active {
+  transform: scale(0.98);
+}
+
+/* Анимации для модальных окон */
+.modal-enter {
+  animation: modalEnter var(--motion-duration-l) var(--motion-easing-entrance) forwards;
+}
+.modal-exit {
+  animation: modalExit var(--motion-duration-m) var(--motion-easing-exit) forwards;
+}
+
+/* Анимации выпадающих меню */
+.dropdown-enter {
+  animation: dropdownEnter var(--motion-duration-m) var(--motion-easing-entrance) forwards;
+}
+.dropdown-exit {
+  animation: dropdownExit var(--motion-duration-m) var(--motion-easing-exit) forwards;
+}
+
+/* Keyframes для анимаций */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes modalEnter {
+  from { 
+    opacity: 0; 
+    transform: translateY(-20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalExit {
+  from { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+  to { 
+    opacity: 0; 
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes dropdownEnter {
+  from { 
+    opacity: 0;
+    transform: scaleY(0.7);
+    transform-origin: top;
+  }
+  to { 
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+@keyframes dropdownExit {
+  from { 
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  to { 
+    opacity: 0;
+    transform: scaleY(0.7);
+    transform-origin: top;
+  }
+} 

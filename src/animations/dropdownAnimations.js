@@ -1,10 +1,10 @@
+import { Duration, Easing, Delay, ComponentAnimations } from './tokens';
+
 // Конфигурация анимации для компонента DropdownButton
 export const dropdownAnimationConfig = {
-  type: "spring",
-  stiffness: 290,
-  damping: 22.22,
-  mass: 1,
-  duration: 0.54
+  type: "tween",
+  duration: Duration.M,
+  ease: Easing.standard
 };
 
 // Анимация для стрелки выпадающего списка
@@ -13,7 +13,10 @@ export const arrowAnimation = {
   animate: (isOpen) => ({ 
     rotate: isOpen ? 180 : 0 
   }),
-  transition: dropdownAnimationConfig
+  transition: {
+    duration: Duration.S,
+    ease: Easing.standard
+  }
 };
 
 // Анимация для кнопки при наведении
@@ -26,9 +29,8 @@ export const buttonHoverAnimation = {
     scale: 0.97
   },
   transition: {
-    type: "spring",
-    stiffness: 400,
-    damping: 17
+    duration: Duration.XS,
+    ease: Easing.standard
   }
 };
 
@@ -50,8 +52,12 @@ export const menuAnimation = {
     scaleY: 0.8
   },
   transition: {
-    ...dropdownAnimationConfig,
-    stiffness: 350
+    duration: ComponentAnimations.dropdown.appear.duration,
+    ease: ComponentAnimations.dropdown.appear.easing,
+    exit: {
+      duration: ComponentAnimations.dropdown.disappear.duration,
+      ease: ComponentAnimations.dropdown.disappear.easing
+    }
   }
 };
 
@@ -60,7 +66,8 @@ export const menuItemAnimation = {
   initial: { opacity: 0, x: -5 },
   animate: { opacity: 1, x: 0 },
   transition: (custom) => ({
-    ...dropdownAnimationConfig,
-    delay: custom * 0.05 // Последовательное появление пунктов
+    duration: Duration.S,
+    ease: Easing.entrance,
+    delay: custom * Delay.short // Последовательное появление пунктов
   })
 }; 

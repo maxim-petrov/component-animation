@@ -1,10 +1,10 @@
+import { Duration, Easing } from './tokens';
+
 // Конфигурация анимации для компонента MultipleButtonSelect
 export const buttonSelectAnimationConfig = {
-  type: "spring",
-  stiffness: 290,
-  damping: 22.22,
-  mass: 1,
-  duration: 0.54
+  type: "tween",
+  duration: Duration.S,
+  ease: Easing.standard
 };
 
 // Анимация для кнопки при наведении
@@ -17,9 +17,8 @@ export const buttonHoverAnimation = {
     scale: 0.95
   },
   transition: {
-    type: "spring",
-    stiffness: 400,
-    damping: 17
+    duration: Duration.XS,
+    ease: Easing.standard
   }
 };
 
@@ -35,7 +34,10 @@ export const activeButtonAnimation = {
     borderColor: "#4a6cf7",
     color: "#4a6cf7"
   },
-  transition: buttonSelectAnimationConfig
+  transition: {
+    duration: Duration.S,
+    ease: Easing.standard
+  }
 };
 
 // Анимация для перехода между состояниями кнопки
@@ -43,7 +45,8 @@ export const buttonToggleAnimation = {
   initial: { scale: 1 },
   toggle: { scale: [1, 1.08, 1] },
   transition: {
-    duration: 0.3,
+    duration: Duration.M,
+    ease: Easing.spring,
     times: [0, 0.5, 1]
   }
 }; 
