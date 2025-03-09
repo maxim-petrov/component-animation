@@ -675,7 +675,6 @@ h1 {
 
 .sidebar-header {
   padding: 0 1.5rem 1rem;
-  border-bottom: 1px solid #eee;
   margin-bottom: 1rem;
 }
 
@@ -720,19 +719,17 @@ h1 {
 }
 
 .component-demo {
-  background-color: white;
+  background-color: #f0f5f8;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin: 1.5rem 0;
 }
 
 .component-description {
   margin-top: 2rem;
   padding: 1.5rem;
-  background-color: white;
+  background-color: #f0f5f8;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .component-description h2 {
@@ -750,9 +747,8 @@ h1 {
 .component-variations {
   margin-top: 2rem;
   padding: 1.5rem;
-  background-color: white;
+  background-color: #f0f5f8;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .variations-grid {
