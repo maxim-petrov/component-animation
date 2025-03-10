@@ -9,8 +9,8 @@ export const tabAnimationConfig = {
 
 // Анимация для кнопки таба
 export const tabButtonAnimation = {
-  whileHover: { scale: 1.02 },
-  whileTap: { scale: 0.98 },
+  whileHover: {},
+  whileTap: {},
   transition: {
     duration: Duration.XS,
     ease: Easing.standard
