@@ -172,9 +172,7 @@ a:active,
 }
 
 /* Дополнительное правило для всех компонентов */
-[class*="card-"],
-[class*="dd-btn-"],
-[class*="btn-"] {
+[class*="card-"] {
   outline: 0 !important;
   outline-style: none !important;
   border-color: #e0e0e0 !important;
@@ -182,26 +180,72 @@ a:active,
   -webkit-tap-highlight-color: transparent !important;
 }
 
+/* Дополнительное правило для всех кнопок - полное удаление бордера */
+[class*="dd-btn-"],
+[class*="btn-"] {
+  outline: 0 !important;
+  outline-style: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  border: none !important;
+  border-color: transparent !important;
+  border-style: none !important;
+  border-width: 0 !important;
+}
+
+/* Принудительное отключение бордеров для кнопок во всех состояниях */
+.dd-btn-button-376-8-3-0,
+.btn-root-119-18-1-1,
+.dd-btn-button-376-8-3-0:hover,
+.btn-root-119-18-1-1:hover,
+.dd-btn-button-376-8-3-0:focus,
+.btn-root-119-18-1-1:focus,
+.dd-btn-button-376-8-3-0:active,
+.btn-root-119-18-1-1:active,
+.dd-btn-button-376-8-3-0:focus-within,
+.btn-root-119-18-1-1:focus-within {
+  outline: 0 !important;
+  outline-style: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  border: none !important;
+  border-color: transparent !important;
+  border-style: none !important;
+  border-width: 0 !important;
+}
+
+/* Отключение бордеров для всех элементов внутри кнопок */
+.dd-btn-button-376-8-3-0 *,
+.btn-root-119-18-1-1 * {
+  outline: 0 !important;
+  outline-style: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  border: none !important;
+  border-color: transparent !important;
+  border-style: none !important;
+  border-width: 0 !important;
+}
+
 /* Принудительное переопределение стилей черной рамки фокуса */
 .card-card-652-0-0-4,
-.card-primary-688-0-0-4,
-.dd-btn-button-376-8-3-0,
-.btn-root-119-18-1-1 {
-  border: 1px solid #e0e0e0 !important;
+.card-primary-688-0-0-4 {
   outline: 0 !important;
   outline-style: none !important;
   -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Особый случай - при фокусе и активном состоянии сохраняем те же стили, что и для обычного состояния */
+.dd-btn-button-376-8-3-0,
+.btn-root-119-18-1-1 {
+  outline: 0 !important;
+  outline-style: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Особый случай - при фокусе и активном состоянии для карточек */
 .card-card-652-0-0-4:focus,
 .card-card-652-0-0-4:active,
 .card-primary-688-0-0-4:focus,
-.card-primary-688-0-0-4:active,
-.dd-btn-button-376-8-3-0:focus,
-.dd-btn-button-376-8-3-0:active,
-.btn-root-119-18-1-1:focus,
-.btn-root-119-18-1-1:active {
+.card-primary-688-0-0-4:active {
   border: 1px solid #e0e0e0 !important;
   outline: 0 !important;
   outline-style: none !important;
@@ -209,11 +253,72 @@ a:active,
   -webkit-tap-highlight-color: transparent !important;
 }
 
+/* Особый случай - при фокусе и активном состоянии для кнопок полностью убираем границу */
+.dd-btn-button-376-8-3-0:focus,
+.dd-btn-button-376-8-3-0:active,
+.btn-root-119-18-1-1:focus,
+.btn-root-119-18-1-1:active {
+  outline: 0 !important;
+  outline-style: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  border: none !important;
+  border-color: transparent !important;
+  border-style: none !important;
+  border-width: 0 !important;
+}
+
 /* Отключение всех возможных стилей фокуса для кнопок */
 .btn-root-119-18-1-1 *,
 .dd-btn-button-376-8-3-0 * {
   outline: 0 !important;
   outline-style: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Правила высокой специфичности для гарантированного отключения бордера у кнопок */
+html body .dd-btn-button-376-8-3-0,
+html body .btn-root-119-18-1-1,
+html body button,
+html body [role="button"],
+html body .dd-btn-button-376-8-3-0 *,
+html body .btn-root-119-18-1-1 *,
+html body button *,
+html body [role="button"] * {
+  border: none !important;
+  border-color: transparent !important;
+  border-style: none !important;
+  border-width: 0 !important;
+  outline: 0 !important;
+  outline-style: none !important;
+  outline-width: 0 !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Правила для всех состояний кнопок и их содержимого */
+html body .dd-btn-button-376-8-3-0:hover,
+html body .btn-root-119-18-1-1:hover,
+html body button:hover,
+html body [role="button"]:hover,
+html body .dd-btn-button-376-8-3-0:focus,
+html body .btn-root-119-18-1-1:focus,
+html body button:focus,
+html body [role="button"]:focus,
+html body .dd-btn-button-376-8-3-0:active,
+html body .btn-root-119-18-1-1:active,
+html body button:active,
+html body [role="button"]:active {
+  border: none !important;
+  border-color: transparent !important;
+  border-style: none !important;
+  border-width: 0 !important;
+  outline: 0 !important;
+  outline-style: none !important;
+  outline-width: 0 !important;
+  outline-color: transparent !important;
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
 } 
