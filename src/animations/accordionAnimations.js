@@ -1,4 +1,4 @@
-import { Duration, Easing, ComponentAnimations } from './tokens';
+import { Duration, Easing, ComponentAnimations, Spring, createSpringConfig } from './tokens';
 
 // Конфигурация анимации для компонента Accordion
 export const accordionAnimationConfig = {
@@ -9,14 +9,11 @@ export const accordionAnimationConfig = {
 
 // Анимация для стрелки
 export const arrowAnimation = {
-  transition: {
-    duration: Duration.S,
-    ease: Easing.Spring,
-    type: "spring",
-    stiffness: 290,
-    damping: 22.22,
-    mass: 1
-  }
+  transition: createSpringConfig({
+    stiffness: Spring.Stiffness.Firm,
+    damping: Spring.Damping.High,
+    mass: Spring.Mass.Default
+  }).transition
 };
 
 // Анимация для контента
@@ -26,12 +23,11 @@ export const contentAnimation = {
   exit: { height: 0, opacity: 0 },
   transition: {
     height: {
-      duration: ComponentAnimations.accordion.expand.duration,
-      ease: Easing.Spring,
-      type: "spring",
-      stiffness: 290,
-      damping: 22.22,
-      mass: 1
+      ...createSpringConfig({
+        stiffness: Spring.Stiffness.Firm,
+        damping: Spring.Damping.High,
+        mass: Spring.Mass.Default
+      }).transition
     },
     opacity: {
       duration: Duration.S,

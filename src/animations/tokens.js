@@ -5,6 +5,7 @@
  * - Длительность: 70-700мс оптимальный диапазон
  * - Easing: нелинейные кривые для естественного движения
  * - Задержки: минимальные, для последовательного появления элементов
+ * - Spring: параметры пружинной анимации для естественного движения
  */
 
 // Импорт дополнительных модулей
@@ -52,6 +53,71 @@ export const Delay = {
   XL: 0.7      // 700ms - максимальная рекомендуемая задержка
 };
 
+// Параметры пружинной анимации (spring)
+export const Spring = {
+  // Жесткость пружины (stiffness)
+  Stiffness: {
+    Soft: 170,       // Мягкая пружина - медленное движение
+    Medium: 230,     // Стандартная пружина - сбалансированное движение
+    Firm: 290,       // Упругая пружина - быстрое, энергичное движение
+    Rigid: 350       // Жесткая пружина - очень быстрая реакция
+  },
+  
+  // Затухание (damping)
+  Damping: {
+    Low: 10,         // Слабое затухание - множественные колебания
+    Medium: 15,      // Среднее затухание - небольшое перелетание
+    High: 22.22,     // Сильное затухание - минимальные колебания
+    Critical: 30     // Критическое затухание - без перелета
+  },
+  
+  // Масса объекта (mass)
+  Mass: {
+    Light: 0.5,      // Легкий объект - быстрое движение
+    Default: 1,      // Стандартная масса
+    Heavy: 1.5,      // Тяжелый объект - более инертное движение
+    Massive: 2       // Очень тяжелый объект - медленная реакция
+  },
+  
+  // Предустановленные конфигурации для типовых случаев
+  Presets: {
+    // Для кнопок и небольших элементов
+    Button: {
+      stiffness: 290,
+      damping: 22.22,
+      mass: 1
+    },
+    
+    // Для модальных окон и панелей
+    Modal: {
+      stiffness: 230,
+      damping: 20,
+      mass: 1
+    },
+    
+    // Для выпадающих меню
+    Dropdown: {
+      stiffness: 250,
+      damping: 18,
+      mass: 0.8
+    },
+    
+    // Для крупных областей содержимого
+    Content: {
+      stiffness: 170,
+      damping: 22,
+      mass: 1.2
+    },
+    
+    // Для плавных и выразительных анимаций
+    Expressive: {
+      stiffness: 150,
+      damping: 10,
+      mass: 1
+    }
+  }
+};
+
 /**
  * Создает конфигурацию анимации для Framer Motion
  */
@@ -64,6 +130,26 @@ export const createAnimationConfig = ({
   transition: {
     duration,
     ease: easing,
+    delay,
+    ...rest
+  }
+});
+
+/**
+ * Создает конфигурацию пружинной анимации для Framer Motion
+ */
+export const createSpringConfig = ({
+  stiffness = Spring.Stiffness.Medium,
+  damping = Spring.Damping.Medium,
+  mass = Spring.Mass.Default,
+  delay = Delay.None,
+  ...rest
+}) => ({
+  transition: {
+    type: "spring",
+    stiffness,
+    damping,
+    mass,
     delay,
     ...rest
   }
@@ -103,8 +189,10 @@ export const ComponentAnimations = {
       delay: Delay.None
     },
     icon: {
-      duration: Duration.S,
-      easing: Easing.Spring
+      type: "spring",
+      stiffness: Spring.Stiffness.Firm,
+      damping: Spring.Damping.High,
+      mass: Spring.Mass.Default
     }
   },
   
@@ -130,8 +218,10 @@ export const ComponentAnimations = {
   // Выпадающие списки, меню
   dropdown: {
     appear: {
-      duration: Duration.M,
-      easing: Easing.Entrance
+      type: "spring",
+      stiffness: Spring.Stiffness.Medium,
+      damping: Spring.Damping.Medium,
+      mass: Spring.Mass.Light
     },
     disappear: {
       duration: Duration.M,
@@ -148,8 +238,10 @@ export const ComponentAnimations = {
   // Аккордеоны, раскрывающиеся блоки
   accordion: {
     expand: {
-      duration: Duration.M,
-      easing: Easing.Entrance
+      type: "spring",
+      stiffness: Spring.Stiffness.Firm,
+      damping: Spring.Damping.High,
+      mass: Spring.Mass.Default
     },
     collapse: {
       duration: Duration.M,
@@ -195,6 +287,21 @@ export const MotionPresets = {
       transition: {
         duration: Duration.M,
         ease: Easing.Standard
+      }
+    }
+  },
+  
+  // Пружинное появление
+  springIn: {
+    initial: { opacity: 0, scale: 0.8 },
+    animate: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: Spring.Stiffness.Firm,
+        damping: Spring.Damping.High,
+        mass: Spring.Mass.Default
       }
     }
   }
