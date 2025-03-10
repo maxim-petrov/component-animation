@@ -26,8 +26,9 @@ export const contentAnimation = {
       duration: ComponentAnimations.accordion.expand.duration,
       ease: Easing.Spring,
       type: "spring",
-      stiffness: 250,
-      damping: 25
+      stiffness: 290,
+      damping: 22.22,
+      mass: 1
     },
     opacity: {
       duration: Duration.S,
