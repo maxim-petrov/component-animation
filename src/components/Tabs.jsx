@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Tab from './Tab';
 import { tabsAnimationConfig, tabContentAnimation, scrollArrowAnimation } from '../animations/tabsAnimations';
@@ -9,6 +9,8 @@ const Tabs = () => {
   const [activeTab, setActiveTab] = useState('value-0');
   const [showRightArrow, setShowRightArrow] = useState(false);
   const [activeTabRect, setActiveTabRect] = useState(null);
+  const [prevTabRect, setPrevTabRect] = useState(null);
+  const [customTransition, setCustomTransition] = useState(activeLineAnimation.transition);
   const buttonsRef = useRef(null);
   const tabRefs = useRef({});
 
@@ -29,16 +31,58 @@ const Tabs = () => {
     };
   }, []);
 
+  // Calculate adaptive duration based on distance
+  const calculateAdaptiveDuration = useCallback((prevRect, nextRect) => {
+    if (!prevRect || !nextRect) return activeLineAnimation.transition;
+
+    // Calculate distance between centers of tabs
+    const prevCenter = prevRect.left + prevRect.width / 2;
+    const nextCenter = nextRect.left + nextRect.width / 2;
+    const distance = Math.abs(nextCenter - prevCenter);
+    
+    // Base duration for short distances
+    const baseDuration = 0.25; // 250ms
+    
+    // Maximum duration for very long distances
+    const maxDuration = 0.5; // 500ms
+    
+    // Calculate adaptive duration based on distance
+    // Use a logarithmic scale to prevent extremely slow animations for very distant tabs
+    let adaptiveDuration = baseDuration;
+    if (distance > 0) {
+      // 200px is considered a "standard" distance between adjacent tabs
+      const factor = Math.log10(distance / 200 + 1) + 1;
+      adaptiveDuration = Math.min(baseDuration * factor, maxDuration);
+    }
+    
+    // Return modified transition object
+    return {
+      ...activeLineAnimation.transition,
+      duration: adaptiveDuration,
+      // Adjust stiffness inversely to distance - stiffer for shorter distances
+      stiffness: Math.max(400 - distance / 2, 200),
+      // Increase damping for longer distances to prevent oscillation
+      damping: Math.min(25 + distance / 20, 40)
+    };
+  }, []);
+
   // Update the active tab rect when active tab changes
   useEffect(() => {
     if (tabRefs.current[activeTab]) {
-      const rect = tabRefs.current[activeTab].getBoundingClientRect();
-      setActiveTabRect({
-        width: rect.width,
+      const currentRect = {
+        width: tabRefs.current[activeTab].getBoundingClientRect().width,
         left: tabRefs.current[activeTab].offsetLeft
-      });
+      };
+      
+      // Calculate custom transition based on distance
+      const newTransition = calculateAdaptiveDuration(prevTabRect, currentRect);
+      setCustomTransition(newTransition);
+      
+      // Update states
+      setPrevTabRect(currentRect);
+      setActiveTabRect(currentRect);
     }
-  }, [activeTab]);
+  }, [activeTab, calculateAdaptiveDuration, prevTabRect]);
 
   // Scroll tabs to the right
   const scrollRight = () => {
@@ -49,6 +93,13 @@ const Tabs = () => {
 
   // Handle tab click
   const handleTabClick = (tabId) => {
+    // Save the previous tab position before changing active tab
+    if (tabRefs.current[activeTab]) {
+      setPrevTabRect({
+        width: tabRefs.current[activeTab].getBoundingClientRect().width,
+        left: tabRefs.current[activeTab].offsetLeft
+      });
+    }
     setActiveTab(tabId);
   };
 
@@ -112,7 +163,7 @@ const Tabs = () => {
                   width: activeTabRect.width,
                   left: activeTabRect.left
                 }}
-                transition={activeLineAnimation.transition}
+                transition={customTransition}
                 style={{
                   position: 'absolute',
                   height: '2px',
