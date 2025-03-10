@@ -2,12 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Tab from './Tab';
 import { tabsAnimationConfig, tabContentAnimation, scrollArrowAnimation } from '../animations/tabsAnimations';
+import { activeLineAnimation } from '../animations/tabAnimations';
 import '../global.css';
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState('value-0');
   const [showRightArrow, setShowRightArrow] = useState(false);
+  const [activeTabRect, setActiveTabRect] = useState(null);
   const buttonsRef = useRef(null);
+  const tabRefs = useRef({});
 
   // Check if scroll is needed
   useEffect(() => {
@@ -25,6 +28,17 @@ const Tabs = () => {
       window.removeEventListener('resize', checkScroll);
     };
   }, []);
+
+  // Update the active tab rect when active tab changes
+  useEffect(() => {
+    if (tabRefs.current[activeTab]) {
+      const rect = tabRefs.current[activeTab].getBoundingClientRect();
+      setActiveTabRect({
+        width: rect.width,
+        left: tabRefs.current[activeTab].offsetLeft
+      });
+    }
+  }, [activeTab]);
 
   // Scroll tabs to the right
   const scrollRight = () => {
@@ -74,7 +88,11 @@ const Tabs = () => {
           </motion.div>
         )}
         <div className="tabs-headInner-892-15-1-1 tabs-headInnerDivider-028-15-1-1">
-          <div className="tabs-buttons-fc1-15-1-1" ref={buttonsRef}>
+          <div 
+            className="tabs-buttons-fc1-15-1-1" 
+            ref={buttonsRef}
+            style={{ position: 'relative' }}
+          >
             {tabsData.map(tab => (
               <Tab
                 key={tab.id}
@@ -82,8 +100,28 @@ const Tabs = () => {
                 label={tab.label}
                 isActive={activeTab === tab.id}
                 onClick={handleTabClick}
+                ref={el => tabRefs.current[tab.id] = el}
               />
             ))}
+            
+            {activeTabRect && (
+              <motion.div
+                className="active-tab-line"
+                initial={false}
+                animate={{
+                  width: activeTabRect.width,
+                  left: activeTabRect.left
+                }}
+                transition={activeLineAnimation.transition}
+                style={{
+                  position: 'absolute',
+                  height: '2px',
+                  backgroundColor: 'var(--color-primary, #4077F2)',
+                  bottom: '0',
+                  borderRadius: '2px'
+                }}
+              />
+            )}
           </div>
         </div>
       </div>

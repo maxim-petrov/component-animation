@@ -17,6 +17,17 @@ export const tabButtonAnimation = {
   }
 };
 
+// Анимация для активной линии под табом
+export const activeLineAnimation = {
+  transition: {
+    type: "spring",
+    stiffness: 400,
+    damping: 25,
+    mass: 0.8,
+    duration: Duration.M
+  }
+};
+
 // Анимация для подсветки активного таба
 export const activeTabAnimation = {
   initial: { opacity: 0, scale: 0.95 },
