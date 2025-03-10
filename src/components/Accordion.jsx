@@ -3,7 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { accordionAnimationConfig, arrowAnimation, contentAnimation } from '../animations/accordionAnimations';
 import '../global.css';
 
-const Accordion = ({ title = 'Заголовок', subtitle = 'Подзаголовок', content = 'Оригинал документа, на основании которого продавец стал собственником квартиры. Например, договор купли-продажи, договор долевого участия, договор дарения и другие (находится у собственника)' }) => {
+const Accordion = ({ 
+  title = 'Заголовок', 
+  subtitle = 'Подзаголовок', 
+  content = 'Оригинал документа, на основании которого продавец стал собственником квартиры. Например, договор купли-продажи, договор долевого участия, договор дарения и другие (находится у собственника)',
+  style = {}
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
@@ -11,7 +16,7 @@ const Accordion = ({ title = 'Заголовок', subtitle = 'Подзагол�
   };
 
   return (
-    <div className="_Gq5_ ql7Up" data-e2e-id="accordion-base">
+    <div className="_Gq5_ ql7Up" data-e2e-id="accordion-base" style={style}>
       <div className="f_vB6">
         <div 
           className="acr-root-bdf-12-2-0 acr-divider-502-12-2-0" 
