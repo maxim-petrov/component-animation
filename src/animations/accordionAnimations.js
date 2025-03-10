@@ -11,8 +11,11 @@ export const accordionAnimationConfig = {
 export const arrowAnimation = {
   transition: {
     duration: Duration.S,
-    ease: Easing.Standard,
-    type: "tween"
+    ease: Easing.Spring,
+    type: "spring",
+    stiffness: 290,
+    damping: 22.22,
+    mass: 1
   }
 };
 
