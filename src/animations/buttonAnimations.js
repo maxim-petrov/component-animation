@@ -9,14 +9,13 @@ export const buttonAnimationConfig = {
   duration: Duration.M
 };
 
-// Анимация для кнопки при наведении
+// Анимация для кнопки при наведении и клике
 export const buttonHoverAnimation = {
   whileHover: { 
-    scale: 1.05,
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)"
   },
   whileTap: { 
-    scale: 0.95
+    scale: 0.96
   },
   transition: {
     type: "spring",
@@ -26,30 +25,23 @@ export const buttonHoverAnimation = {
   }
 };
 
-// Анимация для иконки внутри кнопки
+// Анимация для иконки внутри кнопки (без анимации при ховере)
 export const iconAnimation = {
   initial: { 
     scale: 1
   },
   hover: { 
-    scale: 1.15,
-    rotate: [0, 5, -5, 0],
+    scale: 1,
+    rotate: 0,
     transition: {
-      rotate: {
-        repeat: 0,
-        duration: Duration.S
-      },
-      scale: {
-        duration: Duration.XS,
-        ease: Easing.spring
-      }
+      duration: 0
     }
   },
   tap: { 
-    scale: 0.9
+    scale: 0.96
   },
   transition: {
     duration: Duration.S,
-    ease: Easing.spring
+    ease: Easing.Standard
   }
 }; 
