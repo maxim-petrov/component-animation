@@ -23,15 +23,16 @@ export const contentAnimation = {
   exit: { height: 0, opacity: 0 },
   transition: {
     height: {
-      ...createSpringConfig({
-        stiffness: Spring.Stiffness.Firm,
-        damping: Spring.Damping.High,
-        mass: Spring.Mass.Default
-      }).transition
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+      mass: 0.8,
+      when: "beforeChildren"
     },
     opacity: {
-      duration: Duration.S,
-      ease: Easing.Standard
+      type: "spring",
+      stiffness: 300,
+      damping: 30
     }
   },
   style: { overflow: "hidden" }

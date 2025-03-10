@@ -39,17 +39,29 @@ const AccordionPage = () => {
         </p>
         <h3 style={{ color: "#333" }}>Анимация стрелки</h3>
         <ul style={{ color: "#333" }}>
-          <li><code>Duration.S</code> - короткая длительность (150ms)</li>
-          <li><code>Easing.standard</code> - стандартная кривая ускорения</li>
+          <li><code>Spring.Stiffness.Firm</code> - упругость пружины</li>
+          <li><code>Spring.Damping.High</code> - затухание пружины</li>
+          <li><code>Spring.Mass.Default</code> - масса объекта</li>
           <li>Трансформация: поворот на 180 градусов при открытии/закрытии</li>
         </ul>
         
         <h3 style={{ color: "#333" }}>Анимация контента</h3>
         <ul style={{ color: "#333" }}>
-          <li><code>Duration.M</code> - средняя длительность (250ms)</li>
-          <li><code>Easing.entrance</code> - кривая для плавного появления</li>
+          <li>Анимация открытия:</li>
+          <ul>
+            <li><code>stiffness: 300</code> - упругость пружины</li>
+            <li><code>damping: 30</code> - затухание пружины</li>
+            <li><code>mass: 0.8</code> - масса объекта</li>
+          </ul>
+          <li>Анимация закрытия:</li>
+          <ul>
+            <li><code>stiffness: 350</code> - увеличенная упругость для более четкого закрытия</li>
+            <li><code>damping: 25</code> - уменьшенное затухание для более выраженного эффекта пружины</li>
+            <li><code>mass: 0.8</code> - масса объекта</li>
+            <li><code>restDelta: 0.5</code> - более точная остановка анимации</li>
+          </ul>
           <li>Начальное состояние: height: 0, opacity: 0</li>
-          <li>Конечное состояние: height: auto, opacity: 1</li>
+          <li>Spring анимация применяется как при открытии, так и при закрытии аккордеона</li>
         </ul>
         
         <h3 style={{ color: "#333" }}>Тип анимации</h3>

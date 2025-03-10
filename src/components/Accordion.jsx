@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { accordionAnimationConfig, arrowAnimation, contentAnimation } from '../animations/accordionAnimations';
 import '../global.css';
@@ -10,9 +10,32 @@ const Accordion = ({
   style = {}
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
+  const contentRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.offsetHeight);
+    }
+  }, [isOpen, content]);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
+  };
+
+  const openingAnimation = {
+    type: "spring",
+    stiffness: 300,
+    damping: 30,
+    mass: 0.8
+  };
+
+  const closingAnimation = {
+    type: "spring",
+    stiffness: 350,
+    damping: 25,
+    mass: 0.8,
+    restDelta: 0.5
   };
 
   return (
@@ -70,13 +93,17 @@ const Accordion = ({
             {isOpen && (
               <motion.div 
                 className="acr-content-c3a-12-2-0"
-                initial={contentAnimation.initial}
-                animate={contentAnimation.animate}
-                exit={contentAnimation.exit}
-                transition={contentAnimation.transition}
-                style={contentAnimation.style}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: contentHeight, opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ 
+                  height: isOpen ? openingAnimation : closingAnimation,
+                  opacity: isOpen ? openingAnimation : closingAnimation
+                }}
+                style={{ overflow: "hidden" }}
               >
                 <div 
+                  ref={contentRef}
                   className="tg-body-standard-regular-bdb-7-0-3"
                   style={{ padding: "0 24px 24px" }}
                 >{content}</div>
