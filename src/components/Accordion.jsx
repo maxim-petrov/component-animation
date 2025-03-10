@@ -65,7 +65,11 @@ const Accordion = ({ title = 'Заголовок', subtitle = 'Подзагол�
             {isOpen && (
               <motion.div 
                 className="acr-content-c3a-12-2-0"
-                {...contentAnimation}
+                initial={contentAnimation.initial}
+                animate={contentAnimation.animate}
+                exit={contentAnimation.exit}
+                transition={contentAnimation.transition}
+                style={contentAnimation.style}
               >
                 <div 
                   className="tg-body-standard-regular-bdb-7-0-3"

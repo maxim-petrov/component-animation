@@ -24,7 +24,10 @@ export const contentAnimation = {
   transition: {
     height: {
       duration: ComponentAnimations.accordion.expand.duration,
-      ease: ComponentAnimations.accordion.expand.easing
+      ease: Easing.Spring,
+      type: "spring",
+      stiffness: 250,
+      damping: 25
     },
     opacity: {
       duration: Duration.S,
