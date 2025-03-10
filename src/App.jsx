@@ -3,6 +3,7 @@ import './App.css';
 import './global.css';
 import './animations/tokens.css';
 import './no-focus.css';
+import './no-focus.js';
 
 // Layout
 import Layout from './components/Layout';
