@@ -26,11 +26,13 @@ const Input = () => {
   };
 
   const handleFocus = () => {
-    setIsFocused(true);
+    // Отключаем установку фокуса
+    // setIsFocused(true);
   };
 
   const handleBlur = () => {
-    setIsFocused(false);
+    // Отключаем сброс фокуса
+    // setIsFocused(false);
   };
 
   const isNotEmpty = value.length > 0;

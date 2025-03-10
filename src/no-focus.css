@@ -1,0 +1,150 @@
+/**
+ * Отключение всех состояний фокуса для компонентов
+ */
+
+/* Глобальное отключение фокуса для всех интерактивных элементов */
+:root {
+  --focus-ring-color: transparent !important;
+  --focus-border-color: inherit !important;
+}
+
+/* Отключение стандартного фокуса для всех элементов */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: inherit !important;
+}
+
+/* Обнуление стилей focus-visible для HTML5 спецификации */
+*:focus-visible {
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+
+/* Отключение фокуса для кнопок */
+button:focus,
+button:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Отключение стилей фокуса в компонентах Input */
+.inpt-focused-1c6-12-3-0,
+.inpt-focus-d5a-12-3-0,
+.inpt-primary-8dd-12-3-0.inpt-focused-1c6-12-3-0 {
+  box-shadow: none !important;
+  border-color: inherit !important;
+}
+
+/* Отмена смещения лейбла при фокусе */
+.inpt-focused-1c6-12-3-0 .inpt-label-a7f-12-3-0 {
+  color: inherit !important;
+}
+
+/* Отключение фокуса для Accordion */
+.acr-root-bdf-12-2-0.acr-focused-46b-12-2-0:before,
+.acr-root-bdf-12-2-0.acr-focused-46b-12-2-0 .acr-arrow-60f-12-2-0,
+.acr-group-58f-12-2-0 .acr-root-bdf-12-2-0.acr-focused-46b-12-2-0:before {
+  border-color: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Отключение фокуса для списков */
+.list-cell-root-0ea-2-2-1.list-cell-focused-df3-2-2-1 {
+  background-color: inherit !important;
+}
+
+/* Отключение фокуса для чекбоксов */
+.checkbox-root-09c-9-1-0.checkbox-focused-9b1-9-1-0 .checkbox-iconContainer-80d-9-1-0,
+.checkbox-root-09c-9-1-0 .checkbox-input-688-9-1-0:focus + .checkbox-iconContainer-80d-9-1-0 {
+  border-color: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Отключение фокуса для радио-кнопок */
+.radio-radio-a1c-11-0-3:focus,
+.radio-input-315-11-0-3:focus + .radio-circle-aab-11-0-3 {
+  border-color: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Отключение фокуса для переключателей */
+.switch-block-5b7-10-1-0:focus,
+.switch-root-a0b-10-1-0:focus,
+.switch-input-f62-10-1-0:focus + .switch-container-948-10-1-0 {
+  border-color: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Отключение фокуса для текстовых полей */
+.txar-field-ea3-11-1-0:focus::placeholder {
+  opacity: 0.5 !important;
+}
+
+/* Отключение фокуса для модальных окон */
+.btm-sht-root-c2e-8-0-2:focus {
+  outline: none !important;
+}
+
+/* Отключение синего окружения при фокусе в Safari и Chrome */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: none !important;
+}
+
+/* Отключение фокуса для Card компонента */
+.card-card-652-0-0-4:focus,
+.card-card-652-0-0-4:focus-visible,
+.card-primary-688-0-0-4:focus,
+.card-primary-688-0-0-4:focus-visible,
+.F_M0X:focus,
+.F_M0X:focus-visible {
+  outline: none !important;
+  border-color: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Отключение фокуса для DropdownButton */
+.dd-btn-button-376-8-3-0:focus,
+.dd-btn-button-376-8-3-0:focus-visible,
+.dd-btn-button-376-8-3-0:focus.focus-visible {
+  outline: none !important;
+  border-color: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Отключение фокуса для всех интерактивных элементов */
+div:focus,
+span:focus,
+a:focus,
+[tabindex]:focus {
+  outline: none !important;
+  border-color: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Дополнительное правило для всех компонентов */
+[class*="card-"],
+[class*="dd-btn-"] {
+  outline: none !important;
+  border-color: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Принудительное переопределение стилей черной рамки фокуса */
+.card-card-652-0-0-4,
+.card-primary-688-0-0-4,
+.dd-btn-button-376-8-3-0 {
+  border: 1px solid #e0e0e0 !important;
+}
+
+/* Особый случай - при фокусе сохраняем те же стили, что и для обычного состояния */
+.card-card-652-0-0-4:focus,
+.card-primary-688-0-0-4:focus,
+.dd-btn-button-376-8-3-0:focus {
+  border: 1px solid #e0e0e0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+} 

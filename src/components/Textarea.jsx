@@ -24,12 +24,14 @@ const Textarea = () => {
 
   // Обработчик для фокуса
   const handleFocus = () => {
-    setIsFocused(true);
+    // Отключаем установку фокуса
+    // setIsFocused(true);
   };
 
   // Обработчик для потери фокуса
   const handleBlur = () => {
-    setIsFocused(false);
+    // Отключаем сброс фокуса
+    // setIsFocused(false);
   };
 
   // Функция для регулировки высоты текстовой области

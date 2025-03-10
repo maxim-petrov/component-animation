@@ -85,12 +85,14 @@ const SearchBox = () => {
   ];
 
   const handleInputFocus = () => {
-    setIsFocused(true);
+    // Отключаем установку фокуса
+    // setIsFocused(true);
     setIsDropdownOpen(true);
   };
 
   const handleInputBlur = () => {
-    setIsFocused(false);
+    // Отключаем сброс фокуса
+    // setIsFocused(false);
     // Не закрываем выпадающее меню сразу, чтобы пользователь мог кликнуть по результатам
   };
 
