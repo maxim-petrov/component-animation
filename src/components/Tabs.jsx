@@ -14,22 +14,41 @@ const Tabs = () => {
   const buttonsRef = useRef(null);
   const tabRefs = useRef({});
 
-  // Check if scroll is needed
+  // Помогаем браузеру понять, что навигация должна работать
   useEffect(() => {
-    const checkScroll = () => {
-      if (buttonsRef.current) {
-        const { scrollWidth, clientWidth } = buttonsRef.current;
-        setShowRightArrow(scrollWidth > clientWidth);
+    // Функция для обработки кликов на ссылках навигации
+    const handleNavigationLinks = (e) => {
+      // Проверяем, что клик произошел на ссылке
+      if (e.target.tagName === 'A' && e.target.href) {
+        // Позволяем браузеру обработать клик
+        e.stopPropagation();
       }
     };
-    
+
+    // Добавляем обработчик на capture-фазе, чтобы он выполнялся до других обработчиков
+    document.addEventListener('click', handleNavigationLinks, true);
+
+    return () => {
+      document.removeEventListener('click', handleNavigationLinks, true);
+    };
+  }, []);
+
+  // Check if scroll is needed
+  const checkScroll = useCallback(() => {
+    if (buttonsRef.current) {
+      const { scrollWidth, clientWidth } = buttonsRef.current;
+      setShowRightArrow(scrollWidth > clientWidth);
+    }
+  }, []);
+
+  useEffect(() => {
     checkScroll();
     window.addEventListener('resize', checkScroll);
     
     return () => {
       window.removeEventListener('resize', checkScroll);
     };
-  }, []);
+  }, [checkScroll]);
 
   // Calculate adaptive duration based on distance
   const calculateAdaptiveDuration = useCallback((prevRect, nextRect) => {
@@ -85,21 +104,26 @@ const Tabs = () => {
   }, [activeTab, calculateAdaptiveDuration, prevTabRect]);
 
   // Scroll tabs to the right
-  const scrollRight = () => {
+  const scrollRight = (e) => {
     if (buttonsRef.current) {
       buttonsRef.current.scrollBy({ left: 100, behavior: 'smooth' });
     }
   };
 
   // Handle tab click
-  const handleTabClick = (tabId) => {
-    // Save the previous tab position before changing active tab
+  const handleTabClick = (e) => {
+    // Получаем ID таба
+    const tabId = e.currentTarget.value;
+    
+    // Сохраняем позицию предыдущего таба
     if (tabRefs.current[activeTab]) {
       setPrevTabRect({
         width: tabRefs.current[activeTab].getBoundingClientRect().width,
         left: tabRefs.current[activeTab].offsetLeft
       });
     }
+    
+    // Обновляем активный таб
     setActiveTab(tabId);
   };
 

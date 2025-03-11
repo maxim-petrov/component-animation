@@ -12,7 +12,7 @@ const Tab = forwardRef(({ id, label, isActive, onClick }, ref) => {
       value={id} 
       tabIndex="0" 
       data-e2e-id={`example-default-${id}`}
-      onClick={() => onClick(id)}
+      onClick={onClick}
       {...tabButtonAnimation}
     >
       <span className="tabs-label-bd1-15-1-1">{label}</span>

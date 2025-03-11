@@ -1,7 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../App.css';
 
 const Sidebar = () => {
+  // Используем программную навигацию
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   const components = [
     { path: '/button', name: 'Button' },
     { path: '/accordion', name: 'Accordion' },
@@ -10,6 +14,35 @@ const Sidebar = () => {
     { path: '/banners', name: 'Banners' },
     { path: '/dropdown-button', name: 'Dropdown Button' },
   ];
+
+  // Обработчик навигации с аварийным вариантом
+  const handleNavigation = (path, e) => {
+    // Предотвращаем стандартное поведение
+    e.preventDefault();
+    
+    // Проверяем, находимся ли мы на странице с табами
+    const isOnTabsPage = location.pathname === '/tabs';
+    
+    try {
+      // Если мы на странице с табами, используем более принудительный подход
+      if (isOnTabsPage) {
+        // Принудительно меняем URL
+        window.location.href = path;
+      } else {
+        // Используем стандартный React Router API
+        navigate(path);
+      }
+    } catch (error) {
+      console.error("Ошибка навигации через React Router:", error);
+      // В случае ошибки, используем принудительную навигацию
+      window.location.href = path;
+    }
+  };
+
+  // Функция для определения активности ссылки
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
 
   return (
     <aside className="sidebar">
@@ -20,14 +53,13 @@ const Sidebar = () => {
         <ul>
           {components.map((component) => (
             <li key={component.path}>
-              <NavLink 
-                to={component.path}
-                className={({ isActive }) => 
-                  isActive ? 'sidebar-link active' : 'sidebar-link'
-                }
+              <a 
+                href={component.path}
+                className={isActive(component.path) ? 'sidebar-link active' : 'sidebar-link'}
+                onClick={(e) => handleNavigation(component.path, e)}
               >
                 {component.name}
-              </NavLink>
+              </a>
             </li>
           ))}
           
@@ -36,14 +68,13 @@ const Sidebar = () => {
           
           {/* Ссылка на страницу токенов */}
           <li>
-            <NavLink 
-              to="/tokens"
-              className={({ isActive }) => 
-                isActive ? 'sidebar-link active sidebar-link-tokens' : 'sidebar-link sidebar-link-tokens'
-              }
+            <a 
+              href="/tokens"
+              className={isActive('/tokens') ? 'sidebar-link active sidebar-link-tokens' : 'sidebar-link sidebar-link-tokens'}
+              onClick={(e) => handleNavigation('/tokens', e)}
             >
               Токены анимации
-            </NavLink>
+            </a>
           </li>
         </ul>
       </nav>
