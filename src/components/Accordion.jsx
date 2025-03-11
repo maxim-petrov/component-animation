@@ -1,45 +1,17 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { accordionAnimationConfig, arrowAnimation, contentAnimation } from '../animations/accordionAnimations';
 import '../global.css';
 
-const Accordion = ({ 
-  title = 'Заголовок', 
-  subtitle = 'Подзаголовок', 
-  content = 'Оригинал документа, на основании которого продавец стал собственником квартиры. Например, договор купли-продажи, договор долевого участия, договор дарения и другие (находится у собственника)',
-  style = {}
-}) => {
+const Accordion = ({ title = 'Заголовок', subtitle = 'Подзаголовок', content = 'Оригинал документа, на основании которого продавец стал собственником квартиры. Например, договор купли-продажи, договор долевого участия, договор дарения и другие (находится у собственника)' }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [contentHeight, setContentHeight] = useState(0);
-  const contentRef = useRef(null);
-
-  useLayoutEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.offsetHeight);
-    }
-  }, [isOpen, content]);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
 
-  const openingAnimation = {
-    type: "spring",
-    stiffness: 300,
-    damping: 30,
-    mass: 0.8
-  };
-
-  const closingAnimation = {
-    type: "spring",
-    stiffness: 350,
-    damping: 25,
-    mass: 0.8,
-    restDelta: 0.5
-  };
-
   return (
-    <div className="_Gq5_ ql7Up" data-e2e-id="accordion-base" style={style}>
+    <div className="_Gq5_ ql7Up" data-e2e-id="accordion-base">
       <div className="f_vB6">
         <div 
           className="acr-root-bdf-12-2-0 acr-divider-502-12-2-0" 
@@ -93,17 +65,13 @@ const Accordion = ({
             {isOpen && (
               <motion.div 
                 className="acr-content-c3a-12-2-0"
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: contentHeight, opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ 
-                  height: isOpen ? openingAnimation : closingAnimation,
-                  opacity: isOpen ? openingAnimation : closingAnimation
-                }}
-                style={{ overflow: "hidden" }}
+                initial={contentAnimation.initial}
+                animate={contentAnimation.animate}
+                exit={contentAnimation.exit}
+                transition={contentAnimation.transition}
+                style={contentAnimation.style}
               >
                 <div 
-                  ref={contentRef}
                   className="tg-body-standard-regular-bdb-7-0-3"
                   style={{ padding: "0 24px 24px" }}
                 >{content}</div>
