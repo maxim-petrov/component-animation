@@ -9,11 +9,6 @@ const Sidebar = () => {
     { path: '/cards', name: 'Cards' },
     { path: '/banners', name: 'Banners' },
     { path: '/dropdown-button', name: 'Dropdown Button' },
-    { path: '/input', name: 'Input' },
-    { path: '/checkbox', name: 'Checkbox' },
-    { path: '/search-box', name: 'Search Box' },
-    { path: '/textarea', name: 'Textarea' },
-    { path: '/multiple-button-select', name: 'Multiple Button Select' },
   ];
 
   return (
