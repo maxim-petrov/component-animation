@@ -246,7 +246,7 @@ a:active,
 .card-card-652-0-0-4:active,
 .card-primary-688-0-0-4:focus,
 .card-primary-688-0-0-4:active {
-  border: 1px solid #e0e0e0 !important;
+  border: none !important;
   outline: 0 !important;
   outline-style: none !important;
   box-shadow: none !important;

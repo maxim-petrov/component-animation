@@ -12297,7 +12297,7 @@ body {
 }
 
 .tabs-alternative-975-15-1-1 .tabs-button-beb-15-1-1,.tabs-inverse-335-15-1-1 .tabs-button-beb-15-1-1 {
-    border: 2px solid #0000;
+    
     border-radius: 8px;
     color: var(--color_text_secondary,#738295);
     position: relative
@@ -14426,7 +14426,7 @@ body {
 }
 
 .card-card-652-0-0-4 {
-    border: 2px solid #0000;
+    
     border-radius: 12px;
     box-sizing: border-box;
     cursor: pointer;
@@ -17314,7 +17314,7 @@ body {
 
 .sb-sel-item-b7a-10-1-7 {
     align-items: center;
-    border: 2px solid #0000;
+    
     box-sizing: initial;
     color: var(--color_text_secondary,#738295);
     cursor: pointer;
@@ -17853,7 +17853,7 @@ body {
 }
 
 .gallery-item--previews-820-19-0-5:before {
-    border: 2px solid #0000;
+    
     border-radius: 5px;
     bottom: -2px;
     content: "";
