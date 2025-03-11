@@ -24,11 +24,23 @@ const DropdownItem = ({ id, title, onClick, isSelected, index }) => {
         onClick={() => onClick(id, title)}
         whileHover={{ 
           backgroundColor: 'rgba(0, 0, 0, 0.05)',
-          scale: 1.02 
+          scale: 1.02,
+          transition: { duration: 0.1 }
         }}
         whileTap={{ scale: 0.98 }}
-        {...menuItemAnimation}
-        custom={index}
+        initial="initial"
+        animate="animate"
+        variants={{
+          initial: { opacity: 0, y: -5 },
+          animate: { 
+            opacity: 1, 
+            y: 0,
+            transition: {
+              delay: index * 0.03,
+              duration: 0.15
+            }
+          }
+        }}
       >
         <div className="list-cell-wrapper-1a8-2-2-1">
           <div className="list-cell-title-64d-2-2-1">
@@ -117,35 +129,48 @@ const DropdownButton = () => {
               </motion.button>
             </div>
             
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div 
-                  className="ppr-root-43f-12-2-0 ppr-shadow-small-9f9-12-2-0" 
-                  style={{ 
-                    maxHeight: '240px', 
-                    borderRadius: '8px', 
-                    width: '208px', 
-                    minWidth: '208px', 
-                    position: 'absolute', 
-                    inset: '60px 0px auto auto'
-                  }}
-                  {...menuAnimation}
-                >
-                  <div role="listbox" aria-multiselectable="false">
-                    {options.map((option, index) => (
-                      <DropdownItem 
-                        key={option.id}
-                        id={option.id} 
-                        title={option.title}
-                        onClick={handleOptionClick}
-                        isSelected={selectedOption === option.id}
-                        index={index}
-                      />
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div className="dropdown-menu-container" style={{
+              position: 'relative', 
+              zIndex: 100,
+              perspective: '800px',
+              perspectiveOrigin: 'top'
+            }}>
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div 
+                    className="ppr-root-43f-12-2-0 ppr-shadow-small-9f9-12-2-0" 
+                    style={{ 
+                      maxHeight: '240px', 
+                      borderRadius: '8px', 
+                      width: '208px', 
+                      minWidth: '208px', 
+                      position: 'absolute', 
+                      inset: '0px 0px auto auto',
+                      overflow: 'hidden',
+                      transformBox: 'view-box',
+                      backfaceVisibility: 'hidden'
+                    }}
+                    initial={menuAnimation.initial}
+                    animate={menuAnimation.animate}
+                    exit={menuAnimation.exit}
+                    transition={menuAnimation.transition}
+                  >
+                    <div role="listbox" aria-multiselectable="false">
+                      {options.map((option, index) => (
+                        <DropdownItem 
+                          key={option.id}
+                          id={option.id} 
+                          title={option.title}
+                          onClick={handleOptionClick}
+                          isSelected={selectedOption === option.id}
+                          index={index}
+                        />
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>

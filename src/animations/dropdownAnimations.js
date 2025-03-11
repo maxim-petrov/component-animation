@@ -4,7 +4,7 @@ import { Duration, Easing, Delay, ComponentAnimations } from './tokens';
 export const dropdownAnimationConfig = {
   type: "tween",
   duration: Duration.M,
-  ease: Easing.standard
+  ease: Easing.Standard
 };
 
 // Анимация для стрелки выпадающего списка
@@ -15,7 +15,7 @@ export const arrowAnimation = {
   }),
   transition: {
     duration: Duration.S,
-    ease: Easing.standard
+    ease: Easing.Standard
   }
 };
 
@@ -30,7 +30,7 @@ export const buttonHoverAnimation = {
   },
   transition: {
     duration: Duration.XS,
-    ease: Easing.standard
+    ease: Easing.Standard
   }
 };
 
@@ -38,36 +38,40 @@ export const buttonHoverAnimation = {
 export const menuAnimation = {
   initial: { 
     opacity: 0,
-    y: -10,
-    scaleY: 0.8
+    scale: 0.98,
+    transformOrigin: "top center",
+    y: -5
   },
   animate: { 
     opacity: 1,
-    y: 0,
-    scaleY: 1
+    scale: 1,
+    transformOrigin: "top center",
+    y: 0
   },
   exit: { 
     opacity: 0,
-    y: -10,
-    scaleY: 0.8
+    scale: 0.98,
+    transformOrigin: "top center",
+    y: -5
   },
   transition: {
-    duration: ComponentAnimations.dropdown.appear.duration,
-    ease: ComponentAnimations.dropdown.appear.easing,
-    exit: {
-      duration: ComponentAnimations.dropdown.disappear.duration,
-      ease: ComponentAnimations.dropdown.disappear.easing
+    type: "spring",
+    stiffness: 350,
+    damping: 25,
+    mass: 0.8,
+    opacity: {
+      duration: 0.1
     }
   }
 };
 
 // Анимация для пунктов выпадающего меню
 export const menuItemAnimation = {
-  initial: { opacity: 0, x: -5 },
-  animate: { opacity: 1, x: 0 },
+  initial: { opacity: 0, y: -3 },
+  animate: { opacity: 1, y: 0 },
   transition: (custom) => ({
     duration: Duration.S,
-    ease: Easing.entrance,
-    delay: custom * Delay.short // Последовательное появление пунктов
+    ease: Easing.Entrance,
+    delay: custom * 0.03
   })
 }; 
