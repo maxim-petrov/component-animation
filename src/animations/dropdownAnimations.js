@@ -56,11 +56,11 @@ export const menuAnimation = {
   },
   transition: {
     type: "tween",
-    duration: 0.25,
+    duration: 0.15,
     ease: Easing.Standard,
     height: {
-      duration: 0.3,
-      ease: [0.33, 1, 0.68, 1] // Кастомный easing для более плавного изменения высоты
+      duration: 0.18,
+      ease: [0.33, 1, 0.68, 1]
     }
   }
 };
@@ -72,8 +72,8 @@ export const menuItemAnimation = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.05 + custom * 0.04,
-      duration: 0.25,
+      delay: 0.03 + custom * 0.02,
+      duration: 0.15,
       ease: Easing.Standard
     }
   })
