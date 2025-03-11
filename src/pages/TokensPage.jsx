@@ -25,7 +25,7 @@ const TokensPage = () => {
       <div className="component-description">
         <h2 style={{ color: "#333" }}>Структура системы токенов</h2>
         <p style={{ color: "#333" }}>
-          Наша система токенов анимации основана на четырех ключевых компонентах:
+          Система токенов анимации основана на четырех ключевых компонентах:
         </p>
 
         <h3 style={{ color: "#333" }}>1. Длительность (Duration)</h3>
@@ -91,46 +91,7 @@ const TokensPage = () => {
         </p>
         <div className="token-group">
           <div className="token-item-wide">
-            <h4 style={{ color: "#333" }}>Жесткость пружины (Stiffness)</h4>
-            <p style={{ color: "#333" }}>
-              Определяет, насколько "упругой" является пружина. Чем выше значение, тем быстрее и энергичнее движение.
-            </p>
-            <ul style={{ color: "#333" }}>
-              <li><strong>Spring.Stiffness.Soft (170)</strong> — мягкое, плавное движение</li>
-              <li><strong>Spring.Stiffness.Medium (230)</strong> — сбалансированное движение</li>
-              <li><strong>Spring.Stiffness.Firm (290)</strong> — энергичное, быстрое движение</li>
-              <li><strong>Spring.Stiffness.Rigid (350)</strong> — очень жесткое, реактивное движение</li>
-            </ul>
-          </div>
-          
-          <div className="token-item-wide">
-            <h4 style={{ color: "#333" }}>Затухание (Damping)</h4>
-            <p style={{ color: "#333" }}>
-              Определяет, насколько быстро затухают колебания пружины. Низкие значения создают "пружинящий" эффект, высокие — быстрое прекращение колебаний.
-            </p>
-            <ul style={{ color: "#333" }}>
-              <li><strong>Spring.Damping.Low (10)</strong> — слабое затухание, множественные колебания</li>
-              <li><strong>Spring.Damping.Medium (15)</strong> — среднее затухание, небольшое перелетание</li>
-              <li><strong>Spring.Damping.High (22.22)</strong> — сильное затухание, минимальные колебания</li>
-              <li><strong>Spring.Damping.Critical (30)</strong> — критическое затухание, без перелета</li>
-            </ul>
-          </div>
-          
-          <div className="token-item-wide">
-            <h4 style={{ color: "#333" }}>Масса (Mass)</h4>
-            <p style={{ color: "#333" }}>
-              Имитирует "вес" анимируемого объекта. Влияет на инерцию движения и скорость реакции на изменения.
-            </p>
-            <ul style={{ color: "#333" }}>
-              <li><strong>Spring.Mass.Light (0.5)</strong> — легкий объект, быстрая реакция</li>
-              <li><strong>Spring.Mass.Default (1)</strong> — стандартная масса</li>
-              <li><strong>Spring.Mass.Heavy (1.5)</strong> — тяжелый объект, более инертное движение</li>
-              <li><strong>Spring.Mass.Massive (2)</strong> — очень тяжелый объект, медленная реакция</li>
-            </ul>
-          </div>
-          
-          <div className="token-item-wide">
-            <h4 style={{ color: "#333" }}>Готовые пресеты</h4>
+            <h4 style={{ color: "#333" }}>Готовые пресеты Spring-анимаций</h4>
             <p style={{ color: "#333" }}>
               Предустановленные комбинации параметров для типичных случаев использования.
             </p>
@@ -232,12 +193,10 @@ const buttonAnimation = {
   }
 };
 
-// Пример пружинной анимации с Spring
+// Пример пружинной анимации с готовым пресетом
 const accordionAnimation = {
   transition: createSpringConfig({
-    stiffness: Spring.Stiffness.Firm,
-    damping: Spring.Damping.High,
-    mass: Spring.Mass.Default
+    ...Spring.Presets.Content
   }).transition
 };
 
@@ -250,68 +209,6 @@ const accordionAnimation = {
   transform: scale(1.05);
 }`}
         </pre>
-      </div>
-
-      <div className="component-description">
-        <h2 style={{ color: "#333" }}>Как выбирать токены для компонентов</h2>
-        
-        <h3 style={{ color: "#333" }}>Простые интерактивные элементы (кнопки, переключатели)</h3>
-        <ul style={{ color: "#333" }}>
-          <li>Длительность: Duration.XS — Duration.S</li>
-          <li>Easing: Easing.standard для основных состояний</li>
-          <li>Spring: Spring.Presets.Button для выразительных анимаций иконок</li>
-          <li>Используйте более высокий Stiffness (290+) для быстрой реакции</li>
-        </ul>
-
-        <h3 style={{ color: "#333" }}>Раскрывающиеся компоненты (аккордеон, выпадающие списки)</h3>
-        <ul style={{ color: "#333" }}>
-          <li>Тип: spring для плавного открытия с эффектом "упругости"</li>
-          <li>Spring.Stiffness: Firm (290) для энергичного раскрытия</li>
-          <li>Spring.Damping: High (22.22) для уменьшения колебаний</li>
-          <li>Spring.Mass: Default (1) для сбалансированного ощущения</li>
-          <li>Для закрытия: Easing.exit с Duration.M для более строгого эффекта</li>
-        </ul>
-
-        <h3 style={{ color: "#333" }}>Модальные окна и оверлеи</h3>
-        <ul style={{ color: "#333" }}>
-          <li>Spring.Presets.Modal для естественного появления</li>
-          <li>Средний Stiffness (230) и Damping (20) для сбалансированного эффекта</li>
-          <li>Совмещайте анимацию затемнения фона с появлением контента</li>
-        </ul>
-
-        <h3 style={{ color: "#333" }}>Списки и карточки</h3>
-        <ul style={{ color: "#333" }}>
-          <li>Spring.Presets.Content для основных анимаций</li>
-          <li>Более низкий Stiffness (170) для плавного движения больших объектов</li>
-          <li>Mass.Heavy (1.5) для ощущения "веса" информационных блоков</li>
-          <li>Используйте Delay.short или Delay.medium для создания каскада</li>
-          <li>Ограничивайте общую длительность анимации для длинных списков</li>
-        </ul>
-      </div>
-      
-      <div className="component-description">
-        <h2 style={{ color: "#333" }}>Соответствие токенов и человеческого восприятия</h2>
-        <p style={{ color: "#333" }}>
-          Важно понимать, как длительность анимации воспринимается человеком:
-        </p>
-        <ul style={{ color: "#333" }}>
-          <li><strong>0-100мс:</strong> воспринимается как мгновенная реакция</li>
-          <li><strong>100-300мс:</strong> ощущается как плавный, но быстрый переход</li>
-          <li><strong>300-500мс:</strong> воспринимается как заметная, но не затянутая анимация</li>
-          <li><strong>500мс+:</strong> начинает восприниматься как медленная или затянутая анимация</li>
-        </ul>
-        <p style={{ color: "#333" }}>
-          Для пружинных анимаций (Spring):
-        </p>
-        <ul style={{ color: "#333" }}>
-          <li><strong>Высокий Stiffness + низкий Damping:</strong> быстрое, но "дребезжащее" движение</li>
-          <li><strong>Высокий Stiffness + высокий Damping:</strong> быстрое, энергичное движение с минимальным перелетом</li>
-          <li><strong>Низкий Stiffness + низкий Damping:</strong> медленное движение с множественными колебаниями</li>
-          <li><strong>Низкий Stiffness + высокий Damping:</strong> медленное, плавное движение без колебаний</li>
-        </ul>
-        <p style={{ color: "#333" }}>
-          Подбирайте токены с учётом этих особенностей восприятия, чтобы создавать естественные и приятные анимации.
-        </p>
       </div>
     </motion.div>
   );
