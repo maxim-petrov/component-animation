@@ -22,6 +22,19 @@ export const bannerHoverAnimation = {
   }
 };
 
+// Анимация для внутреннего изображения при наведении на баннер
+export const bannerImageAnimation = {
+  initial: { scale: 1 },
+  animate: { scale: 1 },
+  variants: {
+    hover: { scale: 1.1 }
+  },
+  transition: {
+    duration: Duration.S,
+    ease: Easing.spring
+  }
+};
+
 // Анимация для иконки в баннере
 export const bannerIconAnimation = {
   whileHover: { 
@@ -37,11 +50,17 @@ export const bannerIconAnimation = {
 
 // Анимация для появления баннеров
 export const bannerAppearAnimation = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: (custom) => ({
-    duration: Duration.M,
-    ease: Easing.entrance,
-    delay: custom * Delay.medium // Последовательное появление баннеров
-  })
+  variants: {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 50,
+        damping: 20,
+        mass: 1.2
+      }
+    }
+  }
 }; 

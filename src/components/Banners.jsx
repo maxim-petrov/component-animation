@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { bannerHoverAnimation, bannerIconAnimation, bannerAppearAnimation } from '../animations/bannerAnimations';
+import { bannerHoverAnimation, bannerIconAnimation, bannerAppearAnimation, bannerImageAnimation } from '../animations/bannerAnimations';
 import '../global.css';
 
 const Banner = ({ id, title, subtitle, index }) => {
@@ -10,7 +10,7 @@ const Banner = ({ id, title, subtitle, index }) => {
       data-e2e-id={`banner-${id}`}
       {...bannerHoverAnimation}
       {...bannerAppearAnimation}
-      custom={index}
+      whileHover="hover"
     >
       <div className="card-icon-236-0-0-4">
         <motion.div 
@@ -41,12 +41,7 @@ const Banner = ({ id, title, subtitle, index }) => {
             width="96" 
             height="96" 
             className="_zBvS"
-            whileHover={{ scale: 1.1, rotate: 3 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 300, 
-              damping: 10 
-            }}
+            {...bannerImageAnimation}
           />
         </div>
       </div>
@@ -63,8 +58,24 @@ const Banners = () => {
     { id: 51, title: '5-комнатная', subtitle: 'Подзаголовок' }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.4,
+        delayChildren: 0.1
+      }
+    }
+  };
+
   return (
-    <div className="QIMpV">
+    <motion.div 
+      className="QIMpV"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {bannersData.map((banner, index) => (
         <Banner 
           key={banner.id}
@@ -74,7 +85,7 @@ const Banners = () => {
           index={index}
         />
       ))}
-    </div>
+    </motion.div>
   );
 };
 
