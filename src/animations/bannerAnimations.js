@@ -10,9 +10,7 @@ export const bannerAnimationConfig = {
 // Анимация для баннера при наведении
 export const bannerHoverAnimation = {
   whileHover: { 
-    scale: 1.04,
-    boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.15)",
-    y: -5
+    boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.15)"
   },
   whileTap: { 
     scale: 0.98,
