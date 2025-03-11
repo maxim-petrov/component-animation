@@ -92,11 +92,9 @@ const TokensPage = () => {
               Готовые конфигурации пружинных анимаций для различных сценариев использования:
             </p>
             <ul style={{ color: "#333" }}>
-              <li><strong>Spring.Presets.Button</strong> — для кнопок и небольших элементов (stiffness: 290, damping: 22.22, mass: 1)</li>
-              <li><strong>Spring.Presets.Modal</strong> — для модальных окон и панелей (stiffness: 230, damping: 20, mass: 1)</li>
-              <li><strong>Spring.Presets.Dropdown</strong> — для выпадающих меню (stiffness: 250, damping: 18, mass: 0.8)</li>
-              <li><strong>Spring.Presets.Content</strong> — для областей контента (stiffness: 170, damping: 22, mass: 1.2)</li>
-              <li><strong>Spring.Presets.Expressive</strong> — для выразительных анимаций (stiffness: 150, damping: 10, mass: 1)</li>
+              <li><strong>Spring.Strong</strong> — сильный, энергичный эффект для быстрых и отзывчивых элементов (stiffness: 300, damping: 25, mass: 0.8)</li>
+              <li><strong>Spring.Medium</strong> — сбалансированный эффект для большинства интерфейсных анимаций (stiffness: 200, damping: 18, mass: 1)</li>
+              <li><strong>Spring.Gentle</strong> — мягкий, плавный эффект для больших элементов и эмоциональных анимаций (stiffness: 120, damping: 14, mass: 1.2)</li>
             </ul>
           </div>
         </div>
@@ -192,7 +190,7 @@ const buttonAnimation = {
 // Пример использования Easing.spring с готовым пресетом
 const accordionAnimation = {
   transition: createSpringConfig({
-    ...Spring.Presets.Content
+    ...Spring.Medium
   }).transition
 };
 
