@@ -167,7 +167,7 @@ const Tabs = () => {
                 style={{
                   position: 'absolute',
                   height: '2px',
-                  backgroundColor: 'var(--color-primary, #4077F2)',
+                  backgroundColor: 'var(--color-primary, #009e36)',
                   bottom: '0',
                   borderRadius: '2px'
                 }}
