@@ -38,40 +38,43 @@ export const buttonHoverAnimation = {
 export const menuAnimation = {
   initial: { 
     opacity: 0,
-    scale: 0.98,
-    transformOrigin: "top center",
-    y: -5
+    y: 40,
+    height: '96px',
+    transformOrigin: "top"
   },
   animate: { 
     opacity: 1,
-    scale: 1,
-    transformOrigin: "top center",
-    y: 0
+    y: 0,
+    height: 'auto',
+    transformOrigin: "top"
   },
   exit: { 
     opacity: 0,
-    scale: 0.98,
-    transformOrigin: "top center",
-    y: -5
+    y: 40,
+    height: '96px',
+    transformOrigin: "top"
   },
   transition: {
-    type: "spring",
-    stiffness: 350,
-    damping: 25,
-    mass: 0.8,
-    opacity: {
-      duration: 0.1
+    type: "tween",
+    duration: 0.25,
+    ease: Easing.Standard,
+    height: {
+      duration: 0.3,
+      ease: [0.33, 1, 0.68, 1] // Кастомный easing для более плавного изменения высоты
     }
   }
 };
 
 // Анимация для пунктов выпадающего меню
 export const menuItemAnimation = {
-  initial: { opacity: 0, y: -3 },
-  animate: { opacity: 1, y: 0 },
-  transition: (custom) => ({
-    duration: Duration.S,
-    ease: Easing.Entrance,
-    delay: custom * 0.03
+  hidden: { opacity: 0, y: 10 },
+  visible: (custom) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.05 + custom * 0.04,
+      duration: 0.25,
+      ease: Easing.Standard
+    }
   })
 }; 

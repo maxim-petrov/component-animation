@@ -11,10 +11,14 @@ import '../global.css';
 
 const DropdownItem = ({ id, title, onClick, isSelected, index }) => {
   return (
-    <div 
+    <motion.div 
       id={`Dropdown-option-${id}`} 
       role="option" 
       className="list-box-itemWrapper-a44-13-1-0"
+      variants={menuItemAnimation}
+      initial="hidden"
+      animate="visible"
+      custom={index}
     >
       <motion.label 
         className={`list-cell-root-0ea-2-2-1 list-cell-p-medium-707-2-2-1 ${isSelected ? 'list-cell-selected-faf-2-2-1' : ''}`}
@@ -28,19 +32,6 @@ const DropdownItem = ({ id, title, onClick, isSelected, index }) => {
           transition: { duration: 0.1 }
         }}
         whileTap={{ scale: 0.98 }}
-        initial="initial"
-        animate="animate"
-        variants={{
-          initial: { opacity: 0, y: -5 },
-          animate: { 
-            opacity: 1, 
-            y: 0,
-            transition: {
-              delay: index * 0.03,
-              duration: 0.15
-            }
-          }
-        }}
       >
         <div className="list-cell-wrapper-1a8-2-2-1">
           <div className="list-cell-title-64d-2-2-1">
@@ -48,7 +39,7 @@ const DropdownItem = ({ id, title, onClick, isSelected, index }) => {
           </div>
         </div>
       </motion.label>
-    </div>
+    </motion.div>
   );
 };
 
@@ -129,12 +120,7 @@ const DropdownButton = () => {
               </motion.button>
             </div>
             
-            <div className="dropdown-menu-container" style={{
-              position: 'relative', 
-              zIndex: 100,
-              perspective: '800px',
-              perspectiveOrigin: 'top'
-            }}>
+            <div style={{ position: 'relative', zIndex: 100 }}>
               <AnimatePresence>
                 {isOpen && (
                   <motion.div 
@@ -145,10 +131,9 @@ const DropdownButton = () => {
                       width: '208px', 
                       minWidth: '208px', 
                       position: 'absolute', 
-                      inset: '0px 0px auto auto',
-                      overflow: 'hidden',
-                      transformBox: 'view-box',
-                      backfaceVisibility: 'hidden'
+                      right: 0,
+                      top: '10px',
+                      overflow: 'hidden'
                     }}
                     initial={menuAnimation.initial}
                     animate={menuAnimation.animate}
