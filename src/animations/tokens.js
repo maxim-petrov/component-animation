@@ -13,108 +13,66 @@ import { motion } from 'framer-motion';
 
 // Длительность анимаций (в секундах)
 export const Duration = {
-  XS: 0.07,    // 70ms - микро-анимации, незначительные изменения (ховер)
-  S: 0.11,     // 110ms - небольшие UI-изменения (кнопки, переключатели)
-  M: 0.15,     // 150ms - стандартные переходы (подсказки, модальные окна)
-  L: 0.24,     // 240ms - крупные изменения (переходы между экранами)
-  XL: 0.4,     // 400ms - сложные/выразительные анимации
+  XXS: 0.05,   // 50ms - для мгновенных микро-анимаций
+  XS: 0.1,     // 100ms - быстрые микро-анимации (ховер-эффекты)
+  S: 0.15,     // 150ms - небольшие UI-изменения (кнопки, переключатели)
+  M: 0.25,     // 250ms - стандартные переходы (модальные окна, выпадающие меню)
+  L: 0.3,      // 300ms - крупные изменения (карточки, панели)
+  XL: 0.4,     // 400ms - сложные/выразительные анимации, декоративные эффекты
   XXL: 0.7     // 700ms - особо выразительные анимации
 };
 
 // Кривые ускорения (easing)
 export const Easing = {
   // Базовые кривые
-  Standard: [0.2, 0, 0.38, 0.9],    // Стандартная кривая
-  Entrance: [0, 0, 0.38, 0.9],      // Для появления элементов
-  Exit: [0.2, 0, 1, 0.9],           // Для исчезновения элементов
-  
-  // Дополнительные кривые
-  ExpressiveStandard: [0.4, 0.14, 0.3, 1],     // Более выразительная стандартная
-  ExpressiveEntrance: [0, 0, 0.3, 1],          // Более выразительное появление
-  ExpressiveExit: [0.4, 0.14, 1, 1],           // Более выразительное исчезновение
-  Spring: [0.43, 0.28, 0.52, 1.23],            // Пружинная кривая
+  standard: [0.4, 0.0, 0.2, 1.0],    // Стандартная кривая
+  entrance: [0.0, 0.0, 0.3, 1.0],    // Для появления элементов
+  exit: [0.4, 0.14, 1.0, 1.0],       // Для исчезновения элементов
+  spring: [0.43, 0.28, 0.52, 1.23],  // Пружинная кривая
 };
 
 // Строковые значения для CSS
 export const EasingCSS = {
-  standard: `cubic-bezier(${Easing.Standard.join(', ')})`,
-  entrance: `cubic-bezier(${Easing.Entrance.join(', ')})`,
-  exit: `cubic-bezier(${Easing.Exit.join(', ')})`,
-  spring: `cubic-bezier(${Easing.Spring.join(', ')})`
+  standard: `cubic-bezier(${Easing.standard.join(', ')})`,
+  entrance: `cubic-bezier(${Easing.entrance.join(', ')})`,
+  exit: `cubic-bezier(${Easing.exit.join(', ')})`,
+  spring: `cubic-bezier(${Easing.spring.join(', ')})`
 };
 
 // Задержки анимаций (в секундах)
 export const Delay = {
-  None: 0,
-  XS: 0.05,    // 50ms - минимальная заметная задержка
-  S: 0.1,      // 100ms - для небольших последовательностей
-  M: 0.2,      // 200ms - стандартная задержка
-  L: 0.4,      // 400ms - большая задержка
-  XL: 0.7      // 700ms - максимальная рекомендуемая задержка
+  none: 0,      // без задержки, мгновенный отклик
+  short: 0.05,  // 50мс - для последовательного появления элементов
+  medium: 0.1,  // 100мс - средняя задержка
+  long: 0.2     // 200мс - для более ощутимой паузы
 };
 
 // Параметры пружинной анимации (spring)
 export const Spring = {
+  // Готовые конфигурации для различных сценариев
+  Strong: { stiffness: 290, damping: 22, mass: 1 },  // энергичный эффект для быстрых и отзывчивых элементов, включая аккордеон
+  Medium: { stiffness: 200, damping: 18, mass: 1 },    // сбалансированный эффект для большинства интерфейсных анимаций
+  Gentle: { stiffness: 120, damping: 14, mass: 1.2 },  // мягкий, плавный эффект для больших элементов и эмоциональных анимаций
+  
   // Жесткость пружины (stiffness)
   Stiffness: {
-    Soft: 170,       // Мягкая пружина - медленное движение
-    Medium: 230,     // Стандартная пружина - сбалансированное движение
+    Soft: 120,       // Мягкая пружина - медленное движение
+    Medium: 200,     // Стандартная пружина - сбалансированное движение
     Firm: 290,       // Упругая пружина - быстрое, энергичное движение
-    Rigid: 350       // Жесткая пружина - очень быстрая реакция
   },
   
   // Затухание (damping)
   Damping: {
     Low: 10,         // Слабое затухание - множественные колебания
-    Medium: 15,      // Среднее затухание - небольшое перелетание
-    High: 22.22,     // Сильное затухание - минимальные колебания
-    Critical: 30     // Критическое затухание - без перелета
+    Medium: 18,      // Среднее затухание - небольшое перелетание
+    High: 22,        // Сильное затухание - минимальные колебания
   },
   
   // Масса объекта (mass)
   Mass: {
-    Light: 0.5,      // Легкий объект - быстрое движение
+    Light: 0.8,      // Легкий объект - быстрое движение
     Default: 1,      // Стандартная масса
-    Heavy: 1.5,      // Тяжелый объект - более инертное движение
-    Massive: 2       // Очень тяжелый объект - медленная реакция
-  },
-  
-  // Предустановленные конфигурации для типовых случаев
-  Presets: {
-    // Для кнопок и небольших элементов
-    Button: {
-      stiffness: 290,
-      damping: 22.22,
-      mass: 1
-    },
-    
-    // Для модальных окон и панелей
-    Modal: {
-      stiffness: 230,
-      damping: 20,
-      mass: 1
-    },
-    
-    // Для выпадающих меню
-    Dropdown: {
-      stiffness: 250,
-      damping: 18,
-      mass: 0.8
-    },
-    
-    // Для крупных областей содержимого
-    Content: {
-      stiffness: 170,
-      damping: 22,
-      mass: 1.2
-    },
-    
-    // Для плавных и выразительных анимаций
-    Expressive: {
-      stiffness: 150,
-      damping: 10,
-      mass: 1
-    }
+    Heavy: 1.2,      // Тяжелый объект - более инертное движение
   }
 };
 
@@ -123,8 +81,8 @@ export const Spring = {
  */
 export const createAnimationConfig = ({
   duration = Duration.M,
-  easing = Easing.Standard,
-  delay = Delay.None,
+  easing = Easing.standard,
+  delay = Delay.none,
   ...rest
 }) => ({
   transition: {
@@ -139,10 +97,10 @@ export const createAnimationConfig = ({
  * Создает конфигурацию пружинной анимации для Framer Motion
  */
 export const createSpringConfig = ({
-  stiffness = Spring.Stiffness.Medium,
-  damping = Spring.Damping.Medium,
-  mass = Spring.Mass.Default,
-  delay = Delay.None,
+  stiffness = Spring.Medium.stiffness,
+  damping = Spring.Medium.damping,
+  mass = Spring.Medium.mass,
+  delay = Delay.none,
   ...rest
 }) => ({
   transition: {
@@ -180,78 +138,104 @@ export const ComponentAnimations = {
   button: {
     hover: {
       duration: Duration.XS,
-      easing: Easing.Standard,
-      delay: Delay.None
+      easing: Easing.standard,
+      delay: Delay.none
     },
     press: {
       duration: Duration.S,
-      easing: Easing.Standard,
-      delay: Delay.None
+      easing: Easing.standard,
+      delay: Delay.none
     },
-    icon: {
-      type: "spring",
-      stiffness: Spring.Stiffness.Firm,
-      damping: Spring.Damping.High,
-      mass: Spring.Mass.Default
-    }
+    icon: createSpringConfig({
+      ...Spring.Strong
+    })
   },
   
   // Модальные окна - более заметные переходы
   modal: {
     appear: {
-      duration: Duration.L,
-      easing: Easing.Entrance,
-      delay: Delay.None
+      duration: Duration.M,
+      easing: Easing.entrance,
+      delay: Delay.none
     },
     disappear: {
-      duration: Duration.M,
-      easing: Easing.Exit,
-      delay: Delay.None
+      duration: Duration.S,
+      easing: Easing.exit,
+      delay: Delay.none
     },
     // Фоновая подложка обычно имеет отдельную анимацию
     overlay: {
-      duration: Duration.M,
-      easing: Easing.Standard
+      duration: Duration.S,
+      easing: Easing.standard
     }
   },
   
   // Выпадающие списки, меню
   dropdown: {
-    appear: {
-      type: "spring",
-      stiffness: Spring.Stiffness.Medium,
-      damping: Spring.Damping.Medium,
+    appear: createSpringConfig({
+      ...Spring.Medium,
       mass: Spring.Mass.Light
-    },
+    }),
     disappear: {
-      duration: Duration.M,
-      easing: Easing.Exit
+      duration: Duration.S,
+      easing: Easing.exit
     }
   },
   
   // Переключатели, чекбоксы
   toggle: {
     duration: Duration.S,
-    easing: Easing.Standard
+    easing: Easing.standard
   },
   
   // Аккордеоны, раскрывающиеся блоки
   accordion: {
     expand: {
       type: "spring",
-      stiffness: Spring.Stiffness.Firm,
-      damping: Spring.Damping.High,
-      mass: Spring.Mass.Default
+      stiffness: Spring.Strong.stiffness,
+      damping: Spring.Strong.damping,
+      mass: Spring.Strong.mass,
+      duration: Duration.M,
+      ease: Easing.spring
     },
     collapse: {
-      duration: Duration.M,
-      easing: Easing.Exit
+      type: "spring",
+      stiffness: Spring.Strong.stiffness,
+      damping: Spring.Strong.damping,
+      mass: Spring.Strong.mass,
+      duration: Duration.S,
+      ease: Easing.spring
     }
   },
   
-  // Последовательная анимация элементов
-  stagger: {
-    delay: Delay.XS
+  // Вкладки (табы)
+  tabs: {
+    indicator: createSpringConfig({
+      ...Spring.Strong
+    }),
+    content: {
+      duration: Duration.S,
+      easing: Easing.standard
+    },
+    active: {
+      duration: Duration.S,
+      easing: Easing.entrance
+    }
+  },
+  
+  // Карточки
+  card: {
+    hover: {
+      duration: Duration.S,
+      easing: Easing.standard
+    },
+    press: createSpringConfig({
+      ...Spring.Strong
+    }),
+    appear: {
+      duration: Duration.M,
+      easing: Easing.entrance
+    }
   }
 };
 
@@ -265,7 +249,7 @@ export const MotionPresets = {
       scale: 1,
       transition: {
         duration: Duration.L,
-        ease: Easing.Entrance
+        ease: Easing.entrance
       }
     },
     exit: { 
@@ -273,7 +257,7 @@ export const MotionPresets = {
       scale: 0.95,
       transition: {
         duration: Duration.M,
-        ease: Easing.Standard
+        ease: Easing.standard
       }
     }
   },
@@ -286,7 +270,7 @@ export const MotionPresets = {
       y: 0,
       transition: {
         duration: Duration.M,
-        ease: Easing.Standard
+        ease: Easing.standard
       }
     }
   },

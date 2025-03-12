@@ -1,21 +1,21 @@
-import { Duration, Easing, ComponentAnimations } from './tokens';
+import { Duration, Easing, Spring, createSpringConfig, ComponentAnimations } from './tokens';
 
 // Конфигурация анимации для компонента Accordion
 export const accordionAnimationConfig = {
   type: "tween",
   duration: Duration.M,
-  ease: Easing.Standard
+  ease: Easing.standard
 };
 
 // Анимация для стрелки
 export const arrowAnimation = {
   transition: {
     duration: Duration.S,
-    ease: Easing.Spring,
+    ease: Easing.spring,
     type: "spring",
-    stiffness: 290,
-    damping: 22.22,
-    mass: 1
+    stiffness: Spring.Strong.stiffness,
+    damping: Spring.Strong.damping,
+    mass: Spring.Strong.mass
   }
 };
 
@@ -26,16 +26,16 @@ export const contentAnimation = {
   exit: { height: 0, opacity: 0 },
   transition: {
     height: {
-      duration: ComponentAnimations.accordion.expand.duration,
-      ease: Easing.Spring,
+      duration: Duration.M,
+      ease: Easing.spring,
       type: "spring",
-      stiffness: 290,
-      damping: 22.22,
-      mass: 1
+      stiffness: Spring.Strong.stiffness,
+      damping: Spring.Strong.damping,
+      mass: Spring.Strong.mass
     },
     opacity: {
       duration: Duration.S,
-      ease: Easing.Standard
+      ease: Easing.standard
     }
   },
   style: { overflow: "hidden" }

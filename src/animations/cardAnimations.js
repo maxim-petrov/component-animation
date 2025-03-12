@@ -1,4 +1,4 @@
-import { Duration, Easing, Delay } from './tokens';
+import { Duration, Easing, Delay, Spring, createSpringConfig, ComponentAnimations } from './tokens';
 
 // Конфигурация анимации для компонента Cards
 export const cardAnimationConfig = {
@@ -16,8 +16,7 @@ export const cardHoverAnimation = {
     scale: 0.98 
   },
   transition: {
-    duration: Duration.XS,
-    ease: Easing.standard
+    ...ComponentAnimations.card.hover
   }
 };
 
@@ -30,10 +29,9 @@ export const heartIconAnimation = {
   whileTap: { 
     scale: 0.9 
   },
-  transition: {
-    duration: Duration.S,
-    ease: Easing.spring
-  }
+  transition: createSpringConfig({
+    ...Spring.Medium
+  })
 };
 
 // Анимация для появления карточек
@@ -41,8 +39,7 @@ export const cardAppearAnimation = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   transition: (custom) => ({
-    duration: Duration.M,
-    ease: Easing.entrance,
+    ...ComponentAnimations.card.appear,
     delay: custom * Delay.short // Последовательное появление карточек
   })
 }; 

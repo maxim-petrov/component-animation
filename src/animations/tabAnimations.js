@@ -1,4 +1,4 @@
-import { Duration, Easing } from './tokens';
+import { Duration, Easing, createSpringConfig, Spring, ComponentAnimations } from './tokens';
 
 // Конфигурация анимации для компонента Tab
 export const tabAnimationConfig = {
@@ -19,13 +19,7 @@ export const tabButtonAnimation = {
 
 // Анимация для активной линии под табом
 export const activeLineAnimation = {
-  transition: {
-    type: "spring",
-    stiffness: 400,
-    damping: 25,
-    mass: 0.8,
-    duration: Duration.M
-  }
+  ...ComponentAnimations.tabs.indicator
 };
 
 // Анимация для подсветки активного таба
@@ -34,8 +28,8 @@ export const activeTabAnimation = {
   animate: { opacity: 1, scale: 1 },
   exit: { opacity: 0, scale: 0.95 },
   transition: {
-    duration: Duration.S,
-    ease: Easing.entrance,
+    duration: ComponentAnimations.tabs.active.duration,
+    ease: ComponentAnimations.tabs.active.easing,
     exit: {
       duration: Duration.S,
       ease: Easing.exit

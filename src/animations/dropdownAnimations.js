@@ -1,10 +1,10 @@
-import { Duration, Easing, Delay, ComponentAnimations } from './tokens';
+import { Duration, Easing, Delay, Spring, createSpringConfig, ComponentAnimations } from './tokens';
 
 // Конфигурация анимации для компонента DropdownButton
 export const dropdownAnimationConfig = {
   type: "tween",
   duration: Duration.M,
-  ease: Easing.Standard
+  ease: Easing.standard
 };
 
 // Анимация для стрелки выпадающего списка
@@ -13,12 +13,9 @@ export const arrowAnimation = {
   animate: (isOpen) => ({ 
     rotate: isOpen ? 90 : 0 
   }),
-  transition: {
-    type: "spring",
-    stiffness: 260,
-    damping: 20,
-    mass: 0.8
-  }
+  transition: createSpringConfig({
+    ...Spring.Strong
+  })
 };
 
 // Анимация для кнопки при наведении
@@ -29,7 +26,7 @@ export const buttonHoverAnimation = {
   whileTap: { },
   transition: {
     duration: Duration.XS,
-    ease: Easing.Standard
+    ease: Easing.standard
   }
 };
 
@@ -55,11 +52,11 @@ export const menuAnimation = {
   },
   transition: {
     type: "tween",
-    duration: 0.15,
-    ease: Easing.Standard,
+    duration: Duration.S,
+    ease: Easing.standard,
     height: {
-      duration: 0.18,
-      ease: [0.33, 1, 0.68, 1]
+      duration: Duration.M,
+      ease: Easing.standard
     }
   }
 };
@@ -71,9 +68,9 @@ export const menuItemAnimation = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.03 + custom * 0.02,
-      duration: 0.15,
-      ease: Easing.Standard
+      delay: Delay.short + custom * 0.02,
+      duration: Duration.S,
+      ease: Easing.standard
     }
   })
 }; 

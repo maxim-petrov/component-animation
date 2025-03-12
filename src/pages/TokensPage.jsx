@@ -56,7 +56,11 @@ const TokensPage = () => {
           </div>
           <div className="token-item">
             <h4 style={{ color: "#333" }}>Duration.XL</h4>
-            <p style={{ color: "#333" }}>400мс+ — сложные/выразительные анимации, декоративные эффекты</p>
+            <p style={{ color: "#333" }}>400мс — сложные/выразительные анимации, декоративные эффекты</p>
+          </div>
+          <div className="token-item">
+            <h4 style={{ color: "#333" }}>Duration.XXL</h4>
+            <p style={{ color: "#333" }}>700мс — особо выразительные анимации</p>
           </div>
         </div>
 
@@ -87,12 +91,12 @@ const TokensPage = () => {
 
         <div className="token-group">
           <div className="token-item-wide">
-            <h4 style={{ color: "#333" }}>Пресеты для Easing.spring</h4>
+            <h4 style={{ color: "#333" }}>Пресеты для пружинной анимации (Spring)</h4>
             <p style={{ color: "#333" }}>
               Готовые конфигурации пружинных анимаций для различных сценариев использования:
             </p>
             <ul style={{ color: "#333" }}>
-              <li><strong>Spring.Strong</strong> — сильный, энергичный эффект для быстрых и отзывчивых элементов (stiffness: 300, damping: 25, mass: 0.8)</li>
+              <li><strong>Spring.Strong</strong> — энергичный эффект для быстрых и отзывчивых элементов, включая аккордеон (stiffness: 290, damping: 22, mass: 1)</li>
               <li><strong>Spring.Medium</strong> — сбалансированный эффект для большинства интерфейсных анимаций (stiffness: 200, damping: 18, mass: 1)</li>
               <li><strong>Spring.Gentle</strong> — мягкий, плавный эффект для больших элементов и эмоциональных анимаций (stiffness: 120, damping: 14, mass: 1.2)</li>
             </ul>
@@ -153,8 +157,8 @@ const TokensPage = () => {
           Создают особое настроение, добавляют характер интерфейсу, усиливают вовлеченность.
         </p>
         <ul style={{ color: "#333" }}>
-          <li>Более длительные (Duration.L — Duration.XL) или с использованием Easing.spring</li>
-          <li>Используют нестандартные кривые ускорения или пресеты пружинных анимаций</li>
+          <li>Более длительные (Duration.L — Duration.XL) или с использованием пружинных анимаций</li>
+          <li>Используют Spring пресеты (Strong, Medium, Gentle) для более естественного движения</li>
           <li>Применяются точечно в ключевых моментах взаимодействия</li>
           <li>Примеры: успешное завершение действия, анимация приветствия, празднование достижения</li>
         </ul>
@@ -169,7 +173,7 @@ const TokensPage = () => {
           <li>Длительность анимации должна соответствовать её важности и размеру изменения</li>
           <li>Для связанных элементов используйте небольшие задержки для создания каскадного эффекта</li>
           <li>Эмоциональные анимации следует использовать сдержанно, чтобы не перегружать интерфейс</li>
-          <li>Для естественного движения предпочитайте Easing.spring с подходящими пресетами</li>
+          <li>Для естественного движения предпочитайте Spring пресеты</li>
         </ul>
 
         <h3 style={{ color: "#333" }}>Примеры работы с токенами</h3>
@@ -187,11 +191,27 @@ const buttonAnimation = {
   }
 };
 
-// Пример использования Easing.spring с готовым пресетом
+// Пример использования пружинной анимации для аккордеона
 const accordionAnimation = {
+  transition: {
+    type: "spring",
+    stiffness: Spring.Strong.stiffness,
+    damping: Spring.Strong.damping,
+    mass: Spring.Strong.mass,
+    duration: Duration.M
+  }
+};
+
+// Пример использования пружинного пресета для других компонентов
+const cardAnimation = {
   transition: createSpringConfig({
     ...Spring.Medium
   }).transition
+};
+
+// Пример использования готовых конфигураций для компонентов
+const dropdownAppearAnimation = {
+  ...ComponentAnimations.dropdown.appear
 };
 
 // Пример использования в CSS

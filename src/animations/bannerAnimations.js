@@ -1,4 +1,4 @@
-import { Duration, Easing, Delay } from './tokens';
+import { Duration, Easing, Delay, Spring, createSpringConfig } from './tokens';
 
 // Конфигурация анимации для компонента Banners
 export const bannerAnimationConfig = {
@@ -16,10 +16,9 @@ export const bannerHoverAnimation = {
     scale: 0.98,
     y: 0
   },
-  transition: {
-    duration: Duration.S,
-    ease: Easing.spring
-  }
+  transition: createSpringConfig({
+    ...Spring.Medium
+  })
 };
 
 // Анимация для внутреннего изображения при наведении на баннер
@@ -29,10 +28,9 @@ export const bannerImageAnimation = {
   variants: {
     hover: { scale: 1.1 }
   },
-  transition: {
-    duration: Duration.S,
-    ease: Easing.spring
-  }
+  transition: createSpringConfig({
+    ...Spring.Gentle
+  })
 };
 
 // Анимация для иконки в баннере
@@ -42,10 +40,9 @@ export const bannerIconAnimation = {
     rotate: 10,
     color: "#ff4157"
   },
-  transition: {
-    duration: Duration.S,
-    ease: Easing.spring
-  }
+  transition: createSpringConfig({
+    ...Spring.Strong
+  })
 };
 
 // Анимация для появления баннеров
@@ -55,12 +52,9 @@ export const bannerAppearAnimation = {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 50,
-        damping: 20,
-        mass: 1.2
-      }
+      transition: createSpringConfig({
+        ...Spring.Gentle
+      })
     }
   }
 }; 
