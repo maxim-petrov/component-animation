@@ -11,11 +11,16 @@ export const dropdownAnimationConfig = {
 export const arrowAnimation = {
   initial: { rotate: 0 },
   animate: (isOpen) => ({ 
-    rotate: isOpen ? 90 : 0 
+    rotate: isOpen ? 180 : 0 
   }),
-  transition: createSpringConfig({
-    ...Spring.Strong
-  })
+  transition: {
+    duration: Duration.S,
+    ease: Easing.spring,
+    type: "spring",
+    stiffness: Spring.Strong.stiffness,
+    damping: Spring.Strong.damping,
+    mass: Spring.Strong.mass
+  }
 };
 
 // Анимация для кнопки при наведении

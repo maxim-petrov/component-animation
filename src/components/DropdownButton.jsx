@@ -103,17 +103,24 @@ const DropdownButton = () => {
                 <div className="dd-btn-arrow-2cb-8-3-0">
                   <motion.div 
                     className="icon-root-864-6-0-3"
-                    custom={isOpen}
-                    transition={dropdownAnimationConfig}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
+                    <motion.svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      width="16" 
+                      height="16" 
+                      fill="none"
+                      animate={arrowAnimation.animate(isOpen)}
+                      initial={arrowAnimation.initial}
+                      transition={arrowAnimation.transition}
+                      style={{ transformOrigin: 'center' }}
+                    >
                       <path 
                         fill="currentColor" 
                         fillRule="evenodd" 
                         d="M7.41 11.09a.833.833 0 0 0 1.18 0l5-5a.833.833 0 0 0-1.18-1.18L8 9.322l-4.41-4.41A.833.833 0 0 0 2.41 6.09l5 5Z" 
                         clipRule="evenodd"
                       />
-                    </svg>
+                    </motion.svg>
                   </motion.div>
                 </div>
               </motion.button>
