@@ -7,41 +7,37 @@ const Sidebar = () => {
   const location = useLocation();
   
   const components = [
-    { path: '/button', name: 'Button' },
-    { path: '/accordion', name: 'Accordion' },
-    { path: '/tabs', name: 'Tabs' },
-    { path: '/cards', name: 'Cards' },
-    { path: '/banners', name: 'Banners' },
-    { path: '/dropdown-button', name: 'Dropdown Button' },
+    { path: 'button', name: 'Button' },
+    { path: 'accordion', name: 'Accordion' },
+    { path: 'tabs', name: 'Tabs' },
+    { path: 'cards', name: 'Cards' },
+    { path: 'banners', name: 'Banners' },
+    { path: 'dropdown-button', name: 'Dropdown Button' },
+    { path: 'multiple-button-select', name: 'Multiple Button Select' },
+    { path: 'input', name: 'Input' },
+    { path: 'checkbox', name: 'Checkbox' },
+    { path: 'search-box', name: 'Search Box' },
+    { path: 'textarea', name: 'Textarea' }
   ];
 
-  // Обработчик навигации с аварийным вариантом
+  // Обработчик навигации
   const handleNavigation = (path, e) => {
     // Предотвращаем стандартное поведение
     e.preventDefault();
     
-    // Проверяем, находимся ли мы на странице с табами
-    const isOnTabsPage = location.pathname === '/tabs';
-    
     try {
-      // Если мы на странице с табами, используем более принудительный подход
-      if (isOnTabsPage) {
-        // Принудительно меняем URL
-        window.location.href = path;
-      } else {
-        // Используем стандартный React Router API
-        navigate(path);
-      }
+      // Используем navigate с относительным путем
+      navigate(`/${path}`);
     } catch (error) {
       console.error("Ошибка навигации через React Router:", error);
-      // В случае ошибки, используем принудительную навигацию
-      window.location.href = path;
     }
   };
 
   // Функция для определения активности ссылки
   const isActive = (path) => {
-    return location.pathname === path;
+    // Для сравнения используем путь без ведущего слеша
+    const currentPath = location.pathname.replace(/^\//, '');
+    return currentPath === path;
   };
 
   return (
@@ -54,7 +50,7 @@ const Sidebar = () => {
           {components.map((component) => (
             <li key={component.path}>
               <a 
-                href={component.path}
+                href={`#/${component.path}`}
                 className={isActive(component.path) ? 'sidebar-link active' : 'sidebar-link'}
                 onClick={(e) => handleNavigation(component.path, e)}
               >
@@ -69,9 +65,9 @@ const Sidebar = () => {
           {/* Ссылка на страницу токенов */}
           <li>
             <a 
-              href="/tokens"
-              className={isActive('/tokens') ? 'sidebar-link active sidebar-link-tokens' : 'sidebar-link sidebar-link-tokens'}
-              onClick={(e) => handleNavigation('/tokens', e)}
+              href="#/tokens"
+              className={isActive('tokens') ? 'sidebar-link active sidebar-link-tokens' : 'sidebar-link sidebar-link-tokens'}
+              onClick={(e) => handleNavigation('tokens', e)}
             >
               Токены анимации
             </a>

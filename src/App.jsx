@@ -37,7 +37,7 @@ function App() {
     <HashRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to="/button" replace />} />
+          <Route index element={<Navigate to="button" replace />} />
           <Route path="button" element={<ButtonPage />} />
           <Route path="accordion" element={<AccordionPage />} />
           <Route path="multiple-button-select" element={<MultipleButtonSelectPage />} />
@@ -52,7 +52,7 @@ function App() {
           <Route path="tokens" element={<TokensPage />} />
           
           {/* Redirect any unknown paths to home */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="button" replace />} />
         </Route>
       </Routes>
     </HashRouter>
