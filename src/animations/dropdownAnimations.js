@@ -11,11 +11,13 @@ export const dropdownAnimationConfig = {
 export const arrowAnimation = {
   initial: { rotate: 0 },
   animate: (isOpen) => ({ 
-    rotate: isOpen ? 180 : 0 
+    rotate: isOpen ? 90 : 0 
   }),
   transition: {
-    duration: Duration.S,
-    ease: Easing.Standard
+    type: "spring",
+    stiffness: 260,
+    damping: 20,
+    mass: 0.8
   }
 };
 
