@@ -104,7 +104,6 @@ const DropdownButton = () => {
                   <motion.div 
                     className="icon-root-864-6-0-3"
                     custom={isOpen}
-                    animate={isOpen ? { rotate: 180 } : { rotate: 0 }}
                     transition={dropdownAnimationConfig}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
