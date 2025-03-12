@@ -22,12 +22,9 @@ export const arrowAnimation = {
 // Анимация для кнопки при наведении
 export const buttonHoverAnimation = {
   whileHover: { 
-    scale: 1.03,
     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)"
   },
-  whileTap: { 
-    scale: 0.97
-  },
+  whileTap: { },
   transition: {
     duration: Duration.XS,
     ease: Easing.Standard
