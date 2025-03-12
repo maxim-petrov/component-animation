@@ -1,41 +1,6 @@
 import { motion } from 'framer-motion';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Tabs from '../components/Tabs';
-
-// Компонент для восстановления навигации
-const NavigationFixer = () => {
-  useEffect(() => {
-    // Найти все ссылки и сделать их работоспособными
-    const makeLinksWorkAgain = () => {
-      document.querySelectorAll('a[href]').forEach(link => {
-        // Если ссылка уже имеет обработчик, не добавляем новый
-        if (!link.__navigationFixed) {
-          const originalHref = link.href;
-          
-          // Добавляем прямую навигацию при клике
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.location.href = originalHref;
-          }, true);
-          
-          // Отмечаем ссылку как исправленную
-          link.__navigationFixed = true;
-        }
-      });
-    };
-    
-    // Исправляем навигацию сразу и с небольшой задержкой для динамически добавленных элементов
-    makeLinksWorkAgain();
-    const interval = setInterval(makeLinksWorkAgain, 1000);
-    
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-  
-  return null;
-};
 
 const TabsPage = () => {
   return (
@@ -46,9 +11,6 @@ const TabsPage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Добавляем компонент для исправления навигации */}
-      <NavigationFixer />
-      
       <h1>Tabs</h1>
       <div className="component-demo">
         <div className="component-demo-inner">
