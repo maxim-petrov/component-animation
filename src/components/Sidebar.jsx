@@ -9,12 +9,13 @@ const Sidebar = () => {
     { path: 'tabs', name: 'Tabs' },
     { path: 'cards', name: 'Cards' },
     { path: 'banners', name: 'Banners' },
-    { path: 'dropdown-button', name: 'Dropdown Button' },
-    { path: 'multiple-button-select', name: 'Multiple Button Select' },
-    { path: 'input', name: 'Input' },
-    { path: 'checkbox', name: 'Checkbox' },
-    { path: 'search-box', name: 'Search Box' },
-    { path: 'textarea', name: 'Textarea' }
+    { path: 'dropdown-button', name: 'Dropdown Button' }
+    // Временно скрытые компоненты
+    // { path: 'multiple-button-select', name: 'Multiple Button Select' },
+    // { path: 'input', name: 'Input' },
+    // { path: 'checkbox', name: 'Checkbox' },
+    // { path: 'search-box', name: 'Search Box' },
+    // { path: 'textarea', name: 'Textarea' }
   ];
 
   // Специальные разделы (например, токены)
