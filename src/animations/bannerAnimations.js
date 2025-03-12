@@ -13,7 +13,6 @@ export const bannerHoverAnimation = {
     boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.15)"
   },
   whileTap: { 
-    scale: 0.98,
     y: 0
   },
   transition: createSpringConfig({
