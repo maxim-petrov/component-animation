@@ -7,7 +7,6 @@ import './no-focus.js';
 
 // Layout
 import Layout from './components/Layout';
-import Home from './components/Home';
 
 // Pages
 import ButtonPage from './pages/ButtonPage';
@@ -38,7 +37,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Navigate to="/button" replace />} />
           <Route path="button" element={<ButtonPage />} />
           <Route path="accordion" element={<AccordionPage />} />
           <Route path="multiple-button-select" element={<MultipleButtonSelectPage />} />
