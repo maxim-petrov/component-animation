@@ -9,7 +9,8 @@ const Sidebar = () => {
     { path: 'tabs', name: 'Tabs' },
     { path: 'cards', name: 'Cards' },
     { path: 'banners', name: 'Banners' },
-    { path: 'dropdown-button', name: 'Dropdown Button' }
+    { path: 'dropdown-button', name: 'Dropdown Button' },
+    { path: 'slider', name: 'Slider' }
     // Временно скрытые компоненты
     // { path: 'multiple-button-select', name: 'Multiple Button Select' },
     // { path: 'input', name: 'Input' },

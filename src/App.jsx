@@ -21,6 +21,7 @@ import CheckboxPage from './pages/CheckboxPage';
 import SearchBoxPage from './pages/SearchBoxPage';
 import TextareaPage from './pages/TextareaPage';
 import TokensPage from './pages/TokensPage';
+import SliderPage from './pages/SliderPage';
 
 // Import pages for other components when ready
 // import TabsPage from './pages/TabsPage';
@@ -49,6 +50,7 @@ function App() {
           <Route path="checkbox" element={<CheckboxPage />} />
           <Route path="search-box" element={<SearchBoxPage />} />
           <Route path="textarea" element={<TextareaPage />} />
+          <Route path="slider" element={<SliderPage />} />
           <Route path="tokens" element={<TokensPage />} />
           
           {/* Redirect any unknown paths to home */}
