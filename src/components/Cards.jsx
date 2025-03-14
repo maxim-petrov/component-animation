@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { cardHoverAnimation, heartIconAnimation, cardAppearAnimation } from '../animations/cardAnimations';
 import '../global.css';
+import '../styles/components/Cards.css';
 
 const Card = ({ id, title, subtitle, index }) => {
   return (
