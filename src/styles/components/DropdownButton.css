@@ -1,0 +1,248 @@
+.dd-btn-root-4f6-8-3-0 {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none
+}
+
+.dd-btn-button-376-8-3-0 .dd-btn-title-7d3-8-3-0 {
+    color: var(--color_text_primary,#262626);
+    font: 500 14px/18px SBSans,sans-serif;
+    letter-spacing: normal;
+    letter-spacing: -.28px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    text-indent: 0;
+    text-shadow: none;
+    text-transform: none
+}
+
+.dd-btn-button-376-8-3-0 {
+    box-shadow: none;
+    box-sizing: border-box;
+    outline: none
+}
+
+.dd-btn-button-376-8-3-0::-moz-focus-inner {
+    border: none
+}
+
+.dd-btn-button-376-8-3-0:focus {
+    outline: none
+}
+
+.dd-btn-button-376-8-3-0 {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+
+.dd-btn-root-4f6-8-3-0 {
+    display: inline-block
+}
+
+.dd-btn-root-4f6-8-3-0.dd-btn-open-357-8-3-0 .dd-btn-button-376-8-3-0 .dd-btn-arrow-2cb-8-3-0 {
+}
+
+.dd-btn-root-4f6-8-3-0.dd-btn-disabled-b4c-8-3-0 {
+    cursor: default
+}
+
+.dd-btn-root-4f6-8-3-0.dd-btn-fluid-391-8-3-0 {
+    width: 100%
+}
+
+.dd-btn-footerButtons-111-8-3-0 {
+    padding: 0 16px
+}
+
+.dd-btn-button-376-8-3-0 {
+    align-items: center;
+    border: 1px solid #0000;
+    border-radius: 8px;
+    color: var(--color_text_primary,#262626);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%
+}
+
+.dd-btn-button-376-8-3-0 .dd-btn-arrow-2cb-8-3-0 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 8px;
+    transition: transform .4s ease-in-out;
+    will-change: transform
+}
+
+.dd-btn-buttonFluid-c0d-8-3-0 .dd-btn-arrow-2cb-8-3-0 {
+    margin-left: auto
+}
+
+.dd-btn-button-376-8-3-0 .dd-btn-icon-28f-8-3-0 {
+    display: block;
+    height: 16px;
+    margin-right: 8px;
+    width: 16px
+}
+
+.dd-btn-button-376-8-3-0 .dd-btn-dot-eb9-8-3-0 {
+    right: -1px;
+    top: -1px
+}
+
+.dd-btn-button-376-8-3-0 .dd-btn-title-7d3-8-3-0 {
+    color: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.dd-btn-button-376-8-3-0 .dd-btn-counter-732-8-3-0 {
+    display: flex;
+    margin-left: 8px
+}
+
+.dd-btn-buttonIconCounter-d84-8-3-0 .dd-btn-icon-28f-8-3-0,.dd-btn-buttonIconOnly-0d9-8-3-0 .dd-btn-icon-28f-8-3-0 {
+    margin-right: 0
+}
+
+.dd-btn-button-primary-78f-8-3-0 {
+    background-color: var(--color_bg_control_secondary_default,#e7eef3)
+}
+
+@media (-ms-high-contrast:active),(-ms-high-contrast:none),(hover) and (pointer: fine) {
+    .dd-btn-button-primary-78f-8-3-0:hover {
+        background-color:var(--color_bg_control_secondary_hover,#e0e4e9)
+    }
+}
+
+.dd-btn-button-primary-78f-8-3-0:active {
+    background-color: var(--color_bg_control_secondary_default,#e7eef3)
+}
+
+.dd-btn-button-primary-78f-8-3-0.dd-btn-disabled-b4c-8-3-0,.dd-btn-button-primary-78f-8-3-0.dd-btn-disabled-b4c-8-3-0:active,.dd-btn-button-primary-78f-8-3-0.dd-btn-disabled-b4c-8-3-0:hover {
+    background-color: var(--color_bg_control_secondary_disabled,#fafafa)
+}
+
+.dd-btn-button-primary-78f-8-3-0.dd-btn-disabled-b4c-8-3-0 .dd-btn-icon-28f-8-3-0,.dd-btn-button-primary-78f-8-3-0.dd-btn-disabled-b4c-8-3-0:active .dd-btn-icon-28f-8-3-0,.dd-btn-button-primary-78f-8-3-0.dd-btn-disabled-b4c-8-3-0:hover .dd-btn-icon-28f-8-3-0 {
+    color: var(--color_icon_disabled,rgba(0,0,0,.322))
+}
+
+.dd-btn-button-primary-78f-8-3-0.dd-btn-disabled-b4c-8-3-0 .dd-btn-text-66c-8-3-0,.dd-btn-button-primary-78f-8-3-0.dd-btn-disabled-b4c-8-3-0:active .dd-btn-text-66c-8-3-0,.dd-btn-button-primary-78f-8-3-0.dd-btn-disabled-b4c-8-3-0:hover .dd-btn-text-66c-8-3-0 {
+    color: var(--color_text_disabled,rgba(0,0,0,.322))
+}
+
+.dd-btn-button-secondary-176-8-3-0 {
+    background-color: var(--color_bg_control_primary_default,#fff)
+}
+
+@media (-ms-high-contrast:active),(-ms-high-contrast:none),(hover) and (pointer: fine) {
+    .dd-btn-button-secondary-176-8-3-0:hover {
+        background-color:var(--color_bg_control_primary_hover,#f6f7f9)
+    }
+}
+
+.dd-btn-button-secondary-176-8-3-0:active {
+    background-color: var(--color_bg_control_primary_default,#fff)
+}
+
+.dd-btn-button-secondary-176-8-3-0.dd-btn-disabled-b4c-8-3-0,.dd-btn-button-secondary-176-8-3-0.dd-btn-disabled-b4c-8-3-0:active,.dd-btn-button-secondary-176-8-3-0.dd-btn-disabled-b4c-8-3-0:hover {
+    background-color: var(--color_bg_control_primary_disabled,#fafafa)
+}
+
+.dd-btn-button-secondary-176-8-3-0.dd-btn-disabled-b4c-8-3-0 .dd-btn-icon-28f-8-3-0,.dd-btn-button-secondary-176-8-3-0.dd-btn-disabled-b4c-8-3-0:active .dd-btn-icon-28f-8-3-0,.dd-btn-button-secondary-176-8-3-0.dd-btn-disabled-b4c-8-3-0:hover .dd-btn-icon-28f-8-3-0 {
+    color: var(--color_icon_disabled,rgba(0,0,0,.322))
+}
+
+.dd-btn-button-secondary-176-8-3-0.dd-btn-disabled-b4c-8-3-0 .dd-btn-text-66c-8-3-0,.dd-btn-button-secondary-176-8-3-0.dd-btn-disabled-b4c-8-3-0:active .dd-btn-text-66c-8-3-0,.dd-btn-button-secondary-176-8-3-0.dd-btn-disabled-b4c-8-3-0:hover .dd-btn-text-66c-8-3-0 {
+    color: var(--color_text_disabled,rgba(0,0,0,.322))
+}
+
+.dd-btn-button-transparent-bb1-8-3-0 {
+    background-color: initial
+}
+
+@media (-ms-high-contrast:active),(-ms-high-contrast:none),(hover) and (pointer: fine) {
+    .dd-btn-button-transparent-bb1-8-3-0:hover {
+        background-color:initial
+    }
+}
+
+.dd-btn-button-transparent-bb1-8-3-0.dd-btn-disabled-b4c-8-3-0,.dd-btn-button-transparent-bb1-8-3-0.dd-btn-disabled-b4c-8-3-0:active,.dd-btn-button-transparent-bb1-8-3-0.dd-btn-disabled-b4c-8-3-0:hover,.dd-btn-button-transparent-bb1-8-3-0:active {
+    background-color: initial
+}
+
+.dd-btn-button-transparent-bb1-8-3-0.dd-btn-disabled-b4c-8-3-0 .dd-btn-icon-28f-8-3-0,.dd-btn-button-transparent-bb1-8-3-0.dd-btn-disabled-b4c-8-3-0:active .dd-btn-icon-28f-8-3-0,.dd-btn-button-transparent-bb1-8-3-0.dd-btn-disabled-b4c-8-3-0:hover .dd-btn-icon-28f-8-3-0 {
+    color: var(--color_icon_disabled,rgba(0,0,0,.322))
+}
+
+.dd-btn-button-transparent-bb1-8-3-0.dd-btn-disabled-b4c-8-3-0 .dd-btn-text-66c-8-3-0,.dd-btn-button-transparent-bb1-8-3-0.dd-btn-disabled-b4c-8-3-0:active .dd-btn-text-66c-8-3-0,.dd-btn-button-transparent-bb1-8-3-0.dd-btn-disabled-b4c-8-3-0:hover .dd-btn-text-66c-8-3-0 {
+    color: var(--color_text_disabled,rgba(0,0,0,.322))
+}
+
+.dd-btn-button-transparent-bb1-8-3-0 {
+    padding-left: 2px;
+    padding-right: 2px
+}
+
+.dd-btn-button-376-8-3-0:hover {
+    transition: background-color .5s
+}
+
+.dd-btn-button-376-8-3-0:focus.focus-visible {
+    outline: var(--color_border_input_focus_visible,#1175da) solid 2px;
+    outline-offset: 2px
+}
+
+.dd-btn-button-large-015-8-3-0 {
+    height: 56px;
+    padding: 0 20px
+}
+
+.dd-btn-button-large-015-8-3-0.dd-btn-buttonIconOnly-0d9-8-3-0:not(.dd-btn-buttonFluid-c0d-8-3-0) {
+    padding: 0;
+    width: 56px
+}
+
+.dd-btn-button-largeIconCounter-491-8-3-0 {
+    padding: 0 16px
+}
+
+.dd-btn-button-medium-b23-8-3-0 {
+    height: 40px;
+    padding: 0 16px
+}
+
+.dd-btn-button-medium-b23-8-3-0.dd-btn-buttonIconOnly-0d9-8-3-0:not(.dd-btn-buttonFluid-c0d-8-3-0) {
+    padding: 0;
+    width: 40px
+}
+
+.dd-btn-button-mediumIconCounter-a72-8-3-0 {
+    padding: 0 10px
+}
+
+.dd-btn-button-small-18f-8-3-0 {
+    height: 32px;
+    padding: 0 12px
+}
+
+.dd-btn-button-small-18f-8-3-0.dd-btn-buttonIconOnly-0d9-8-3-0:not(.dd-btn-buttonFluid-c0d-8-3-0) {
+    padding: 0;
+    width: 32px
+}
+
+.dd-btn-button-smallIconCounter-0e1-8-3-0 {
+    padding: 0 6px
+}
+
+.dd-btn-buttonDisabled-2a5-8-3-0,.dd-btn-buttonDisabled-2a5-8-3-0:active,.dd-btn-buttonDisabled-2a5-8-3-0:focus,.dd-btn-buttonDisabled-2a5-8-3-0:hover {
+    background: var(--color_bg_control_secondary_disabled,#fafafa);
+    color: var(--color_text_disabled,rgba(0,0,0,.322));
+    cursor: default
+}
+
+.dd-btn-buttonDisabled-2a5-8-3-0 .dd-btn-arrow-2cb-8-3-0,.dd-btn-buttonDisabled-2a5-8-3-0 .dd-btn-icon-28f-8-3-0,.dd-btn-buttonDisabled-2a5-8-3-0:active .dd-btn-arrow-2cb-8-3-0,.dd-btn-buttonDisabled-2a5-8-3-0:active .dd-btn-icon-28f-8-3-0,.dd-btn-buttonDisabled-2a5-8-3-0:focus .dd-btn-arrow-2cb-8-3-0,.dd-btn-buttonDisabled-2a5-8-3-0:focus .dd-btn-icon-28f-8-3-0,.dd-btn-buttonDisabled-2a5-8-3-0:hover .dd-btn-arrow-2cb-8-3-0,.dd-btn-buttonDisabled-2a5-8-3-0:hover .dd-btn-icon-28f-8-3-0 {
+    color: var(--color_icon_disabled,rgba(0,0,0,.322))
+}
