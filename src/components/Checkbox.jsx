@@ -8,6 +8,7 @@ import {
   checkboxTextAnimation
 } from '../animations/checkboxAnimations';
 import '../global.css';
+import '../styles/typography.css';
 
 const CheckboxItem = ({ id, label, isChecked, onChange }) => {
   return (

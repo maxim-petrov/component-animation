@@ -7,6 +7,7 @@ import {
   buttonToggleAnimation
 } from '../animations/multipleButtonSelectAnimations';
 import '../global.css';
+import '../styles/typography.css';
 
 // Компонент для отдельной кнопки выбора
 const SelectButton = ({ id, text, isActive, onToggle }) => {

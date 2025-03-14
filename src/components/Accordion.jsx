@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { accordionAnimationConfig, arrowAnimation, contentAnimation } from '../animations/accordionAnimations';
 import '../global.css';
 import '../styles/components/Accordion.css';
+import '../styles/typography.css';
 
 const Accordion = ({ title = 'Заголовок', subtitle = 'Подзаголовок', content = 'Оригинал документа, на основании которого продавец стал собственником квартиры. Например, договор купли-продажи, договор долевого участия, договор дарения и другие (находится у собственника)' }) => {
   const [isOpen, setIsOpen] = useState(false);

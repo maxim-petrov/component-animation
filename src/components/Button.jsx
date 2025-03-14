@@ -6,6 +6,7 @@ import {
   iconAnimation
 } from '../animations/buttonAnimations';
 import '../styles/components/Button.css';
+import '../styles/typography.css';
 
 const Button = ({ 
   text = 'Кнопка', 

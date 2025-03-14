@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppNavigation, getActiveClass } from '../utils/navigation';
+import '../styles/typography.css';
 
 /**
  * Универсальный компонент для ссылок внутри приложения

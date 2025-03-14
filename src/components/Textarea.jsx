@@ -7,6 +7,7 @@ import {
   placeholderAnimation
 } from '../animations/textareaAnimations';
 import '../global.css';
+import '../styles/typography.css';
 
 const Textarea = () => {
   const [value, setValue] = useState('');

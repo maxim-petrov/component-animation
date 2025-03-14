@@ -1,5 +1,6 @@
 import '../App.css';
 import AppLink from './AppLink';
+import '../styles/typography.css';
 
 const Sidebar = () => {
   // Все компоненты в одном массиве для удобного управления

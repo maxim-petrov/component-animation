@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { cardHoverAnimation, heartIconAnimation, cardAppearAnimation } from '../animations/cardAnimations';
 import '../global.css';
 import '../styles/components/Cards.css';
+import '../styles/typography.css';
 
 const Card = ({ id, title, subtitle, index }) => {
   return (

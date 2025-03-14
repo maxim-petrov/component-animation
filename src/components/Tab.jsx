@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { tabButtonAnimation } from '../animations/tabAnimations';
 import '../global.css';
 import '../styles/components/Tabs.css';
+import '../styles/typography.css';
 
 const Tab = forwardRef(({ id, label, isActive, onClick }, ref) => {
   return (

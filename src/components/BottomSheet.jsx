@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Duration, Easing, Spring, createSpringConfig } from '../animations/tokens';
 import '../global.css';
 import '../styles/components/BottomSheet.css';
+import '../styles/typography.css';
 
 const BottomSheet = ({
   isOpen = false,

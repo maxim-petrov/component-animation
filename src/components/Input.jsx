@@ -8,6 +8,7 @@ import {
   borderAnimation
 } from '../animations/inputAnimations';
 import '../global.css';
+import '../styles/typography.css';
 
 const Input = () => {
   const [value, setValue] = useState('Текст');

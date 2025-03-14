@@ -8,6 +8,7 @@ import {
   menuItemAnimation
 } from '../animations/dropdownAnimations';
 import '../global.css';
+import '../styles/typography.css';
 
 const DropdownItem = ({ id, title, onClick, isSelected, index }) => {
   return (

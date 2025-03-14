@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Sidebar from './Sidebar';
 import '../App.css';
+import '../styles/typography.css';
 
 const Layout = () => {
   return (

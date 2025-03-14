@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { bannerHoverAnimation, bannerIconAnimation, bannerAppearAnimation, bannerImageAnimation } from '../animations/bannerAnimations';
 import '../global.css';
 import '../styles/components/Cards.css';
+import '../styles/typography.css';
 
 const Banner = ({ id, title, subtitle, index }) => {
   return (

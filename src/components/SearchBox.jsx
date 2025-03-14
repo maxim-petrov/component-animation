@@ -8,6 +8,7 @@ import {
   groupTitleAnimation
 } from '../animations/searchBoxAnimations';
 import '../global.css';
+import '../styles/typography.css';
 
 const SearchBoxItem = ({ id, title, group, index, isSelected, onSelect }) => {
   return (

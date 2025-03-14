@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { listCellHoverAnimation, listCellTapAnimation, radioAnimation, avatarAnimation } from '../animations/listCellAnimations';
 import '../global.css';
 import '../styles/components/ListCell.css';
+import '../styles/typography.css';
 
 /**
  * Компонент ListCell - элемент списка с выбором через радиокнопку.
