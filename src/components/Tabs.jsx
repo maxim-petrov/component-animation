@@ -4,6 +4,7 @@ import Tab from './Tab';
 import { tabsAnimationConfig, tabContentAnimation, scrollArrowAnimation } from '../animations/tabsAnimations';
 import { activeLineAnimation } from '../animations/tabAnimations';
 import '../global.css';
+import '../styles/components/Tabs.css';
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState('value-0');
