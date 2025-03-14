@@ -13,11 +13,27 @@ const SliderPage = () => {
       transition={{ duration: 0.5 }}
     >
       <h1>Slider</h1>
+      
+      <div className="component-description">
+        <h2 style={{ color: "#333" }}>Вариант с текстовым полем</h2>
+      </div>
+      
       <div className="component-demo">
         <div className="component-demo-inner">
-          <Slider />
+          <Slider defaultValue={0} />
         </div>
       </div>
+      
+      <div className="component-description">
+        <h2 style={{ color: "#333" }}>Вариант без текстового поля</h2>
+      </div>
+      
+      <div className="component-demo">
+        <div className="component-demo-inner">
+          <Slider defaultValue={55} withInput={false} active={true} />
+        </div>
+      </div>
+      
       <div className="component-description">
         <h2 style={{ color: "#333" }}>Токены</h2>
         <p style={{ color: "#333" }}>
@@ -42,6 +58,16 @@ const SliderPage = () => {
         <p style={{ color: "#333" }}>
           Структурная и функциональная анимация - показывает изменение состояния интерфейса и дает мгновенную обратную связь при взаимодействии. Spring-физика делает движение более естественным и приятным, создавая ощущение физического взаимодействия с объектом реального мира.
         </p>
+
+        <h3 style={{ color: "#333" }}>Варианты компонента</h3>
+        <p style={{ color: "#333" }}>
+          Компонент Slider поддерживает два варианта отображения:
+        </p>
+        <ul style={{ color: "#333" }}>
+          <li><strong>С текстовым полем (withInput=true)</strong> - отображает ползунок вместе с полем для прямого ввода значения</li>
+          <li><strong>Без текстового поля (withInput=false)</strong> - отображает только ползунок с метками значений</li>
+          <li><strong>Активное состояние (active=true)</strong> - для варианта без текстового поля добавляет класс активного состояния</li>
+        </ul>
         
         <h3 style={{ color: "#333" }}>Преимущества использования spring-анимации</h3>
         <ul style={{ color: "#333" }}>
