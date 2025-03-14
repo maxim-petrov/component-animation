@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Duration, Easing, Spring, createSpringConfig } from '../animations/tokens';
 import '../global.css';
+import '../styles/components/Slider.css';
 
 const Slider = ({ 
   min = 0, 
