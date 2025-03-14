@@ -5,7 +5,7 @@ import {
   buttonHoverAnimation, 
   iconAnimation
 } from '../animations/buttonAnimations';
-import '../global.css';
+import '../styles/components/Button.css';
 
 const Button = ({ 
   text = 'Кнопка', 

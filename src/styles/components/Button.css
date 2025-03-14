@@ -1,0 +1,340 @@
+/* Стили для компонента Button */
+
+/* Контейнер для кнопки */
+.CqkE8 {
+  display: flex;
+  justify-content: center;
+}
+
+/* Иконка внутри кнопки */
+.icon-root-864-6-0-3 {
+  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+  min-height: 16px;
+  min-width: 16px;
+  overflow: hidden;
+  width: 16px;
+}
+
+.icon-root-864-6-0-3:hover {
+  transition: color .15s ease-in-out;
+}
+
+/* Основные стили кнопки */
+.btn-root-119-18-1-1 {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  align-items: center;
+  background-color: initial;
+  border: 1px solid #0000;
+  border-radius: 8px;
+  color: var(--color_text_inverse_primary,#fff);
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  transition: background-color .17s ease-out, border-color .17s ease-out;
+}
+
+.btn-root-119-18-1-1 .btn-text-398-18-1-1 {
+  color: var(--color_text_primary,#262626);
+  font: 500 14px/18px SBSans,sans-serif;
+  letter-spacing: normal;
+  letter-spacing: -.28px;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  text-indent: 0;
+  text-shadow: none;
+  color: var(--color_text_inverse_primary,#fff);
+  font-style: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: none;
+  transition: color .17s ease-out;
+  white-space: nowrap;
+}
+
+.btn-root-119-18-1-1.btn-typeButtonReset-268-18-1-1,
+.btn-root-119-18-1-1.btn-typeLinkReset-a0d-18-1-1 {
+  box-shadow: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.btn-root-119-18-1-1.btn-typeButtonReset-268-18-1-1::-moz-focus-inner,
+.btn-root-119-18-1-1.btn-typeLinkReset-a0d-18-1-1::-moz-focus-inner {
+  border: none;
+}
+
+.btn-root-119-18-1-1.btn-typeButtonReset-268-18-1-1:focus,
+.btn-root-119-18-1-1.btn-typeLinkReset-a0d-18-1-1:focus {
+  outline: none;
+}
+
+.btn-root-119-18-1-1.btn-typeButtonReset-268-18-1-1 {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+.btn-root-119-18-1-1.btn-typeLinkReset-a0d-18-1-1 {
+  text-decoration: none;
+}
+
+@media (-ms-high-contrast:active),(-ms-high-contrast:none),(hover) and (pointer: fine) {
+  .btn-root-119-18-1-1.btn-typeButtonReset-268-18-1-1:focus.focus-visible,
+  .btn-root-119-18-1-1.btn-typeLinkReset-a0d-18-1-1:focus.focus-visible {
+    outline: var(--color_border_input_focus_visible,#1175da) solid 2px;
+    outline-offset: 2px;
+  }
+}
+
+@media (-ms-high-contrast:active),(-ms-high-contrast:none) {
+  .btn-root-119-18-1-1 .btn-text-398-18-1-1 {
+    flex-basis: auto;
+  }
+}
+
+/* Стили для иконок */
+.btn-root-119-18-1-1 .btn-icon-72f-18-1-1 {
+  color: var(--color_icon_inverse_default,#fff);
+  display: block;
+  height: 16px;
+  transition: color .17s ease-out;
+  width: 16px;
+}
+
+.btn-root-119-18-1-1 .btn-icon--left-5a5-18-1-1 {
+  margin-right: 4px;
+  order: -1;
+}
+
+.btn-root-119-18-1-1 .btn-icon--right-38e-18-1-1 {
+  margin-left: 4px;
+  order: 1;
+}
+
+/* Разные размеры кнопок */
+.btn-root-119-18-1-1.btn-large-9e4-18-1-1 {
+  height: 56px;
+  padding: 0 20px;
+}
+
+.btn-root-119-18-1-1.btn-large-9e4-18-1-1.btn-iconOnly-df3-18-1-1 {
+  min-width: 56px;
+  width: 56px;
+}
+
+.btn-root-119-18-1-1.btn-medium-fdc-18-1-1 {
+  height: 40px;
+  padding: 0 16px;
+}
+
+.btn-root-119-18-1-1.btn-medium-fdc-18-1-1.btn-iconOnly-df3-18-1-1 {
+  min-width: 40px;
+  width: 40px;
+}
+
+.btn-root-119-18-1-1.btn-small-1ac-18-1-1 {
+  height: 32px;
+  padding: 0 12px;
+}
+
+.btn-root-119-18-1-1.btn-small-1ac-18-1-1.btn-iconOnly-df3-18-1-1 {
+  min-width: 32px;
+  width: 32px;
+}
+
+.btn-root-119-18-1-1.btn-large-9e4-18-1-1 .btn-icon--left-5a5-18-1-1,
+.btn-root-119-18-1-1.btn-medium-fdc-18-1-1 .btn-icon--left-5a5-18-1-1 {
+  margin-right: 8px;
+}
+
+.btn-root-119-18-1-1.btn-large-9e4-18-1-1 .btn-icon--right-38e-18-1-1,
+.btn-root-119-18-1-1.btn-medium-fdc-18-1-1 .btn-icon--right-38e-18-1-1 {
+  margin-left: 8px;
+}
+
+/* Варианты кнопок - Primary */
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1 {
+  background-color: var(--color_bg_brand_default,#009e36);
+}
+
+@media (-ms-high-contrast:active),(-ms-high-contrast:none),(hover) and (pointer: fine) {
+  .btn-root-119-18-1-1.btn-primary-a30-18-1-1:hover {
+    background-color: var(--color_bg_brand_hover,#009532);
+  }
+}
+
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1:active {
+  background-color: var(--color_bg_brand_active,#00822c);
+}
+
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1.btn-disabled-0a4-18-1-1,
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1.btn-disabled-0a4-18-1-1:active,
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1.btn-disabled-0a4-18-1-1:hover {
+  background-color: var(--color_bg_control_secondary_disabled,#fafafa);
+}
+
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1.btn-disabled-0a4-18-1-1 .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1.btn-disabled-0a4-18-1-1:active .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1.btn-disabled-0a4-18-1-1:hover .btn-icon-72f-18-1-1 {
+  color: var(--color_icon_disabled,rgba(0,0,0,.322));
+}
+
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1.btn-disabled-0a4-18-1-1 .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1.btn-disabled-0a4-18-1-1:active .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1.btn-disabled-0a4-18-1-1:hover .btn-text-398-18-1-1 {
+  color: var(--color_text_disabled,rgba(0,0,0,.322));
+}
+
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1:link,
+.btn-root-119-18-1-1.btn-primary-a30-18-1-1:visited {
+  color: var(--color_text_inverse_primary,#fff);
+}
+
+/* Варианты кнопок - Primary Alternative */
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1 {
+  background-color: var(--color_bg_control_primary_default,#fff);
+}
+
+@media (-ms-high-contrast:active),(-ms-high-contrast:none),(hover) and (pointer: fine) {
+  .btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1:hover {
+    background-color: var(--color_bg_control_primary_hover,#f6f7f9);
+  }
+}
+
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1:active {
+  background-color: var(--color_bg_control_primary_active,#dedfe3);
+}
+
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1.btn-disabled-0a4-18-1-1,
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1.btn-disabled-0a4-18-1-1:active,
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1.btn-disabled-0a4-18-1-1:hover {
+  background-color: var(--color_bg_control_secondary_disabled,#fafafa);
+}
+
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1.btn-disabled-0a4-18-1-1 .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1.btn-disabled-0a4-18-1-1:active .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1.btn-disabled-0a4-18-1-1:hover .btn-icon-72f-18-1-1 {
+  color: var(--color_icon_disabled,rgba(0,0,0,.322));
+}
+
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1.btn-disabled-0a4-18-1-1 .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1.btn-disabled-0a4-18-1-1:active .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1.btn-disabled-0a4-18-1-1:hover .btn-text-398-18-1-1 {
+  color: var(--color_text_disabled,rgba(0,0,0,.322));
+}
+
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1 .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1 .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1:link,
+.btn-root-119-18-1-1.btn-primary-alternative-515-18-1-1:visited {
+  color: var(--color_text_brand_default,#009532);
+}
+
+/* Варианты кнопок - Secondary */
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1 {
+  background-color: var(--color_bg_control_secondary_default,#e7eef3);
+}
+
+@media (-ms-high-contrast:active),(-ms-high-contrast:none),(hover) and (pointer: fine) {
+  .btn-root-119-18-1-1.btn-secondary-f5f-18-1-1:hover {
+    background-color: var(--color_bg_control_secondary_hover,#e0e4e9);
+  }
+}
+
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1:active {
+  background-color: var(--color_bg_control_secondary_active,#d5d8dc);
+}
+
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1.btn-disabled-0a4-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1.btn-disabled-0a4-18-1-1:active,
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1.btn-disabled-0a4-18-1-1:hover {
+  background-color: var(--color_bg_control_secondary_disabled,#fafafa);
+}
+
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1.btn-disabled-0a4-18-1-1 .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1.btn-disabled-0a4-18-1-1:active .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1.btn-disabled-0a4-18-1-1:hover .btn-icon-72f-18-1-1 {
+  color: var(--color_icon_disabled,rgba(0,0,0,.322));
+}
+
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1.btn-disabled-0a4-18-1-1 .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1.btn-disabled-0a4-18-1-1:active .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1.btn-disabled-0a4-18-1-1:hover .btn-text-398-18-1-1 {
+  color: var(--color_text_disabled,rgba(0,0,0,.322));
+}
+
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1 .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1 .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1:link,
+.btn-root-119-18-1-1.btn-secondary-f5f-18-1-1:visited {
+  color: var(--color_text_primary,#262626);
+}
+
+/* Варианты кнопок - Secondary Alternative */
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1 {
+  background-color: var(--color_bg_control_primary_default,#fff);
+}
+
+@media (-ms-high-contrast:active),(-ms-high-contrast:none),(hover) and (pointer: fine) {
+  .btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1:hover {
+    background-color: var(--color_bg_control_primary_hover,#f6f7f9);
+  }
+}
+
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1:active {
+  background-color: var(--color_bg_control_primary_active,#dedfe3);
+}
+
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1.btn-disabled-0a4-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1.btn-disabled-0a4-18-1-1:active,
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1.btn-disabled-0a4-18-1-1:hover {
+  background-color: var(--color_bg_control_secondary_disabled,#fafafa);
+}
+
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1.btn-disabled-0a4-18-1-1 .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1.btn-disabled-0a4-18-1-1:active .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1.btn-disabled-0a4-18-1-1:hover .btn-icon-72f-18-1-1 {
+  color: var(--color_icon_disabled,rgba(0,0,0,.322));
+}
+
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1.btn-disabled-0a4-18-1-1 .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1.btn-disabled-0a4-18-1-1:active .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1.btn-disabled-0a4-18-1-1:hover .btn-text-398-18-1-1 {
+  color: var(--color_text_disabled,rgba(0,0,0,.322));
+}
+
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1 .btn-icon-72f-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1 .btn-text-398-18-1-1,
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1:link,
+.btn-root-119-18-1-1.btn-secondary-alternative-4c1-18-1-1:visited {
+  color: var(--color_text_primary,#262626);
+}
+
+/* Дополнительные варианты для fluid (растягивающихся) кнопок */
+.btn-root-119-18-1-1.btn-fluid-af4-18-1-1 {
+  width: 100%;
+}
+
+/* Стили для доступности (a11y) кнопок */
+.btn-root-119-18-1-1:focus,
+.btn-root-119-18-1-1:active {
+  outline: none;
+}
+
+/* Стили для кнопки с фокусом в no-focus.css */
+html body .btn-root-119-18-1-1,
+html body .btn-root-119-18-1-1 * {
+  outline: none !important;
+}
+
+html body .btn-root-119-18-1-1:hover,
+html body .btn-root-119-18-1-1:focus,
+html body .btn-root-119-18-1-1:active {
+  outline: none !important;
+}
