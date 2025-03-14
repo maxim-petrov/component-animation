@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { bannerHoverAnimation, bannerIconAnimation, bannerAppearAnimation, bannerImageAnimation } from '../animations/bannerAnimations';
 import '../global.css';
+import '../styles/components/Cards.css';
 
 const Banner = ({ id, title, subtitle, index }) => {
   return (
