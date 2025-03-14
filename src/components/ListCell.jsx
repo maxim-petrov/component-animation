@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { listCellHoverAnimation, listCellTapAnimation, radioAnimation, avatarAnimation } from '../animations/listCellAnimations';
 import '../global.css';
+import '../styles/components/ListCell.css';
 
 /**
  * Компонент ListCell - элемент списка с выбором через радиокнопку.
