@@ -23,6 +23,7 @@ import TextareaPage from './pages/TextareaPage';
 import TokensPage from './pages/TokensPage';
 import SliderPage from './pages/SliderPage';
 import BottomSheetPage from './pages/BottomSheetPage';
+import ListCellPage from './pages/ListCellPage';
 
 // Import pages for other components when ready
 // import TabsPage from './pages/TabsPage';
@@ -53,6 +54,7 @@ function App() {
           <Route path="textarea" element={<TextareaPage />} />
           <Route path="slider" element={<SliderPage />} />
           <Route path="bottom-sheet" element={<BottomSheetPage />} />
+          <Route path="list-cell" element={<ListCellPage />} />
           <Route path="tokens" element={<TokensPage />} />
           
           {/* Redirect any unknown paths to home */}
