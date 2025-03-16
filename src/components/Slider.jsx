@@ -38,13 +38,13 @@ const Slider = ({
     setIsDragging(false);
   };
   
-  // Обработчик перетаскивания
+  // Обработчик перетаскивания - улучшенная версия
   const handleDrag = (e, info) => {
     if (!sliderRef.current) return;
     
     const sliderRect = sliderRef.current.getBoundingClientRect();
     const sliderWidth = sliderRect.width;
-    const offset = info.point.x - sliderRect.left;
+    const offset = e.clientX - sliderRect.left;
     
     // Рассчитываем новое значение на основе позиции
     let newPercentage = Math.max(0, Math.min(100, (offset / sliderWidth) * 100));
@@ -68,27 +68,12 @@ const Slider = ({
     setValue(newValue);
   };
   
-  // Анимация ползунка, используя Spring
-  const thumbAnimation = {
-    initial: { x: 0 },
-    animate: { x: 0 },
-    transition: createSpringConfig({
-      stiffness: Spring.Stiffness.Firm,
-      damping: Spring.Damping.High,
-      mass: Spring.Mass.Default
-    }).transition
-  };
-  
-  // Анимация заполнения оси
-  const fillAnimation = {
-    initial: { right: '100%' },
-    animate: { right: `${100 - percentage}%` },
-    transition: createSpringConfig({
-      stiffness: Spring.Stiffness.Firm,
-      damping: Spring.Damping.High,
-      mass: Spring.Mass.Default
-    }).transition
-  };
+  // Используем одинаковые параметры анимации для согласованности
+  const animationConfig = createSpringConfig({
+    stiffness: Spring.Stiffness.Responsive,
+    damping: Spring.Damping.Medium,
+    mass: Spring.Mass.Light
+  }).transition;
   
   // Вариант с текстовым полем ввода
   const renderWithInput = () => (
@@ -119,10 +104,8 @@ const Slider = ({
               <span className="slider-axis-923-11-0-8">
                 <motion.span 
                   className="slider-axisFill-f1d-11-0-8" 
-                  initial="initial"
-                  animate="animate"
-                  variants={fillAnimation}
                   style={{ right: `${100 - percentage}%` }}
+                  transition={animationConfig}
                 />
               </span>
               
@@ -130,16 +113,20 @@ const Slider = ({
                 className="slider-thumb-2b5-11-0-8" 
                 data-e2e-id="slider-slider-thumb" 
                 style={{ left: `${percentage}%` }}
-                drag="x"
-                dragConstraints={sliderRef}
-                dragElastic={0}
-                dragMomentum={false}
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
-                onDrag={handleDrag}
+                onPointerDown={handleDragStart}
+                onPointerUp={handleDragEnd}
+                onPointerMove={isDragging ? handleDrag : undefined}
                 whileTap={{ scale: 1.2 }}
-                whileHover={{ scale: 1.1 }}
-                transition={thumbAnimation.transition}
+                transition={{
+                  scale: {
+                    type: 'spring',
+                    stiffness: 700,
+                    damping: 30
+                  },
+                  default: animationConfig
+                }}
               >
                 <span className="slider-thumbInner-c38-11-0-8" />
               </motion.span>
@@ -175,10 +162,8 @@ const Slider = ({
             <span className="slider-axis-923-11-0-8">
               <motion.span 
                 className="slider-axisFill-f1d-11-0-8" 
-                initial="initial"
-                animate="animate"
-                variants={fillAnimation}
                 style={{ right: `${100 - percentage}%` }}
+                transition={animationConfig}
               />
             </span>
             
@@ -186,16 +171,20 @@ const Slider = ({
               className="slider-thumb-2b5-11-0-8" 
               data-e2e-id="slider-thumb" 
               style={{ left: `${percentage}%` }}
-              drag="x"
-              dragConstraints={sliderRef}
-              dragElastic={0}
-              dragMomentum={false}
               onDragStart={handleDragStart}
               onDragEnd={handleDragEnd}
-              onDrag={handleDrag}
+              onPointerDown={handleDragStart}
+              onPointerUp={handleDragEnd}
+              onPointerMove={isDragging ? handleDrag : undefined}
               whileTap={{ scale: 1.2 }}
-              whileHover={{ scale: 1.1 }}
-              transition={thumbAnimation.transition}
+              transition={{
+                scale: {
+                  type: 'spring',
+                  stiffness: 700,
+                  damping: 30
+                },
+                default: animationConfig
+              }}
             >
               <span className="slider-thumbInner-c38-11-0-8" />
             </motion.span>
