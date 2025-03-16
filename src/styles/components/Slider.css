@@ -332,3 +332,13 @@
     transition-duration: 0.25s;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Стиль для оси слайдера при перетаскивании */
+.slider-root-80f-11-0-8.slider-dragging .slider-axis-923-11-0-8:before {
+    background-color: var(--color_component_slider_track_hover,#c7c7c7);
+}
+
+/* Стиль для оси слайдера в режиме инпута при перетаскивании */
+.slider-root-80f-11-0-8.slider-inputSliderMode-be3-11-0-8.slider-dragging .slider-axis-923-11-0-8:before {
+    background-color: var(--color_component_slider_track_hover,#c7c7c7);
+}
