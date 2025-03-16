@@ -184,6 +184,7 @@ const Slider = ({
                   cursor: isDragging ? 'grabbing' : 'grab' 
                 }}
                 onMouseDown={handleDragStart}
+                tabIndex="0"
               >
                 <span 
                   className="slider-thumbInner-c38-11-0-8"
@@ -238,6 +239,7 @@ const Slider = ({
                 cursor: isDragging ? 'grabbing' : 'grab' 
               }}
               onMouseDown={handleDragStart}
+              tabIndex="0"
             >
               <span 
                 className="slider-thumbInner-c38-11-0-8"

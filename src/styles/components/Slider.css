@@ -195,21 +195,41 @@
     height: 16px;
     position: absolute;
     top: 6px;
-    transition: .2s;
     width: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
+    transition: box-shadow 0.3s ease;
 }
 
 .slider-thumb-2b5-11-0-8 .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot {
     background-color: var(--color_component_slider_track_active,#009e36);
     border-radius: 50%;
-    height: 12px;
-    width: 12px;
+    /* Обычное состояние: 10x10px */
+    height: 10px;
+    width: 10px;
     display: block;
     pointer-events: none;
+    /* Улучшаем плавность анимации */
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Стиль для состояния ховера внутреннего круга: 12x12px (как запрошено) */
+.slider-thumb-2b5-11-0-8:hover .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot,
+.slider-thumb-2b5-11-0-8:focus .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot {
+    height: 12px;
+    width: 12px;
+}
+
+/* Стиль для состояния клика/перетаскивания: 8x8px (как запрошено) */
+.slider-thumb-2b5-11-0-8.slider-dragging .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot,
+.slider-dragging .slider-thumb-2b5-11-0-8 .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot {
+    height: 8px;
+    width: 8px;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slider-valueHints-c0e-11-0-8 {
@@ -302,9 +322,13 @@
 }
 
 .slider-thumb-2b5-11-0-8.slider-dragging .slider-thumbInner-c38-11-0-8 {
-    box-shadow: 0 0 0 6px color-mix(in srgb,var(--color_component_slider_track_active,#009e36),#0000 80%);
+    box-shadow: 0 0 0 8px color-mix(in srgb,var(--color_component_slider_track_active,#009e36),#0000 85%);
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slider-dragging .slider-thumb-2b5-11-0-8 .slider-thumbInner-c38-11-0-8 {
-    box-shadow: 0 0 0 6px color-mix(in srgb,var(--color_component_slider_track_active,#009e36),#0000 80%);
+    box-shadow: 0 0 0 8px color-mix(in srgb,var(--color_component_slider_track_active,#009e36),#0000 85%);
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
