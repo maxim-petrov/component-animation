@@ -90,15 +90,18 @@ const Slider = ({
   
   // Обработчик начала перетаскивания
   const handleDragStart = (e) => {
+    console.log('Drag start');
     setIsDragging(true);
     
-    // Предотвращаем выделение текста
+    // Предотвращаем выделение текста и всплытие события
     e.preventDefault();
+    e.stopPropagation();
     document.body.style.userSelect = 'none';
   };
   
   // Обработчик окончания перетаскивания
   const handleDragEnd = () => {
+    console.log('Drag end');
     setIsDragging(false);
     document.body.style.userSelect = '';
   };
@@ -159,7 +162,7 @@ const Slider = ({
             </div>
           </div>
           
-          <span className="slider-root-80f-11-0-8 slider-inputSliderMode-be3-11-0-8" data-e2e-id="slider-slider">
+          <span className={`slider-root-80f-11-0-8 slider-inputSliderMode-be3-11-0-8 ${isDragging ? 'slider-dragging' : ''}`} data-e2e-id="slider-slider">
             <span 
               className="slider-axisContainer-04b-11-0-8" 
               ref={sliderRef}
@@ -173,13 +176,21 @@ const Slider = ({
               </span>
               
               <span 
-                className="slider-thumb-2b5-11-0-8" 
+                className={`slider-thumb-2b5-11-0-8 ${isDragging ? 'slider-dragging' : ''}`}
                 data-e2e-id="slider-slider-thumb" 
-                style={{ left: `${percentage}%`, transition: 'none', cursor: 'grab' }}
+                style={{ 
+                  left: `${percentage}%`, 
+                  transition: 'none', 
+                  cursor: isDragging ? 'grabbing' : 'grab' 
+                }}
                 onMouseDown={handleDragStart}
               >
-                <span className="slider-thumbInner-c38-11-0-8">
-                  <span className="slider-thumbInnerDot"></span>
+                <span 
+                  className="slider-thumbInner-c38-11-0-8"
+                >
+                  <span 
+                    className="slider-thumbInnerDot"
+                  ></span>
                 </span>
               </span>
             </span>
@@ -202,7 +213,7 @@ const Slider = ({
     <div className="_Gq5_ ql7Up" data-e2e-id="slider-default">
       <div style={{ width: '282px' }}>
         <span 
-          className={`slider-root-80f-11-0-8 ${active ? 'slider-active-c30-11-0-8' : ''}`} 
+          className={`slider-root-80f-11-0-8 ${active ? 'slider-active-c30-11-0-8' : ''} ${isDragging ? 'slider-dragging' : ''}`} 
           data-e2e-id="slider" 
           tabIndex="0"
         >
@@ -219,13 +230,21 @@ const Slider = ({
             </span>
             
             <span 
-              className="slider-thumb-2b5-11-0-8" 
+              className={`slider-thumb-2b5-11-0-8 ${isDragging ? 'slider-dragging' : ''}`}
               data-e2e-id="slider-thumb" 
-              style={{ left: `${percentage}%`, transition: 'none', cursor: 'grab' }}
+              style={{ 
+                left: `${percentage}%`, 
+                transition: 'none', 
+                cursor: isDragging ? 'grabbing' : 'grab' 
+              }}
               onMouseDown={handleDragStart}
             >
-              <span className="slider-thumbInner-c38-11-0-8">
-                <span className="slider-thumbInnerDot"></span>
+              <span 
+                className="slider-thumbInner-c38-11-0-8"
+              >
+                <span 
+                  className="slider-thumbInnerDot"
+                ></span>
               </span>
             </span>
           </span>
