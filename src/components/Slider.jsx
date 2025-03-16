@@ -132,6 +132,21 @@ const Slider = ({
     let newValue = min + Math.round((newPercentage / 100) * (max - min) / step) * step;
     
     setValue(newValue);
+    
+    // Устанавливаем состояние нажатия при mouse down
+    setIsDragging(true);
+    
+    // Добавляем обработчики для слежения за мышью и отпусканием кнопки
+    document.addEventListener('mouseup', handleDragEnd);
+    document.addEventListener('mousemove', handleMouseMove);
+    
+    // Вызываем обработчик изменения
+    if (onChange) onChange(newValue);
+    
+    // Предотвращаем выделение текста и всплытие события
+    e.preventDefault();
+    e.stopPropagation();
+    document.body.style.userSelect = 'none';
   };
   
   // Вариант с текстовым полем ввода
@@ -166,7 +181,7 @@ const Slider = ({
             <span 
               className="slider-axisContainer-04b-11-0-8" 
               ref={sliderRef}
-              onClick={handleAxisClick}
+              onMouseDown={handleAxisClick}
             >
               <span className="slider-axis-923-11-0-8">
                 <span 
@@ -221,7 +236,7 @@ const Slider = ({
           <span 
             className="slider-axisContainer-04b-11-0-8" 
             ref={sliderRef}
-            onClick={handleAxisClick}
+            onMouseDown={handleAxisClick}
           >
             <span className="slider-axis-923-11-0-8">
               <span 
