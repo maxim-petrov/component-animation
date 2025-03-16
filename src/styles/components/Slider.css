@@ -226,8 +226,8 @@
 /* Стиль для состояния клика/перетаскивания: 8x8px (как запрошено) */
 .slider-thumb-2b5-11-0-8.slider-dragging .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot,
 .slider-dragging .slider-thumb-2b5-11-0-8 .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot {
-    height: 8px;
-    width: 8px;
+    height: 16px;
+    width: 16px;
     transition-duration: 0.25s;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
