@@ -178,7 +178,9 @@ const Slider = ({
                 style={{ left: `${percentage}%`, transition: 'none', cursor: 'grab' }}
                 onMouseDown={handleDragStart}
               >
-                <span className="slider-thumbInner-c38-11-0-8" />
+                <span className="slider-thumbInner-c38-11-0-8">
+                  <span className="slider-thumbInnerDot"></span>
+                </span>
               </span>
             </span>
             
@@ -222,7 +224,9 @@ const Slider = ({
               style={{ left: `${percentage}%`, transition: 'none', cursor: 'grab' }}
               onMouseDown={handleDragStart}
             >
-              <span className="slider-thumbInner-c38-11-0-8" />
+              <span className="slider-thumbInner-c38-11-0-8">
+                <span className="slider-thumbInnerDot"></span>
+              </span>
             </span>
           </span>
           

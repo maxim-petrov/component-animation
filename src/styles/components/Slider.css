@@ -193,15 +193,25 @@
 }
 
 .slider-thumb-2b5-11-0-8 .slider-thumbInner-c38-11-0-8 {
-    background-color: var(--color_component_slider_track_active,#009e36);
-    border: 2px solid var(--color_border_inverse,#fff);
+    background-color: var(--color_border_inverse,#fff);
     border-radius: 50%;
     box-sizing: initial;
-    height: 12px;
+    height: 16px;
     position: absolute;
     top: 6px;
     transition: .2s;
-    width: 12px
+    width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-thumb-2b5-11-0-8 .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot {
+    background-color: var(--color_component_slider_track_active,#009e36);
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    display: block;
 }
 
 .slider-valueHints-c0e-11-0-8 {
@@ -274,7 +284,11 @@
 }
 
 .slider-root-80f-11-0-8.slider-disabled-49d-11-0-8 .slider-thumbInner-c38-11-0-8 {
-    background-color: var(--color_component_slider_track_disabled,#dcdcdc)
+    background-color: var(--color_bg_secondary,#f6f7f8);
+}
+
+.slider-root-80f-11-0-8.slider-disabled-49d-11-0-8 .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot {
+    background-color: var(--color_component_slider_track_hover,#c7c7c7);
 }
 
 .slider-root-80f-11-0-8.slider-disabled-49d-11-0-8 .slider-counter-a01-11-0-8 {
