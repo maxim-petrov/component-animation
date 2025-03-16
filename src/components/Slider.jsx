@@ -174,6 +174,71 @@ const Slider = ({
     document.body.style.userSelect = 'none';
   };
   
+  // Обработчик клика по значениям
+  const handleStepClick = (stepValue) => (e) => {
+    if (isDragging) return;
+    
+    // Устанавливаем значение равным значению шага
+    setValue(stepValue);
+    
+    // Устанавливаем состояние нажатия при mouse down
+    setIsDragging(true);
+    
+    // Включаем анимацию при клике на значение
+    setIsAnimating(true);
+    
+    // Добавляем обработчики для слежения за мышью и отпусканием кнопки
+    document.addEventListener('mouseup', handleDragEnd);
+    document.addEventListener('mousemove', handleMouseMove);
+    
+    // Вызываем обработчик изменения
+    if (onChange) onChange(stepValue);
+    
+    // Предотвращаем выделение текста и всплытие события
+    e.preventDefault();
+    e.stopPropagation();
+    document.body.style.userSelect = 'none';
+  };
+  
+  // Обработчик клика по контейнеру значений (между цифрами)
+  const handleHintsContainerClick = (e) => {
+    if (isDragging) return;
+    
+    // Проверяем, что клик не был на самой метке значения
+    if (e.target.className.includes('slider-valueHint-1ed-11-0-8') || 
+        e.target.className.includes('slider-hintText-eb7-11-0-8')) {
+      return;
+    }
+    
+    const containerRect = e.currentTarget.getBoundingClientRect();
+    const containerWidth = containerRect.width;
+    const offset = e.clientX - containerRect.left;
+    
+    // Рассчитываем новое значение на основе клика
+    let newPercentage = Math.max(0, Math.min(100, (offset / containerWidth) * 100));
+    let newValue = min + Math.round((newPercentage / 100) * (max - min) / step) * step;
+    
+    setValue(newValue);
+    
+    // Устанавливаем состояние нажатия при mouse down
+    setIsDragging(true);
+    
+    // Включаем анимацию при клике на область между цифрами
+    setIsAnimating(true);
+    
+    // Добавляем обработчики для слежения за мышью и отпусканием кнопки
+    document.addEventListener('mouseup', handleDragEnd);
+    document.addEventListener('mousemove', handleMouseMove);
+    
+    // Вызываем обработчик изменения
+    if (onChange) onChange(newValue);
+    
+    // Предотвращаем выделение текста и всплытие события
+    e.preventDefault();
+    e.stopPropagation();
+    document.body.style.userSelect = 'none';
+  };
+  
   // Определяем стиль для анимации
   const getTransitionStyle = () => {
     if (isDragging && !isAnimating) {
@@ -247,9 +312,18 @@ const Slider = ({
               </span>
             </span>
             
-            <span className="slider-valueHints-c0e-11-0-8">
+            <span 
+              className="slider-valueHints-c0e-11-0-8"
+              onMouseDown={handleHintsContainerClick}
+              style={{ cursor: 'pointer' }}
+            >
               {steps.map((step, index) => (
-                <span key={index} className="slider-valueHint-1ed-11-0-8">
+                <span 
+                  key={index} 
+                  className="slider-valueHint-1ed-11-0-8"
+                  onMouseDown={handleStepClick(step)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <span className="slider-hintText-eb7-11-0-8">{step}</span>
                 </span>
               ))}
@@ -305,9 +379,18 @@ const Slider = ({
             </span>
           </span>
           
-          <span className="slider-valueHints-c0e-11-0-8">
+          <span 
+            className="slider-valueHints-c0e-11-0-8"
+            onMouseDown={handleHintsContainerClick}
+            style={{ cursor: 'pointer' }}
+          >
             {steps.map((step, index) => (
-              <span key={index} className="slider-valueHint-1ed-11-0-8">
+              <span 
+                key={index} 
+                className="slider-valueHint-1ed-11-0-8"
+                onMouseDown={handleStepClick(step)}
+                style={{ cursor: 'pointer' }}
+              >
                 <span className="slider-hintText-eb7-11-0-8">{step}</span>
               </span>
             ))}
