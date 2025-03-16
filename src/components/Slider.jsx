@@ -13,11 +13,14 @@ const Slider = ({
   label = "Значение",
   steps = [0, 25, 50, 75, 100],
   withInput = true,
-  active = false
+  active = false,
+  onChange
 }) => {
   const [value, setValue] = useState(defaultValue);
   const [isDragging, setIsDragging] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const sliderRef = useRef(null);
+  const inputRef = useRef(null);
   
   // Рассчитываем процент для отображения ползунка и заполнения оси
   const percentage = ((value - min) / (max - min)) * 100;
@@ -26,6 +29,30 @@ const Slider = ({
   const handleInputChange = (e) => {
     const newValue = Math.min(Math.max(parseInt(e.target.value) || min, min), max);
     setValue(newValue);
+    if (onChange) onChange(newValue);
+  };
+  
+  // Функция активации инпута
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+      setIsFocused(true);
+    }
+  };
+  
+  // Обработчики фокуса инпута
+  const handleInputFocus = () => {
+    setIsFocused(true);
+  };
+  
+  const handleInputBlur = () => {
+    setIsFocused(false);
+  };
+
+  // Обработчик клика на контейнер инпута
+  const handleInputContainerClick = (e) => {
+    focusInput();
+    e.stopPropagation();
   };
   
   // Обработчик движения мыши на уровне документа (для перетаскивания)
@@ -95,14 +122,21 @@ const Slider = ({
       <div style={{ width: '282px' }}>
         <div className="slider-inputRoot-bee-11-0-8" data-e2e-id="slider">
           <div className="inpt-fluid-199-12-3-0">
-            <div className="inpt-root-670-12-3-0 inpt-large-258-12-3-0 inpt-primary-8dd-12-3-0 inpt-notEmpty-432-12-3-0 inpt-fluid-199-12-3-0 inpt-hasLabel-14b-12-3-0 nmbr-inp-root-220-11-1-0" data-e2e-id="slider-input">
+            <div 
+              className={`inpt-root-670-12-3-0 inpt-large-258-12-3-0 inpt-primary-8dd-12-3-0 inpt-notEmpty-432-12-3-0 inpt-fluid-199-12-3-0 inpt-hasLabel-14b-12-3-0 nmbr-inp-root-220-11-1-0 ${isFocused ? 'inpt-focused-b65-12-3-0' : ''}`} 
+              data-e2e-id="slider-input"
+              onClick={handleInputContainerClick}
+            >
               <div className="inpt-inputContainer-d7e-12-3-0">
                 <input
+                  ref={inputRef}
                   className="inpt-input-3c4-12-3-0"
                   step={step}
                   tabIndex="0"
                   value={value}
                   onChange={handleInputChange}
+                  onFocus={handleInputFocus}
+                  onBlur={handleInputBlur}
                 />
                 <label className="inpt-label-a7f-12-3-0 inpt-labelWithoutLabelId-299-12-3-0">{label}</label>
               </div>
