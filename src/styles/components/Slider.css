@@ -219,8 +219,8 @@
 /* Стиль для состояния ховера внутреннего круга: 12x12px (как запрошено) */
 .slider-thumb-2b5-11-0-8:hover .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot,
 .slider-thumb-2b5-11-0-8:focus .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot {
-    height: 12px;
-    width: 12px;
+    height: 10px;
+    width: 10px;
 }
 
 /* Стиль для состояния клика/перетаскивания: 8x8px (как запрошено) */
