@@ -49,6 +49,21 @@ const Slider = ({
     setIsFocused(false);
   };
 
+  // Обработчик нажатия клавиш в инпуте
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const newValue = Math.min(value + step, max);
+      setValue(newValue);
+      if (onChange) onChange(newValue);
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const newValue = Math.max(value - step, min);
+      setValue(newValue);
+      if (onChange) onChange(newValue);
+    }
+  };
+
   // Обработчик клика на контейнер инпута
   const handleInputContainerClick = (e) => {
     focusInput();
@@ -137,6 +152,7 @@ const Slider = ({
                   onChange={handleInputChange}
                   onFocus={handleInputFocus}
                   onBlur={handleInputBlur}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className="inpt-label-a7f-12-3-0 inpt-labelWithoutLabelId-299-12-3-0">{label}</label>
               </div>
