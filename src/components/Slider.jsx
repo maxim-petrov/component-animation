@@ -102,34 +102,24 @@ const Slider = ({
               onClick={handleAxisClick}
             >
               <span className="slider-axis-923-11-0-8">
-                <motion.span 
+                <span 
                   className="slider-axisFill-f1d-11-0-8" 
-                  style={{ right: `${100 - percentage}%` }}
-                  transition={animationConfig}
+                  style={{ right: `${100 - percentage}%`, transition: 'none' }}
                 />
               </span>
               
-              <motion.span 
+              <span 
                 className="slider-thumb-2b5-11-0-8" 
                 data-e2e-id="slider-slider-thumb" 
-                style={{ left: `${percentage}%` }}
+                style={{ left: `${percentage}%`, transition: 'none' }}
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
                 onPointerDown={handleDragStart}
                 onPointerUp={handleDragEnd}
                 onPointerMove={isDragging ? handleDrag : undefined}
-                whileTap={{ scale: 1.2 }}
-                transition={{
-                  scale: {
-                    type: 'spring',
-                    stiffness: 700,
-                    damping: 30
-                  },
-                  default: animationConfig
-                }}
               >
                 <span className="slider-thumbInner-c38-11-0-8" />
-              </motion.span>
+              </span>
             </span>
             
             <span className="slider-valueHints-c0e-11-0-8">
@@ -160,34 +150,24 @@ const Slider = ({
             onClick={handleAxisClick}
           >
             <span className="slider-axis-923-11-0-8">
-              <motion.span 
+              <span 
                 className="slider-axisFill-f1d-11-0-8" 
-                style={{ right: `${100 - percentage}%` }}
-                transition={animationConfig}
+                style={{ right: `${100 - percentage}%`, transition: 'none' }}
               />
             </span>
             
-            <motion.span 
+            <span 
               className="slider-thumb-2b5-11-0-8" 
               data-e2e-id="slider-thumb" 
-              style={{ left: `${percentage}%` }}
+              style={{ left: `${percentage}%`, transition: 'none' }}
               onDragStart={handleDragStart}
               onDragEnd={handleDragEnd}
               onPointerDown={handleDragStart}
               onPointerUp={handleDragEnd}
               onPointerMove={isDragging ? handleDrag : undefined}
-              whileTap={{ scale: 1.2 }}
-              transition={{
-                scale: {
-                  type: 'spring',
-                  stiffness: 700,
-                  damping: 30
-                },
-                default: animationConfig
-              }}
             >
               <span className="slider-thumbInner-c38-11-0-8" />
-            </motion.span>
+            </span>
           </span>
           
           <span className="slider-valueHints-c0e-11-0-8">
