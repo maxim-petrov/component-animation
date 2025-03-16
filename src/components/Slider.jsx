@@ -247,16 +247,25 @@ const Slider = ({
     return isAnimating ? 'left 0.35s cubic-bezier(0.4, 0, 0.2, 1), right 0.35s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
   };
   
+  // Стиль для инпута при перетаскивании
+  const getInputDraggingStyle = () => {
+    if (isDragging) {
+      return { pointerEvents: 'none' };
+    }
+    return {};
+  };
+  
   // Вариант с текстовым полем ввода
   const renderWithInput = () => (
     <div className="_Gq5_ ql7Up" data-e2e-id="slider-default">
       <div style={{ width: '282px' }}>
-        <div className="slider-inputRoot-bee-11-0-8" data-e2e-id="slider">
-          <div className="inpt-fluid-199-12-3-0">
+        <div className={`slider-inputRoot-bee-11-0-8 ${isDragging ? 'slider-dragging-input' : ''}`} data-e2e-id="slider">
+          <div className="inpt-fluid-199-12-3-0" style={getInputDraggingStyle()}>
             <div 
               className={`inpt-root-670-12-3-0 inpt-large-258-12-3-0 inpt-primary-8dd-12-3-0 inpt-notEmpty-432-12-3-0 inpt-fluid-199-12-3-0 inpt-hasLabel-14b-12-3-0 nmbr-inp-root-220-11-1-0 ${isFocused ? 'inpt-focused-b65-12-3-0' : ''}`} 
               data-e2e-id="slider-input"
               onClick={handleInputContainerClick}
+              style={getInputDraggingStyle()}
             >
               <div className="inpt-inputContainer-d7e-12-3-0">
                 <input
