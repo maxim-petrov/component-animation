@@ -58,15 +58,15 @@ const Slider = ({
       e.preventDefault();
       const newValue = Math.min(value + step, max);
       setValue(newValue);
-      // Включаем анимацию при изменении через клавиатуру
-      setIsAnimating(true);
+      // Отключаем анимацию при изменении через клавиатуру
+      setIsAnimating(false);
       if (onChange) onChange(newValue);
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
       const newValue = Math.max(value - step, min);
       setValue(newValue);
-      // Включаем анимацию при изменении через клавиатуру
-      setIsAnimating(true);
+      // Отключаем анимацию при изменении через клавиатуру
+      setIsAnimating(false);
       if (onChange) onChange(newValue);
     }
   };
