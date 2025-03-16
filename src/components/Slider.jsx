@@ -28,30 +28,51 @@ const Slider = ({
     setValue(newValue);
   };
   
-  // Обработчик начала перетаскивания
-  const handleDragStart = () => {
-    setIsDragging(true);
-  };
-  
-  // Обработчик окончания перетаскивания
-  const handleDragEnd = () => {
-    setIsDragging(false);
-  };
-  
-  // Обработчик перетаскивания - улучшенная версия
-  const handleDrag = (e, info) => {
-    if (!sliderRef.current) return;
+  // Обработчик движения мыши на уровне документа (для перетаскивания)
+  const handleMouseMove = (e) => {
+    if (!isDragging || !sliderRef.current) return;
     
     const sliderRect = sliderRef.current.getBoundingClientRect();
     const sliderWidth = sliderRect.width;
-    const offset = e.clientX - sliderRect.left;
+    const offset = Math.min(Math.max(0, e.clientX - sliderRect.left), sliderWidth);
     
     // Рассчитываем новое значение на основе позиции
     let newPercentage = Math.max(0, Math.min(100, (offset / sliderWidth) * 100));
     let newValue = min + Math.round((newPercentage / 100) * (max - min) / step) * step;
     
     setValue(newValue);
+    
+    // Предотвращаем выделение текста
+    e.preventDefault();
   };
+  
+  // Обработчик начала перетаскивания
+  const handleDragStart = (e) => {
+    setIsDragging(true);
+    
+    // Предотвращаем выделение текста
+    e.preventDefault();
+    document.body.style.userSelect = 'none';
+  };
+  
+  // Обработчик окончания перетаскивания
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    document.body.style.userSelect = '';
+  };
+  
+  // Добавляем и удаляем обработчики событий на уровне документа
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleDragEnd);
+    }
+    
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleDragEnd);
+    };
+  }, [isDragging]);
   
   // Обработчик клика по оси
   const handleAxisClick = (e) => {
@@ -67,13 +88,6 @@ const Slider = ({
     
     setValue(newValue);
   };
-  
-  // Используем одинаковые параметры анимации для согласованности
-  const animationConfig = createSpringConfig({
-    stiffness: Spring.Stiffness.Responsive,
-    damping: Spring.Damping.Medium,
-    mass: Spring.Mass.Light
-  }).transition;
   
   // Вариант с текстовым полем ввода
   const renderWithInput = () => (
@@ -111,12 +125,8 @@ const Slider = ({
               <span 
                 className="slider-thumb-2b5-11-0-8" 
                 data-e2e-id="slider-slider-thumb" 
-                style={{ left: `${percentage}%`, transition: 'none' }}
-                onDragStart={handleDragStart}
-                onDragEnd={handleDragEnd}
-                onPointerDown={handleDragStart}
-                onPointerUp={handleDragEnd}
-                onPointerMove={isDragging ? handleDrag : undefined}
+                style={{ left: `${percentage}%`, transition: 'none', cursor: 'grab' }}
+                onMouseDown={handleDragStart}
               >
                 <span className="slider-thumbInner-c38-11-0-8" />
               </span>
@@ -159,12 +169,8 @@ const Slider = ({
             <span 
               className="slider-thumb-2b5-11-0-8" 
               data-e2e-id="slider-thumb" 
-              style={{ left: `${percentage}%`, transition: 'none' }}
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-              onPointerDown={handleDragStart}
-              onPointerUp={handleDragEnd}
-              onPointerMove={isDragging ? handleDrag : undefined}
+              style={{ left: `${percentage}%`, transition: 'none', cursor: 'grab' }}
+              onMouseDown={handleDragStart}
             >
               <span className="slider-thumbInner-c38-11-0-8" />
             </span>
