@@ -209,8 +209,8 @@
 .slider-thumb-2b5-11-0-8 .slider-thumbInner-c38-11-0-8 .slider-thumbInnerDot {
     background-color: var(--color_component_slider_track_active,#009e36);
     border-radius: 50%;
-    height: 11px;
-    width: 11px;
+    height: 12px;
+    width: 12px;
     display: block;
 }
 
