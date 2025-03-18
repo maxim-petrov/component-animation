@@ -197,61 +197,61 @@ const BottomSheet = ({
                   <div className="btm-sht-icon-06c-8-0-2"></div>
                 </div>
                 
-                {/* Баннер/Шапка (если указано) */}
-                {withBanner && (
-                  <div className="btm-sht-header-76f-8-0-2 btm-sht-header-banner-aaa-8-0-2">
-                    <div style={{ backgroundColor: "var(--color_bg_surface_secondary)", height: "156px" }}></div>
+                <div className="btm-sht-content-wrapper">
+                  {/* Баннер/Шапка (если указано) */}
+                  {withBanner && (
+                    <div></div>
+                  )}
+                  
+                  {/* Заголовок и подзаголовок */}
+                  <div className="btm-sht-title-7f1-8-0-2">{title}</div>
+                  <div className="btm-sht-subtitle-5f8-8-0-2">{subtitle}</div>
+                  
+                  {/* Эффект затухания верхней части */}
+                  <div className="btm-sht-fadeWrapper-06f-8-0-2">
+                    <div className="btm-sht-fadeTop-006-8-0-2"></div>
                   </div>
-                )}
-                
-                {/* Заголовок и подзаголовок */}
-                <div className="btm-sht-title-7f1-8-0-2">{title}</div>
-                <div className="btm-sht-subtitle-5f8-8-0-2">{subtitle}</div>
-                
-                {/* Эффект затухания верхней части */}
-                <div className="btm-sht-fadeWrapper-06f-8-0-2">
-                  <div className="btm-sht-fadeTop-006-8-0-2"></div>
-                </div>
-                
-                {/* Контент */}
-                <div ref={contentRef}>
-                  {children}
-                </div>
-                
-                {/* Эффект затухания нижней части */}
-                <div className="btm-sht-fadeWrapper-06f-8-0-2">
-                  <div className="btm-sht-fadeBottom-cb5-8-0-2"></div>
-                </div>
-                
-                {/* Футер с кнопками */}
-                <div className="btm-sht-footer-090-8-0-2">
-                  <div className="btm-sht-footerButtons-47b-8-0-2">
-                    <div className="btm-sht-footerButton-2b6-8-0-2">
-                      <button 
-                        className="btn-root-119-18-1-1 btn-primary-a30-18-1-1 btn-medium-fdc-18-1-1 btn-typeButtonReset-268-18-1-1 btn-fluid-af4-18-1-1" 
-                        type="button"
-                        onClick={onPrimaryButtonClick}
-                      >
-                        <span className="btn-text-398-18-1-1">{primaryButtonText}</span>
-                      </button>
-                    </div>
-                    <div className="btm-sht-footerButton-2b6-8-0-2">
-                      <button 
-                        className="btn-root-119-18-1-1 btn-secondary-alternative-4c1-18-1-1 btn-medium-fdc-18-1-1 btn-typeButtonReset-268-18-1-1 btn-fluid-af4-18-1-1" 
-                        type="button"
-                        onClick={onSecondaryButtonClick}
-                      >
-                        <span className="btn-text-398-18-1-1">{secondaryButtonText}</span>
-                      </button>
-                    </div>
-                    <div className="btm-sht-footerButton-2b6-8-0-2">
-                      <button 
-                        className="btn-root-119-18-1-1 btn-secondary-alternative-4c1-18-1-1 btn-medium-fdc-18-1-1 btn-typeButtonReset-268-18-1-1 btn-fluid-af4-18-1-1" 
-                        type="button"
-                        onClick={onTertiaryButtonClick}
-                      >
-                        <span className="btn-text-398-18-1-1">{tertiaryButtonText}</span>
-                      </button>
+                  
+                  {/* Контент */}
+                  <div ref={contentRef}>
+                    {children}
+                  </div>
+                  
+                  {/* Эффект затухания нижней части */}
+                  <div className="btm-sht-fadeWrapper-06f-8-0-2">
+                    <div className="btm-sht-fadeBottom-cb5-8-0-2"></div>
+                  </div>
+                  
+                  {/* Футер с кнопками */}
+                  <div className="btm-sht-footer-090-8-0-2">
+                    <div className="btm-sht-footerButtons-47b-8-0-2">
+                      <div className="btm-sht-footerButton-2b6-8-0-2">
+                        <button 
+                          className="btn-root-119-18-1-1 btn-primary-a30-18-1-1 btn-medium-fdc-18-1-1 btn-typeButtonReset-268-18-1-1 btn-fluid-af4-18-1-1" 
+                          type="button"
+                          onClick={onPrimaryButtonClick}
+                        >
+                          <span className="btn-text-398-18-1-1">{primaryButtonText}</span>
+                        </button>
+                      </div>
+                      <div className="btm-sht-footerButton-2b6-8-0-2">
+                        <button 
+                          className="btn-root-119-18-1-1 btn-secondary-alternative-4c1-18-1-1 btn-medium-fdc-18-1-1 btn-typeButtonReset-268-18-1-1 btn-fluid-af4-18-1-1" 
+                          type="button"
+                          onClick={onSecondaryButtonClick}
+                        >
+                          <span className="btn-text-398-18-1-1">{secondaryButtonText}</span>
+                        </button>
+                      </div>
+                      <div className="btm-sht-footerButton-2b6-8-0-2">
+                        <button 
+                          className="btn-root-119-18-1-1 btn-secondary-alternative-4c1-18-1-1 btn-medium-fdc-18-1-1 btn-typeButtonReset-268-18-1-1 btn-fluid-af4-18-1-1" 
+                          type="button"
+                          onClick={onTertiaryButtonClick}
+                        >
+                          <span className="btn-text-398-18-1-1">{tertiaryButtonText}</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
