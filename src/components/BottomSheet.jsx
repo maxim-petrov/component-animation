@@ -47,7 +47,7 @@ const BottomSheet = ({
 
   // Настройки Spring-анимации для появления
   const bottomSheetAnimation = {
-    initial: { y: '100%', opacity: 0 },
+    initial: { y: '100%', opacity: 100 },
     animate: { 
       y: 0, 
       opacity: 1,
@@ -58,7 +58,7 @@ const BottomSheet = ({
     },
     exit: { 
       y: '100%', 
-      opacity: 0,
+      opacity: 100,
       transition: {
         duration: Duration.M,
         ease: Easing.Exit
