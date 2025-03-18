@@ -156,11 +156,13 @@ const BottomSheet = ({
         minHeight: '100%',
         borderRadius: '6px',
         overflow: 'hidden',
-        background: 'transparent'
+        background: 'transparent',
+        cursor: 'pointer'
       };
     }
     return {
-      background: 'transparent'
+      background: 'transparent',
+      cursor: 'pointer'
     };
   };
 
@@ -191,7 +193,12 @@ const BottomSheet = ({
             style={containInDemoContainer ? { position: 'relative' } : {}}
           >
             <div tabIndex="0" className="f-cl-sentinel-42b-4-0-2" role="presentation"></div>
-            <div role="presentation" className="btm-sht-overlay-1dd-8-0-2" style={getOverlayStyles()}>
+            <div 
+              role="presentation" 
+              className="btm-sht-overlay-1dd-8-0-2" 
+              style={getOverlayStyles()}
+              onClick={handleOverlayClick}
+            >
               <motion.div
                 className="btm-sht-root-c2e-8-0-2 btm-sht-withTitle-f76-8-0-2 btm-sht-withSubtitle-50b-8-0-2 btm-sht-withFooter-dca-8-0-2"
                 variants={bottomSheetAnimation}
@@ -202,6 +209,7 @@ const BottomSheet = ({
                   transform: isDragging ? `translateY(${currentY}px)` : undefined,
                   width: containInDemoContainer ? '100%' : '100%',
                   maxWidth: containInDemoContainer ? '100%' : undefined,
+                  cursor: 'default'
                 }}
                 ref={sheetRef}
                 onTouchStart={handleDragStart}
