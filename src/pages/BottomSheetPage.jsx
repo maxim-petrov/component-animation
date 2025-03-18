@@ -25,7 +25,7 @@ const BottomSheetPage = () => {
     >
       <h1>Bottom Sheet</h1>
       <div className="component-demo">
-        <div className="component-demo-inner" style={{ textAlign: 'center' }}>
+        <div className="component-demo-inner" style={{ textAlign: 'center', position: 'relative', minHeight: '450px' }}>
           <button 
             className="btn-root-119-18-1-1 btn-primary-a30-18-1-1 btn-medium-fdc-18-1-1 btn-typeButtonReset-268-18-1-1" 
             onClick={openBottomSheet}
@@ -44,6 +44,7 @@ const BottomSheetPage = () => {
             onPrimaryButtonClick={closeBottomSheet}
             onSecondaryButtonClick={closeBottomSheet}
             onTertiaryButtonClick={closeBottomSheet}
+            containInDemoContainer={true}
           >
             <div style={{ padding: '0 24px 24px', color: '#333' }}>
               <p>Это содержимое Bottom Sheet. Здесь может быть любая информация или интерактивные элементы.</p>

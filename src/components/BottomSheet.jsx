@@ -18,6 +18,7 @@ const BottomSheet = ({
   onPrimaryButtonClick,
   onSecondaryButtonClick,
   onTertiaryButtonClick,
+  containInDemoContainer = false,
 }) => {
   const sheetRef = useRef(null);
   const contentRef = useRef(null);
@@ -25,6 +26,17 @@ const BottomSheet = ({
   const [isDragging, setIsDragging] = useState(false);
   const [startY, setStartY] = useState(0);
   const [currentY, setCurrentY] = useState(0);
+  const [containerElement, setContainerElement] = useState(null);
+
+  // Находим component-demo контейнер, если включен режим containInDemoContainer
+  useEffect(() => {
+    if (containInDemoContainer && isOpen) {
+      const demoContainer = document.querySelector('.component-demo-inner');
+      if (demoContainer) {
+        setContainerElement(demoContainer);
+      }
+    }
+  }, [isOpen, containInDemoContainer]);
 
   // Определяем высоту контента при рендере
   useEffect(() => {
@@ -111,10 +123,42 @@ const BottomSheet = ({
     }
   };
 
+  // Определяем классы и стили в зависимости от типа отображения
+  const getOverlayStyles = () => {
+    if (containInDemoContainer) {
+      return {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 10,
+        maxHeight: '100%',
+        minHeight: '100%',
+        borderRadius: '6px',
+        overflow: 'hidden'
+      };
+    }
+    return {};
+  };
+
+  const getContainerClasses = () => {
+    let classes = "overlay-root-798-6-0-2";
+    if (containInDemoContainer) {
+      classes += " contained-overlay";
+    }
+    return classes;
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="overlay-root-798-6-0-2" data-dc-overlay="opened" onClick={handleOverlayClick}>
+        <div 
+          className={getContainerClasses()}
+          data-dc-overlay="opened" 
+          onClick={handleOverlayClick}
+          style={containInDemoContainer ? { position: 'relative', height: '100%' } : {}}
+        >
           <motion.div
             className="f-cl-root-1f7-4-0-2 overlay-inner-71e-6-0-2"
             tabIndex="-1"
@@ -122,9 +166,10 @@ const BottomSheet = ({
             initial="initial"
             animate="animate"
             exit="exit"
+            style={containInDemoContainer ? { position: 'relative' } : {}}
           >
             <div tabIndex="0" className="f-cl-sentinel-42b-4-0-2" role="presentation"></div>
-            <div role="presentation" className="btm-sht-overlay-1dd-8-0-2">
+            <div role="presentation" className="btm-sht-overlay-1dd-8-0-2" style={getOverlayStyles()}>
               <motion.div
                 className="btm-sht-root-c2e-8-0-2 btm-sht-withTitle-f76-8-0-2 btm-sht-withSubtitle-50b-8-0-2 btm-sht-withFooter-dca-8-0-2"
                 variants={bottomSheetAnimation}
@@ -133,6 +178,8 @@ const BottomSheet = ({
                 exit="exit"
                 style={{ 
                   transform: isDragging ? `translateY(${currentY}px)` : undefined,
+                  width: containInDemoContainer ? '100%' : '100%',
+                  maxWidth: containInDemoContainer ? '100%' : undefined,
                 }}
                 ref={sheetRef}
                 onTouchStart={handleDragStart}

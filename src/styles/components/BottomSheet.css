@@ -237,3 +237,35 @@
 .btm-sht-root-c2e-8-0-2 :focus:not(.btm-sht-focus-visible-6b5-8-0-2) {
     outline: none
 }
+
+.contained-overlay {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.contained-overlay .btm-sht-overlay-1dd-8-0-2 {
+    position: absolute;
+    background: var(--color_bg_overlay,rgba(0,0,0,.541));
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    max-height: 100%;
+    overflow-y: hidden;
+    border-radius: 6px;
+}
+
+.contained-overlay .btm-sht-root-c2e-8-0-2 {
+    max-height: calc(100% - 20px);
+    width: 100%;
+}
+
+.contained-overlay .overlay-inner-71e-6-0-2 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
