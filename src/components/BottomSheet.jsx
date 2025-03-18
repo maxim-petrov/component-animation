@@ -51,11 +51,10 @@ const BottomSheet = ({
     animate: { 
       y: 0, 
       opacity: 1,
-      transition: createSpringConfig({
-        stiffness: Spring.Stiffness.Medium,
-        damping: Spring.Damping.High,
-        mass: Spring.Mass.Default
-      }).transition
+      transition: {
+        duration: Duration.M,
+        ease: Easing.entrance
+      }
     },
     exit: { 
       y: '100%', 
@@ -73,7 +72,7 @@ const BottomSheet = ({
     animate: { 
       opacity: 1,
       transition: {
-        duration: Duration.M,
+        duration: 3,
         ease: Easing.Entrance
       }
     },
