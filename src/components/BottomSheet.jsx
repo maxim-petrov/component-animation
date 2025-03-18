@@ -66,6 +66,26 @@ const BottomSheet = ({
     }
   };
 
+  // Анимация для контента внутри BottomSheet
+  const contentAnimation = {
+    initial: { opacity: 0 },
+    animate: { 
+      opacity: 1,
+      transition: {
+        duration: Duration.M,
+        ease: Easing.Entrance,
+        delay: 0.1 // Небольшая задержка для последовательного появления
+      }
+    },
+    exit: { 
+      opacity: 0,
+      transition: {
+        duration: Duration.S,
+        ease: Easing.Exit
+      }
+    }
+  };
+
   // Настройки анимации для overlay - анимируем только фон, не трогая дочерние элементы
   const overlayAnimation = {
     initial: { backgroundColor: 'rgba(0, 0, 0, 0)' },
@@ -197,7 +217,13 @@ const BottomSheet = ({
                   <div className="btm-sht-icon-06c-8-0-2"></div>
                 </div>
                 
-                <div className="btm-sht-content-wrapper">
+                <motion.div 
+                  className="btm-sht-content-wrapper"
+                  variants={contentAnimation}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
                   {/* Баннер/Шапка (если указано) */}
                   {withBanner && (
                     <div></div>
@@ -254,7 +280,7 @@ const BottomSheet = ({
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             </div>
             <div tabIndex="0" className="f-cl-sentinel-42b-4-0-2" role="presentation"></div>
