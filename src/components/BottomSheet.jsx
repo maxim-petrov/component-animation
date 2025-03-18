@@ -66,18 +66,18 @@ const BottomSheet = ({
     }
   };
 
-  // Настройки анимации для overlay
+  // Настройки анимации для overlay - анимируем только фон, не трогая дочерние элементы
   const overlayAnimation = {
-    initial: { opacity: 0 },
+    initial: { backgroundColor: 'rgba(0, 0, 0, 0)' },
     animate: { 
-      opacity: 1,
+      backgroundColor: 'rgba(0, 0, 0, 0.541)',
       transition: {
-        duration: 3,
+        duration: Duration.M,
         ease: Easing.Entrance
       }
     },
     exit: { 
-      opacity: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0)',
       transition: {
         duration: Duration.S,
         ease: Easing.Exit
@@ -135,10 +135,13 @@ const BottomSheet = ({
         maxHeight: '100%',
         minHeight: '100%',
         borderRadius: '6px',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        background: 'transparent'
       };
     }
-    return {};
+    return {
+      background: 'transparent'
+    };
   };
 
   const getContainerClasses = () => {
