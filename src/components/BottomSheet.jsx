@@ -52,15 +52,15 @@ const BottomSheet = ({
       y: 0, 
       opacity: 1,
       transition: {
-        duration: Duration.M,
-        ease: Easing.entrance
+        duration: 0.3,
+        ease: [.25, .46, .45, .94]
       }
     },
     exit: { 
       y: '100%', 
       opacity: 100,
       transition: {
-        duration: Duration.M,
+        duration: 0.3,
         ease: Easing.Exit
       }
     }
@@ -72,7 +72,7 @@ const BottomSheet = ({
     animate: { 
       opacity: 1,
       transition: {
-        duration: Duration.M,
+        duration: 0.4,
         ease: Easing.Entrance,
         delay: 0.1 // Небольшая задержка для последовательного появления
       }
@@ -80,7 +80,7 @@ const BottomSheet = ({
     exit: { 
       opacity: 0,
       transition: {
-        duration: Duration.S,
+        duration: 0.3,
         ease: Easing.Exit
       }
     }
@@ -92,15 +92,15 @@ const BottomSheet = ({
     animate: { 
       backgroundColor: 'rgba(0, 0, 0, 0.541)',
       transition: {
-        duration: Duration.M,
-        ease: Easing.Entrance
+        duration: 0.3,
+        ease: [.645, .045, .355, 1]
       }
     },
     exit: { 
       backgroundColor: 'rgba(0, 0, 0, 0)',
       transition: {
-        duration: Duration.S,
-        ease: Easing.Exit
+        duration: 0.3,
+        ease: [.455, .03, .515, .955]
       }
     }
   };
