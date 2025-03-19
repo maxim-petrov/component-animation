@@ -136,10 +136,10 @@ const Button = ({
                 }}
                 exit={{ opacity: 0 }}
                 transition={{ 
-                  width: { duration: 0.5, ease: "easeOut" },
-                  height: { duration: 0.5, ease: "easeOut" },
-                  transform: { duration: 0.5, ease: "easeOut" },
-                  opacity: { duration: isPressed ? 0 : 0.3 }
+                  width: { duration: 0.3, ease: "easeOut" },
+                  height: { duration: 0.3, ease: "easeOut" },
+                  transform: { duration: 0.3, ease: "easeOut" },
+                  opacity: { duration: isPressed ? 0 : 0.2 }
                 }}
               />
             )}
