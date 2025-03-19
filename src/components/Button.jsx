@@ -69,7 +69,7 @@ const Button = ({
       // Удаляем ripple с задержкой для плавного исчезновения
       setTimeout(() => {
         setRipple(null);
-      }, 300);
+      }, 600);
     }
   };
   
@@ -136,10 +136,10 @@ const Button = ({
                 }}
                 exit={{ opacity: 0 }}
                 transition={{ 
-                  width: { duration: 0.3, ease: "easeOut" },
-                  height: { duration: 0.3, ease: "easeOut" },
-                  transform: { duration: 0.3, ease: "easeOut" },
-                  opacity: { duration: isPressed ? 0 : 0.2 }
+                  width: { duration: 0.25, ease: "easeOut" },
+                  height: { duration: 0.25, ease: "easeOut" },
+                  transform: { duration: 0.25, ease: "easeOut" },
+                  opacity: { duration: isPressed ? 0 : 0.5, ease: "easeOut" }
                 }}
               />
             )}
