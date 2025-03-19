@@ -29,8 +29,9 @@ const Button = ({
     </div>
   );
   
-  // State для ripple эффекта
-  const [rippleList, setRippleList] = useState([]);
+  // State для ripple эффекта и отслеживания нажатия
+  const [ripple, setRipple] = useState(null);
+  const [isPressed, setIsPressed] = useState(false);
   const buttonRef = useRef(null);
   
   // Добавляем ripple эффект при mouse down
@@ -39,30 +40,60 @@ const Button = ({
     if (!button) return;
     
     const buttonRect = button.getBoundingClientRect();
-    const size = Math.max(buttonRect.width, buttonRect.height);
+    const size = Math.max(buttonRect.width, buttonRect.height) * 2;
     const x = e.clientX - buttonRect.left;
     const y = e.clientY - buttonRect.top;
     
     // Создаем новый ripple элемент
-    const ripple = {
+    const newRipple = {
       id: Date.now(),
       x,
       y,
-      size
+      size,
+      show: true
     };
     
-    setRippleList((prevList) => [...prevList, ripple]);
+    setRipple(newRipple);
+    setIsPressed(true);
   };
   
-  // Удаляем ripple эффект после завершения анимации
-  const removeRipple = (id) => {
-    setRippleList((prevList) => prevList.filter(ripple => ripple.id !== id));
-  };
-  
-  // Обработчик события mouse down для ripple эффекта
+  // Обработчик mouseDown - создаем ripple эффект
   const handleMouseDown = (e) => {
     handleRipple(e);
   };
+  
+  // Обработчик mouseUp - скрываем ripple эффект
+  const handleMouseUp = () => {
+    if (ripple) {
+      setIsPressed(false);
+      // Удаляем ripple с задержкой для плавного исчезновения
+      setTimeout(() => {
+        setRipple(null);
+      }, 300);
+    }
+  };
+  
+  // Обработчик mouseLeave - скрываем ripple эффект при выходе курсора за пределы кнопки
+  const handleMouseLeave = () => {
+    if (isPressed) {
+      handleMouseUp();
+    }
+  };
+  
+  // Добавляем глобальные обработчики событий для случая, если mouseUp происходит вне кнопки
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      if (isPressed) {
+        handleMouseUp();
+      }
+    };
+    
+    window.addEventListener('mouseup', handleGlobalMouseUp);
+    
+    return () => {
+      window.removeEventListener('mouseup', handleGlobalMouseUp);
+    };
+  }, [isPressed]);
   
   return (
     <div className="_Gq5_ ql7Up" data-e2e-id="button-default">
@@ -73,37 +104,45 @@ const Button = ({
           type={type}
           onClick={onClick}
           onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
           whileHover={buttonHoverAnimation.whileHover}
           transition={buttonHoverAnimation.transition}
         >
-          {/* Ripple элементы */}
+          {/* Ripple элемент */}
           <AnimatePresence>
-            {rippleList.map((ripple) => (
+            {ripple && (
               <motion.span
                 key={ripple.id}
                 className="btn-ripple"
                 style={{
+                  position: 'absolute',
                   left: ripple.x,
                   top: ripple.y,
+                  transformOrigin: 'center center',
                   background: '#00822C',
                 }}
                 initial={{ 
                   width: 0, 
                   height: 0, 
-                  opacity: 0.5 
+                  opacity: 0.5,
+                  transform: 'translate(-50%, -50%) scale(0)',
                 }}
                 animate={{ 
-                  width: ripple.size * 2, 
-                  height: ripple.size * 2, 
-                  opacity: 0,
-                  x: -ripple.size,
-                  y: -ripple.size,
+                  width: ripple.size, 
+                  height: ripple.size, 
+                  opacity: isPressed ? 0.7 : 0,
+                  transform: 'translate(-50%, -50%) scale(1)',
                 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.7 }}
-                onAnimationComplete={() => removeRipple(ripple.id)}
+                transition={{ 
+                  width: { duration: 0.5, ease: "easeOut" },
+                  height: { duration: 0.5, ease: "easeOut" },
+                  transform: { duration: 0.5, ease: "easeOut" },
+                  opacity: { duration: isPressed ? 0 : 0.3 }
+                }}
               />
-            ))}
+            )}
           </AnimatePresence>
           
           <motion.span 

@@ -49,9 +49,13 @@
 .btn-ripple {
   position: absolute;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 0;
+  background-color: #00822C;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center;
+  transition: width 0.5s ease-out, height 0.5s ease-out, opacity 0.3s ease-out, transform 0.5s ease-out;
 }
 
 .btn-root-119-18-1-1 .btn-text-398-18-1-1 {
