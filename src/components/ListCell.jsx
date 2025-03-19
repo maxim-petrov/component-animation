@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { listCellHoverAnimation, listCellTapAnimation, radioAnimation, avatarAnimation } from '../animations/listCellAnimations';
+import { listCellHoverAnimation, radioAnimation } from '../animations/listCellAnimations';
 import '../global.css';
 import '../styles/components/ListCell.css';
 import '../styles/typography.css';
@@ -48,9 +48,7 @@ const ListCell = ({
           aria-checked={isSelected}
           data-e2e-id={`listCell_item_${name}`}
           onClick={handleSelect}
-          initial="initial"
           whileHover="hover"
-          whileTap="tap"
           variants={listCellHoverAnimation}
           transition={listCellHoverAnimation.transition}
         >
@@ -69,7 +67,6 @@ const ListCell = ({
                   />
                   <motion.span 
                     className="radio-circle-aab-11-0-3"
-                    initial="initial"
                     animate={isSelected ? "checked" : "initial"}
                     variants={radioAnimation}
                     transition={radioAnimation.transition}
@@ -85,13 +82,7 @@ const ListCell = ({
           </div>
           
           {imageSrc && (
-            <motion.div 
-              className="list-cell-rightSide-e72-2-2-1"
-              initial="initial"
-              whileHover="hover"
-              variants={avatarAnimation}
-              transition={avatarAnimation.transition}
-            >
+            <div className="list-cell-rightSide-e72-2-2-1">
               <div className="avtr-root-912-1-1-4 avtr-small-b73-1-1-4 avtr-circle-5ee-1-1-4">
                 <div className="avtr-inner-125-1-1-4 avtr-primary-9ed-1-1-4">
                   <div className="picture-picture-f61-4-0-1" style={{ width: '40px', height: '40px' }}>
@@ -110,7 +101,7 @@ const ListCell = ({
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           )}
         </motion.label>
       </div>

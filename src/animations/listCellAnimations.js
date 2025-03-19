@@ -11,7 +11,7 @@ export const listCellHoverAnimation = {
   },
   hover: {
     backgroundColor: 'rgba(0, 0, 0, 0.02)',
-    scale: 1.005,
+    scale: 1,
     transformOrigin: 'center',
   },
   transition: createSpringConfig({
