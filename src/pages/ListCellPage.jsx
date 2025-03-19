@@ -5,12 +5,17 @@ import { Spring } from '../animations/tokens';
 import '../global.css';
 
 const ListCellPage = () => {
-  const [selectedItem, setSelectedItem] = useState('call');
+  const [selectedItems, setSelectedItems] = useState({
+    call: true,
+    message: false,
+    email: true,
+  });
   
   const handleSelect = (name, isSelected) => {
-    if (isSelected) {
-      setSelectedItem(name);
-    }
+    setSelectedItems(prev => ({
+      ...prev,
+      [name]: isSelected
+    }));
   };
   
   return (
@@ -24,26 +29,50 @@ const ListCellPage = () => {
       <h1>List Cell</h1>
       
       <div className="component-description">
-        <h2 style={{ color: "#333" }}>Стандартный вариант</h2>
+        <h2 style={{ color: "#333" }}>Примеры с чекбоксами</h2>
       </div>
       
       <div className="component-demo">
-        <div className="component-demo-inner">
-          <ListCell 
-            title="Выбрать опцию" 
-            subtitle="Информация" 
-            name="call" 
-            selected={selectedItem === 'call'} 
-            onSelect={handleSelect}
-            imageSrc="https://img.dmclk.ru/s200x200q80/vitrina/96/33/9633066a859524b9187b26a37d8833bd6616f24d.jpg"
-          />
+        <div className="component-demo-inner" style={{ maxWidth: '400px' }}>
+          <div style={{ width: '100%', maxWidth: '300px', marginBottom: '8px' }}>
+            <ListCell 
+              title="Телефонный звонок" 
+              subtitle="Предпочитаемый метод связи" 
+              name="call" 
+              selected={selectedItems.call} 
+              onSelect={handleSelect}
+              imageSrc="https://img.dmclk.ru/s200x200q80/vitrina/96/33/9633066a859524b9187b26a37d8833bd6616f24d.jpg"
+            />
+          </div>
+          
+          <div style={{ width: '100%', maxWidth: '300px', marginBottom: '8px' }}>
+            <ListCell 
+              title="Текстовое сообщение" 
+              subtitle="Быстрый способ связи" 
+              name="message" 
+              selected={selectedItems.message} 
+              onSelect={handleSelect}
+              imageSrc="https://img.dmclk.ru/s200x200q80/vitrina/96/33/9633066a859524b9187b26a37d8833bd6616f24d.jpg"
+            />
+          </div>
+          
+          <div style={{ width: '100%', maxWidth: '300px', marginBottom: '8px' }}>
+            <ListCell 
+              title="Электронная почта" 
+              subtitle="Для официальной переписки" 
+              name="email" 
+              selected={selectedItems.email} 
+              onSelect={handleSelect}
+              imageSrc="https://img.dmclk.ru/s200x200q80/vitrina/96/33/9633066a859524b9187b26a37d8833bd6616f24d.jpg"
+            />
+          </div>
         </div>
       </div>
       
       <div className="component-description">
         <h2 style={{ color: "#333" }}>О компоненте</h2>
         <p style={{ color: "#333" }}>
-          Компонент ListCell предназначен для создания интерактивных ячеек списка с возможностью выбора через радиокнопку.
+          Компонент ListCell предназначен для создания интерактивных ячеек списка с возможностью выбора через чекбокс.
           Компонент может содержать основной текст, подзаголовок и изображение аватара.
         </p>
         
@@ -51,7 +80,7 @@ const ListCellPage = () => {
         <ul style={{ color: "#333" }}>
           <li><code>title</code> - Основной текст элемента (обязательный)</li>
           <li><code>subtitle</code> - Подзаголовок элемента (опциональный)</li>
-          <li><code>name</code> - Идентификатор для радиокнопки (по умолчанию "list-item")</li>
+          <li><code>name</code> - Идентификатор для чекбокса (по умолчанию "list-item")</li>
           <li><code>selected</code> - Выбран ли элемент (булево значение, по умолчанию false)</li>
           <li><code>imageSrc</code> - URL изображения аватара (опциональный)</li>
           <li><code>onSelect</code> - Функция-обработчик выбора элемента</li>
@@ -63,7 +92,7 @@ const ListCellPage = () => {
           Компонент использует следующие токены анимации:
         </p>
         
-        <h4 style={{ color: "#333" }}>Анимация радиокнопки при выборе</h4>
+        <h4 style={{ color: "#333" }}>Анимация чекбокса при выборе</h4>
         <ul style={{ color: "#333" }}>
           <li><code>Spring.Stiffness.Firm (290)</code> - высокая жесткость для быстрой реакции</li>
           <li><code>Spring.Damping.Medium (17)</code> - среднее затухание для визуального "щелчка"</li>
@@ -80,12 +109,12 @@ const ListCellPage = () => {
         <h3 style={{ color: "#333" }}>Состояния</h3>
         <ul style={{ color: "#333" }}>
           <li><strong>Обычное</strong> - стандартный вид элемента списка</li>
-          <li><strong>Выбранное</strong> - элемент выбран (радиокнопка активна, применяется класс selected)</li>
+          <li><strong>Выбранное</strong> - элемент выбран (чекбокс активен, применяется класс selected)</li>
         </ul>
         
         <h3 style={{ color: "#333" }}>Варианты использования</h3>
         <ul style={{ color: "#333" }}>
-          <li>Списки с одиночным выбором</li>
+          <li>Списки с множественным выбором</li>
           <li>Меню с опциями</li>
           <li>Выбор контактов или пользователей</li>
           <li>Списки настроек или параметров</li>
