@@ -33,8 +33,8 @@ const ListCellPage = () => {
       </div>
       
       <div className="component-demo">
-        <div className="component-demo-inner" style={{ maxWidth: '400px' }}>
-          <div style={{ width: '100%', maxWidth: '300px', marginBottom: '8px' }}>
+        <div className="component-demo-inner">
+          <div style={{ width: '100%', maxWidth: '300px', margin: '0 auto 8px auto' }}>
             <ListCell 
               title="Телефонный звонок" 
               subtitle="Предпочитаемый метод связи" 
@@ -45,7 +45,7 @@ const ListCellPage = () => {
             />
           </div>
           
-          <div style={{ width: '100%', maxWidth: '300px', marginBottom: '8px' }}>
+          <div style={{ width: '100%', maxWidth: '300px', margin: '0 auto 8px auto' }}>
             <ListCell 
               title="Текстовое сообщение" 
               subtitle="Быстрый способ связи" 
@@ -56,7 +56,7 @@ const ListCellPage = () => {
             />
           </div>
           
-          <div style={{ width: '100%', maxWidth: '300px', marginBottom: '8px' }}>
+          <div style={{ width: '100%', maxWidth: '300px', margin: '0 auto 8px auto' }}>
             <ListCell 
               title="Электронная почта" 
               subtitle="Для официальной переписки" 
