@@ -43,7 +43,8 @@ const ListCell = ({
     <div className="_Gq5_ ql7Up" data-e2e-id="list-cell-list-cell">
       <div style={{ width: '300px' }}>
         <label 
-          className={`list-cell-root-0ea-2-2-1 list-cell-p-${size}-0a8-2-2-1 list-cell-withControls-744-2-2-1 ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
+          className={`list-cell-root-0ea-2-2-1 list-cell-withControls-744-2-2-1 ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
+          style={{ padding: '14px 16px' }}
           tabIndex="0" 
           aria-checked={isSelected}
           data-e2e-id={`listCell_item_${name}`}
