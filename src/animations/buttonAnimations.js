@@ -13,6 +13,7 @@ export const buttonHoverAnimation = {
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)"
   },
   whileTap: { 
+    backgroundColor: "#00822C",
     transition: {
       type: "spring",
       stiffness: 700,
