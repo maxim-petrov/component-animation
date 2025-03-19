@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { listCellHoverAnimation, radioAnimation } from '../animations/listCellAnimations';
+import { radioAnimation } from '../animations/listCellAnimations';
 import '../global.css';
 import '../styles/components/ListCell.css';
 import '../styles/typography.css';
@@ -42,15 +42,12 @@ const ListCell = ({
   return (
     <div className="_Gq5_ ql7Up" data-e2e-id="list-cell-list-cell">
       <div style={{ width: '300px' }}>
-        <motion.label 
+        <label 
           className={`list-cell-root-0ea-2-2-1 list-cell-p-${size}-0a8-2-2-1 list-cell-withControls-744-2-2-1 ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
           tabIndex="0" 
           aria-checked={isSelected}
           data-e2e-id={`listCell_item_${name}`}
           onClick={handleSelect}
-          whileHover="hover"
-          variants={listCellHoverAnimation}
-          transition={listCellHoverAnimation.transition}
         >
           <div className="list-cell-wrapper-1a8-2-2-1">
             <div className="list-cell-leftSide-8c8-2-2-1">
@@ -103,7 +100,7 @@ const ListCell = ({
               </div>
             </div>
           )}
-        </motion.label>
+        </label>
       </div>
     </div>
   );
