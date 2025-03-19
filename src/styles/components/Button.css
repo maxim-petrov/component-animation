@@ -37,6 +37,21 @@
   position: relative;
   text-align: center;
   transition: background-color .17s ease-out, border-color .17s ease-out;
+  overflow: hidden; /* Для обрезки ripple-эффекта внутри кнопки */
+}
+
+/* Стили для ripple-эффекта */
+.btn-ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .btn-root-119-18-1-1 .btn-text-398-18-1-1 {
@@ -56,6 +71,13 @@
   text-transform: none;
   transition: color .17s ease-out;
   white-space: nowrap;
+  position: relative; /* Для отображения над ripple-эффектом */
+  z-index: 1;
+}
+
+.btn-root-119-18-1-1 .btn-icon-72f-18-1-1 {
+  position: relative; /* Для отображения над ripple-эффектом */
+  z-index: 1;
 }
 
 .btn-root-119-18-1-1.btn-typeButtonReset-268-18-1-1,

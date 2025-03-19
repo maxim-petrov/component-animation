@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   buttonAnimationConfig, 
   buttonHoverAnimation, 
@@ -28,16 +28,84 @@ const Button = ({
       </svg>
     </div>
   );
-
+  
+  // State для ripple эффекта
+  const [rippleList, setRippleList] = useState([]);
+  const buttonRef = useRef(null);
+  
+  // Добавляем ripple эффект при клике
+  const handleRipple = (e) => {
+    const button = buttonRef.current;
+    if (!button) return;
+    
+    const buttonRect = button.getBoundingClientRect();
+    const size = Math.max(buttonRect.width, buttonRect.height);
+    const x = e.clientX - buttonRect.left;
+    const y = e.clientY - buttonRect.top;
+    
+    // Создаем новый ripple элемент
+    const ripple = {
+      id: Date.now(),
+      x,
+      y,
+      size
+    };
+    
+    setRippleList((prevList) => [...prevList, ripple]);
+  };
+  
+  // Удаляем ripple эффект после завершения анимации
+  const removeRipple = (id) => {
+    setRippleList((prevList) => prevList.filter(ripple => ripple.id !== id));
+  };
+  
+  // Объединяем функцию onClick с функцией создания ripple
+  const handleClick = (e) => {
+    handleRipple(e);
+    onClick(e);
+  };
+  
   return (
     <div className="_Gq5_ ql7Up" data-e2e-id="button-default">
       <div className="CqkE8">
         <motion.button 
-          className={`btn-root-119-18-1-1 btn-${variant}-a30-18-1-1 btn-${size}-9e4-18-1-1 btn-typeButtonReset-268-18-1-1 btn-withIcon-a49-18-1-1`} 
+          ref={buttonRef}
+          className={`btn-root-119-18-1-1 btn-${variant}-a30-18-1-1 btn-${size}-9e4-18-1-1 btn-typeButtonReset-268-18-1-1 btn-withIcon-a49-18-1-1 btn-ripple-container`} 
           type={type}
-          onClick={onClick}
-          {...buttonHoverAnimation}
+          onClick={handleClick}
+          whileHover={buttonHoverAnimation.whileHover}
+          transition={buttonHoverAnimation.transition}
         >
+          {/* Ripple элементы */}
+          <AnimatePresence>
+            {rippleList.map((ripple) => (
+              <motion.span
+                key={ripple.id}
+                className="btn-ripple"
+                style={{
+                  left: ripple.x,
+                  top: ripple.y,
+                  background: '#00822C',
+                }}
+                initial={{ 
+                  width: 0, 
+                  height: 0, 
+                  opacity: 0.5 
+                }}
+                animate={{ 
+                  width: ripple.size * 2, 
+                  height: ripple.size * 2, 
+                  opacity: 0,
+                  x: -ripple.size,
+                  y: -ripple.size,
+                }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.7 }}
+                onAnimationComplete={() => removeRipple(ripple.id)}
+              />
+            ))}
+          </AnimatePresence>
+          
           <motion.span 
             className="btn-icon-72f-18-1-1 btn-icon--left-5a5-18-1-1"
             initial="initial"

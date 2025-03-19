@@ -13,7 +13,6 @@ export const buttonHoverAnimation = {
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)"
   },
   whileTap: { 
-    backgroundColor: "#00822C",
     transition: {
       type: "spring",
       stiffness: 700,
@@ -24,6 +23,26 @@ export const buttonHoverAnimation = {
   transition: createSpringConfig({
     ...Spring.Strong
   })
+};
+
+// Анимация для ripple-эффекта
+export const rippleAnimation = {
+  initial: { 
+    width: 0, 
+    height: 0, 
+    opacity: 0.5 
+  },
+  animate: { 
+    width: (size) => size * 2, 
+    height: (size) => size * 2, 
+    opacity: 0
+  },
+  exit: { 
+    opacity: 0 
+  },
+  transition: {
+    duration: 0.7
+  }
 };
 
 // Анимация для иконки внутри кнопки (без анимации при ховере)
