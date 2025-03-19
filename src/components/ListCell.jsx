@@ -118,9 +118,9 @@ const ListCell = ({
     };
   }, [isPressed]);
   
-  // Определяем цвет фона в зависимости от состояния (используется только для hover)
+  // Определяем цвет фона в зависимости от состояния
   const getBackgroundColor = () => {
-    if (isHovered && !isPressed) return '#F6F7F9';
+    if (isHovered) return '#F6F7F9';
     return 'transparent';
   };
   
@@ -169,7 +169,7 @@ const ListCell = ({
             animate={{ 
               width: ripple.size, 
               height: ripple.size, 
-              opacity: isPressed ? 0.7 : 0,
+              opacity: isPressed ? 0.5 : 0,
               transform: 'translate(-50%, -50%) scale(1)',
             }}
             exit={{ opacity: 0 }}
