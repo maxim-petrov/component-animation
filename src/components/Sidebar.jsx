@@ -7,10 +7,10 @@ const Sidebar = () => {
   const components = [
     { path: 'button', name: 'Button' },
     { path: 'accordion', name: 'Accordion' },
-    { path: 'tabs', name: 'Tabs' },
-    { path: 'cards', name: 'Cards' },
+    // { path: 'tabs', name: 'Tabs' }, // Скрыто по запросу
+    // { path: 'cards', name: 'Cards' }, // Скрыто по запросу
     { path: 'banners', name: 'Banners' },
-    { path: 'dropdown-button', name: 'Dropdown Button' },
+    // { path: 'dropdown-button', name: 'Dropdown Button' }, // Скрыто по запросу
     { path: 'slider', name: 'Slider' },
     { path: 'bottom-sheet', name: 'Bottom Sheet' },
     { path: 'list-cell', name: 'List Cell' }
