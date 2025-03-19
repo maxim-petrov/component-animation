@@ -30,8 +30,8 @@ const ListCellPage = () => {
       <div className="component-demo">
         <div className="component-demo-inner">
           <ListCell 
-            title="Позвонить в Домклик" 
-            subtitle="Или не позвонить?" 
+            title="Выбрать опцию" 
+            subtitle="Информация" 
             name="call" 
             selected={selectedItem === 'call'} 
             onSelect={handleSelect}
