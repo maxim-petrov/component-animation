@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import '../global.css';
 import '../styles/components/ListCell.css';
 import '../styles/typography.css';
@@ -27,6 +28,8 @@ const ListCell = ({
   const [isSelected, setIsSelected] = useState(selected);
   const [isPressed, setIsPressed] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [ripple, setRipple] = useState(null);
+  const cellRef = useRef(null);
   
   // Синхронизация внешнего состояния выбора с внутренним
   useEffect(() => {
@@ -48,13 +51,44 @@ const ListCell = ({
     handleToggle();
   };
   
-  // Обработчики состояния нажатия
-  const handleMouseDown = () => {
+  // Обработчик ripple эффекта
+  const handleRipple = (e) => {
+    const cell = cellRef.current;
+    if (!cell) return;
+    
+    const cellRect = cell.getBoundingClientRect();
+    const size = Math.max(cellRect.width, cellRect.height) * 2;
+    const x = e.clientX - cellRect.left;
+    const y = e.clientY - cellRect.top;
+    
+    // Создаем новый ripple элемент
+    const newRipple = {
+      id: Date.now(),
+      x,
+      y,
+      size,
+      show: true
+    };
+    
+    setRipple(newRipple);
     setIsPressed(true);
   };
   
+  // Обработчик mouseDown - создаем ripple эффект
+  const handleMouseDown = (e) => {
+    handleRipple(e);
+  };
+  
+  // Обработчик mouseUp - скрываем ripple эффект
   const handleMouseUp = () => {
     setIsPressed(false);
+    
+    // Удаляем ripple с задержкой для плавного исчезновения
+    if (ripple) {
+      setTimeout(() => {
+        setRipple(null);
+      }, 600);
+    }
   };
   
   // Обработчики состояния наведения
@@ -65,25 +99,42 @@ const ListCell = ({
   const handleMouseLeave = () => {
     setIsHovered(false);
     if (isPressed) {
-      setIsPressed(false);
+      handleMouseUp();
     }
   };
   
-  // Определяем цвет фона в зависимости от состояния
+  // Добавляем глобальные обработчики событий для случая, если mouseUp происходит вне ячейки
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      if (isPressed) {
+        handleMouseUp();
+      }
+    };
+    
+    window.addEventListener('mouseup', handleGlobalMouseUp);
+    
+    return () => {
+      window.removeEventListener('mouseup', handleGlobalMouseUp);
+    };
+  }, [isPressed]);
+  
+  // Определяем цвет фона в зависимости от состояния (используется только для hover)
   const getBackgroundColor = () => {
-    if (isPressed) return '#DEDFE3';
-    if (isHovered) return '#F6F7F9';
+    if (isHovered && !isPressed) return '#F6F7F9';
     return 'transparent';
   };
   
   return (
     <div 
-      className={`list-cell-root-0ea-2-2-1 list-cell-withControls-744-2-2-1 ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
+      ref={cellRef}
+      className={`list-cell-root-0ea-2-2-1 list-cell-withControls-744-2-2-1 list-cell-ripple-container ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
       style={{ 
         padding: '14px 16px', 
         cursor: 'pointer',
         backgroundColor: getBackgroundColor(),
-        transition: 'background-color 0.1s ease-in-out'
+        transition: 'background-color 0.1s ease-in-out',
+        position: 'relative',
+        overflow: 'hidden'
       }}
       tabIndex="0" 
       aria-checked={isSelected}
@@ -95,8 +146,45 @@ const ListCell = ({
       onMouseLeave={handleMouseLeave}
       role="checkbox"
     >
-      <div className="list-cell-wrapper-1a8-2-2-1">
-        <div className="list-cell-leftSide-8c8-2-2-1">
+      {/* Ripple элемент */}
+      <AnimatePresence>
+        {ripple && (
+          <motion.span
+            key={ripple.id}
+            className="list-cell-ripple"
+            style={{
+              position: 'absolute',
+              left: ripple.x,
+              top: ripple.y,
+              transformOrigin: 'center center',
+              background: '#DEDFE3',
+              zIndex: 0
+            }}
+            initial={{ 
+              width: 0, 
+              height: 0, 
+              opacity: 0.5,
+              transform: 'translate(-50%, -50%) scale(0)',
+            }}
+            animate={{ 
+              width: ripple.size, 
+              height: ripple.size, 
+              opacity: isPressed ? 0.7 : 0,
+              transform: 'translate(-50%, -50%) scale(1)',
+            }}
+            exit={{ opacity: 0 }}
+            transition={{ 
+              width: { duration: 0.25, ease: "easeOut" },
+              height: { duration: 0.25, ease: "easeOut" },
+              transform: { duration: 0.25, ease: "easeOut" },
+              opacity: { duration: isPressed ? 0 : 0.5, ease: "easeOut" }
+            }}
+          />
+        )}
+      </AnimatePresence>
+      
+      <div className="list-cell-wrapper-1a8-2-2-1" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="list-cell-leftSide-8c8-2-2-1" style={{ position: 'relative', zIndex: 1 }}>
           <div 
             className={`checkbox-root-09c-9-1-0 ${isSelected ? 'checkbox-checked-b61-9-1-0' : ''}`} 
             data-e2e-id={`${name}__label`}
@@ -104,6 +192,7 @@ const ListCell = ({
               e.stopPropagation();
               handleToggle();
             }}
+            style={{ position: 'relative', zIndex: 1 }}
           >
             <input 
               className="checkbox-input-688-9-1-0" 
@@ -115,11 +204,12 @@ const ListCell = ({
               checked={isSelected}
               onChange={handleCheckboxChange}
               onClick={(e) => e.stopPropagation()}
+              style={{ position: 'relative', zIndex: 1 }}
             />
-            <div className="checkbox-iconContainer-80d-9-1-0">
-              <div className="icon-root-864-6-0-3 checkbox-icon-044-9-1-0">
+            <div className="checkbox-iconContainer-80d-9-1-0" style={{ position: 'relative', zIndex: 1 }}>
+              <div className="icon-root-864-6-0-3 checkbox-icon-044-9-1-0" style={{ position: 'relative', zIndex: 1 }}>
                 {isSelected && (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" style={{ position: 'relative', zIndex: 1 }}>
                     <path fill="currentColor" fillRule="evenodd" d="M14.015 4.092a.863.863 0 0 1-.018 1.202l-6.58 6.513a1.232 1.232 0 0 1-1.755-.014L1.994 8.049a.863.863 0 0 1 0-1.203.822.822 0 0 1 1.179 0l3.378 3.448 6.285-6.22a.822.822 0 0 1 1.179.018Z" clipRule="evenodd"></path>
                   </svg>
                 )}
@@ -128,14 +218,14 @@ const ListCell = ({
           </div>
         </div>
         
-        <div className="list-cell-title-64d-2-2-1">
+        <div className="list-cell-title-64d-2-2-1" style={{ position: 'relative', zIndex: 1 }}>
           <div className="list-cell-highlightMatchRoot-160-2-2-1">{title}</div>
           {subtitle && <div className="list-cell-subtitle-bb8-2-2-1">{subtitle}</div>}
         </div>
       </div>
       
       {imageSrc && (
-        <div className="list-cell-rightSide-e72-2-2-1">
+        <div className="list-cell-rightSide-e72-2-2-1" style={{ position: 'relative', zIndex: 1 }}>
           <div className="avtr-root-912-1-1-4 avtr-small-b73-1-1-4 avtr-circle-5ee-1-1-4">
             <div className="avtr-inner-125-1-1-4 avtr-primary-9ed-1-1-4">
               <div className="picture-picture-f61-4-0-1" style={{ width: '40px', height: '40px' }}>
