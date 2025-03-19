@@ -17,7 +17,7 @@ const Button = ({
 }) => {
   // Иконка сердца для кнопки
   const HeartIcon = () => (
-    <div className="icon-root-864-6-0-3">
+    <div className="icon-root-864-6-0-3" style={{ pointerEvents: 'none' }}>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
         <path 
           fill="currentColor" 
@@ -151,6 +151,7 @@ const Button = ({
             whileHover="hover"
             whileTap="tap"
             variants={iconAnimation}
+            style={{ pointerEvents: 'none' }}
           >
             <HeartIcon />
           </motion.span>
