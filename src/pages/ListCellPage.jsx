@@ -100,6 +100,13 @@ const ListCellPage = () => {
           <li>Появление/исчезновение: <code>scale: 0 → 1</code></li>
         </ul>
         
+        <h4 style={{ color: "#333" }}>Анимация при наведении и нажатии</h4>
+        <ul style={{ color: "#333" }}>
+          <li>Переход фонового цвета: <code>transition: 'background-color 0.1s ease-in-out'</code></li>
+          <li>Цвет при наведении (hover): <code>#F6F7F9</code></li>
+          <li>Цвет при нажатии (pressed): <code>#DEDFE3</code></li>
+        </ul>
+        
         <h3 style={{ color: "#333" }}>Тип анимации</h3>
         <p style={{ color: "#333" }}>
           Компонент использует микроанимации для обеспечения обратной связи при взаимодействии. Пружинные (spring) анимации 
@@ -109,7 +116,9 @@ const ListCellPage = () => {
         <h3 style={{ color: "#333" }}>Состояния</h3>
         <ul style={{ color: "#333" }}>
           <li><strong>Обычное</strong> - стандартный вид элемента списка</li>
-          <li><strong>Выбранное</strong> - элемент выбран (чекбокс активен, применяется класс selected)</li>
+          <li><strong>Наведение (hover)</strong> - курсор находится над элементом (фон меняется на #F6F7F9)</li>
+          <li><strong>Нажатое (pressed)</strong> - пользователь удерживает элемент (фон меняется на #DEDFE3)</li>
+          <li><strong>Выбранное (selected)</strong> - элемент выбран (чекбокс активен, применяется класс selected)</li>
         </ul>
         
         <h3 style={{ color: "#333" }}>Варианты использования</h3>

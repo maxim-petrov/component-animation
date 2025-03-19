@@ -25,6 +25,8 @@ const ListCell = ({
   size = 'small'
 }) => {
   const [isSelected, setIsSelected] = useState(selected);
+  const [isPressed, setIsPressed] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   
   // Синхронизация внешнего состояния выбора с внутренним
   useEffect(() => {
@@ -46,14 +48,51 @@ const ListCell = ({
     handleToggle();
   };
   
+  // Обработчики состояния нажатия
+  const handleMouseDown = () => {
+    setIsPressed(true);
+  };
+  
+  const handleMouseUp = () => {
+    setIsPressed(false);
+  };
+  
+  // Обработчики состояния наведения
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (isPressed) {
+      setIsPressed(false);
+    }
+  };
+  
+  // Определяем цвет фона в зависимости от состояния
+  const getBackgroundColor = () => {
+    if (isPressed) return '#DEDFE3';
+    if (isHovered) return '#F6F7F9';
+    return 'transparent';
+  };
+  
   return (
     <div 
       className={`list-cell-root-0ea-2-2-1 list-cell-withControls-744-2-2-1 ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
-      style={{ padding: '14px 16px', cursor: 'pointer' }}
+      style={{ 
+        padding: '14px 16px', 
+        cursor: 'pointer',
+        backgroundColor: getBackgroundColor(),
+        transition: 'background-color 0.1s ease-in-out'
+      }}
       tabIndex="0" 
       aria-checked={isSelected}
       data-e2e-id={`listCell_item_${name}`}
       onClick={handleToggle}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       role="checkbox"
     >
       <div className="list-cell-wrapper-1a8-2-2-1">
