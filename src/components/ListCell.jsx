@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { radioAnimation } from '../animations/listCellAnimations';
 import '../global.css';
 import '../styles/components/ListCell.css';
 import '../styles/typography.css';
 
 /**
- * Компонент ListCell - элемент списка с выбором через радиокнопку.
+ * Компонент ListCell - элемент списка с выбором через чекбокс.
  * 
  * @param {Object} props
  * @param {string} props.title - Основной текст элемента
  * @param {string} props.subtitle - Подзаголовок элемента
- * @param {string} props.name - Идентификатор для радиокнопки
+ * @param {string} props.name - Идентификатор для чекбокса
  * @param {boolean} props.selected - Выбран ли элемент
  * @param {string} props.imageSrc - URL изображения аватара
  * @param {function} props.onSelect - Функция обработчик выбора элемента
@@ -33,44 +31,64 @@ const ListCell = ({
     setIsSelected(selected);
   }, [selected]);
   
-  const handleSelect = () => {
+  const handleToggle = (e) => {
+    // Prevent any default behaviors
+    if (e) e.preventDefault();
+    
     const newState = !isSelected;
     setIsSelected(newState);
     if (onSelect) onSelect(name, newState);
+  };
+
+  // Отдельный обработчик для чекбокса
+  const handleCheckboxChange = (e) => {
+    e.stopPropagation();
+    handleToggle();
   };
   
   return (
     <div className="_Gq5_ ql7Up" data-e2e-id="list-cell-list-cell">
       <div style={{ width: '300px' }}>
-        <label 
+        <div 
           className={`list-cell-root-0ea-2-2-1 list-cell-withControls-744-2-2-1 ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
-          style={{ padding: '14px 16px' }}
+          style={{ padding: '14px 16px', cursor: 'pointer' }}
           tabIndex="0" 
           aria-checked={isSelected}
           data-e2e-id={`listCell_item_${name}`}
-          onClick={handleSelect}
+          onClick={handleToggle}
+          role="checkbox"
         >
           <div className="list-cell-wrapper-1a8-2-2-1">
             <div className="list-cell-leftSide-8c8-2-2-1">
-              <label className="radio-radio-a1c-11-0-3" data-e2e-id={`${name}__label`}>
-                <span className="radio-control-2ae-11-0-3">
-                  <input 
-                    className="radio-input-315-11-0-3" 
-                    type="radio" 
-                    name={name} 
-                    tabIndex="-1" 
-                    value={name}
-                    checked={isSelected}
-                    onChange={() => {}}
-                  />
-                  <motion.span 
-                    className="radio-circle-aab-11-0-3"
-                    animate={isSelected ? "checked" : "initial"}
-                    variants={radioAnimation}
-                    transition={radioAnimation.transition}
-                  />
-                </span>
-              </label>
+              <div 
+                className={`checkbox-root-09c-9-1-0 ${isSelected ? 'checkbox-checked-b61-9-1-0' : ''}`} 
+                data-e2e-id={`${name}__label`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggle();
+                }}
+              >
+                <input 
+                  className="checkbox-input-688-9-1-0" 
+                  type="checkbox" 
+                  id={`checkbox-${name}`}
+                  name={name} 
+                  tabIndex="-1" 
+                  value={name}
+                  checked={isSelected}
+                  onChange={handleCheckboxChange}
+                  onClick={(e) => e.stopPropagation()}
+                />
+                <div className="checkbox-iconContainer-80d-9-1-0">
+                  <div className="icon-root-864-6-0-3 checkbox-icon-044-9-1-0">
+                    {isSelected && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
+                        <path fill="currentColor" fillRule="evenodd" d="M14.015 4.092a.863.863 0 0 1-.018 1.202l-6.58 6.513a1.232 1.232 0 0 1-1.755-.014L1.994 8.049a.863.863 0 0 1 0-1.203.822.822 0 0 1 1.179 0l3.378 3.448 6.285-6.22a.822.822 0 0 1 1.179.018Z" clipRule="evenodd"></path>
+                      </svg>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
             
             <div className="list-cell-title-64d-2-2-1">
@@ -101,7 +119,7 @@ const ListCell = ({
               </div>
             </div>
           )}
-        </label>
+        </div>
       </div>
     </div>
   );
