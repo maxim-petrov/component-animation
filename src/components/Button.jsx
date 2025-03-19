@@ -33,7 +33,7 @@ const Button = ({
   const [rippleList, setRippleList] = useState([]);
   const buttonRef = useRef(null);
   
-  // Добавляем ripple эффект при клике
+  // Добавляем ripple эффект при mouse down
   const handleRipple = (e) => {
     const button = buttonRef.current;
     if (!button) return;
@@ -59,10 +59,9 @@ const Button = ({
     setRippleList((prevList) => prevList.filter(ripple => ripple.id !== id));
   };
   
-  // Объединяем функцию onClick с функцией создания ripple
-  const handleClick = (e) => {
+  // Обработчик события mouse down для ripple эффекта
+  const handleMouseDown = (e) => {
     handleRipple(e);
-    onClick(e);
   };
   
   return (
@@ -72,7 +71,8 @@ const Button = ({
           ref={buttonRef}
           className={`btn-root-119-18-1-1 btn-${variant}-a30-18-1-1 btn-${size}-9e4-18-1-1 btn-typeButtonReset-268-18-1-1 btn-withIcon-a49-18-1-1 btn-ripple-container`} 
           type={type}
-          onClick={handleClick}
+          onClick={onClick}
+          onMouseDown={handleMouseDown}
           whileHover={buttonHoverAnimation.whileHover}
           transition={buttonHoverAnimation.transition}
         >
