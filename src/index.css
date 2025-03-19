@@ -18,6 +18,9 @@
   --duration-action: 200ms; /* Стандартные анимации */
   --duration-regular: 250ms; /* Стандартные анимации */
   --duration-complex: 300ms; /* Сложные переходы */
+  --duration-extended: 500ms;
+  --duration-long: 700ms;
+  --duration-extra-long: 1000ms;
 
   /* Ease-out (плавное замедление к концу) */
   --ease-out-quad: cubic-bezier(.25, .46, .45, .94); /* Лёгкое замедление в конце движения. Хорошо подходит для фоновых элементов и мелких движений. */

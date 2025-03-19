@@ -39,6 +39,9 @@
   --motion-delay-short: 0.05s; /* 50ms - для последовательности */
   --motion-delay-medium: 0.1s; /* 100ms - средняя задержка */
   --motion-delay-long: 0.2s;   /* 200ms - для более ощутимой паузы */
+  --motion-delay-extended: 500ms;
+  --motion-delay-long: 700ms;
+  --motion-delay-extra: 1000ms;
 }
 
 /* Утилиты для добавления переходов */
