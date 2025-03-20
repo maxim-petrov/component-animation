@@ -169,21 +169,3 @@
 .list-cell-root-0ea-2-2-1.list-cell-disabled-1b0-2-2-1 .list-cell-leftSide-8c8-2-2-1,.list-cell-root-0ea-2-2-1.list-cell-disabled-1b0-2-2-1 .list-cell-rightSide-e72-2-2-1 {
     color: var(--color_icon_disabled,rgba(0,0,0,.322))
 }
-
-/* Стили для ripple-эффекта в ListCell */
-.list-cell-ripple-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.list-cell-ripple {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  background-color: #DEDFE3;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0);
-  transform-origin: center;
-  transition: width 0.7s ease-out, height 0.7s ease-out, opacity 0.05s ease-out, transform 0.7s ease-out;
-}

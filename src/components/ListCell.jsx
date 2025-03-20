@@ -28,7 +28,6 @@ const ListCell = ({
   const [isSelected, setIsSelected] = useState(selected);
   const [isPressed, setIsPressed] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [ripple, setRipple] = useState(null);
   const cellRef = useRef(null);
   
   // Синхронизация внешнего состояния выбора с внутренним
@@ -51,44 +50,14 @@ const ListCell = ({
     handleToggle();
   };
   
-  // Обработчик ripple эффекта
-  const handleRipple = (e) => {
-    const cell = cellRef.current;
-    if (!cell) return;
-    
-    const cellRect = cell.getBoundingClientRect();
-    const size = Math.max(cellRect.width, cellRect.height) * 2;
-    const x = e.clientX - cellRect.left;
-    const y = e.clientY - cellRect.top;
-    
-    // Создаем новый ripple элемент
-    const newRipple = {
-      id: Date.now(),
-      x,
-      y,
-      size,
-      show: true
-    };
-    
-    setRipple(newRipple);
+  // Обработчик mouseDown
+  const handleMouseDown = () => {
     setIsPressed(true);
   };
   
-  // Обработчик mouseDown - создаем ripple эффект
-  const handleMouseDown = (e) => {
-    handleRipple(e);
-  };
-  
-  // Обработчик mouseUp - скрываем ripple эффект
+  // Обработчик mouseUp
   const handleMouseUp = () => {
     setIsPressed(false);
-    
-    // Удаляем ripple с задержкой для плавного исчезновения
-    if (ripple) {
-      setTimeout(() => {
-        setRipple(null);
-      }, 600);
-    }
   };
   
   // Обработчики состояния наведения
@@ -127,14 +96,13 @@ const ListCell = ({
   return (
     <div 
       ref={cellRef}
-      className={`list-cell-root-0ea-2-2-1 list-cell-withControls-744-2-2-1 list-cell-ripple-container ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
+      className={`list-cell-root-0ea-2-2-1 list-cell-withControls-744-2-2-1 ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
       style={{ 
         padding: '14px 16px', 
         cursor: 'pointer',
         backgroundColor: getBackgroundColor(),
         transition: 'background-color 0.1s ease-in-out',
-        position: 'relative',
-        overflow: 'hidden'
+        position: 'relative'
       }}
       tabIndex="0" 
       aria-checked={isSelected}
@@ -146,43 +114,6 @@ const ListCell = ({
       onMouseLeave={handleMouseLeave}
       role="checkbox"
     >
-      {/* Ripple элемент */}
-      <AnimatePresence>
-        {ripple && (
-          <motion.span
-            key={ripple.id}
-            className="list-cell-ripple"
-            style={{
-              position: 'absolute',
-              left: ripple.x,
-              top: ripple.y,
-              transformOrigin: 'center center',
-              background: '#DEDFE3',
-              zIndex: 0
-            }}
-            initial={{ 
-              width: 0, 
-              height: 0, 
-              opacity: 0.5,
-              transform: 'translate(-50%, -50%) scale(0)',
-            }}
-            animate={{ 
-              width: ripple.size, 
-              height: ripple.size, 
-              opacity: isPressed ? 0.5 : 0,
-              transform: 'translate(-50%, -50%) scale(1)',
-            }}
-            exit={{ opacity: 0 }}
-            transition={{ 
-              width: { duration: 0.25, ease: "easeOut" },
-              height: { duration: 0.25, ease: "easeOut" },
-              transform: { duration: 0.25, ease: "easeOut" },
-              opacity: { duration: isPressed ? 0 : 0.5, ease: "easeOut" }
-            }}
-          />
-        )}
-      </AnimatePresence>
-      
       <div className="list-cell-wrapper-1a8-2-2-1" style={{ position: 'relative', zIndex: 1 }}>
         <div className="list-cell-leftSide-8c8-2-2-1" style={{ position: 'relative', zIndex: 1 }}>
           <div 
