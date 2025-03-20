@@ -1,0 +1,90 @@
+/* Анимации для BottomSheet */
+
+/* Анимация для появления и исчезновения BottomSheet */
+@keyframes bottomSheetEnter {
+  from {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bottomSheetExit {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+}
+
+/* Анимация для контента внутри BottomSheet */
+@keyframes contentEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentExit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Анимация для оверлея */
+@keyframes overlayEnter {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.541);
+  }
+}
+
+@keyframes overlayExit {
+  from {
+    background-color: rgba(0, 0, 0, 0.541);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+/* Классы для применения анимаций */
+.bottom-sheet-enter {
+  animation: bottomSheetEnter 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.bottom-sheet-exit {
+  animation: bottomSheetExit 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+}
+
+.content-enter {
+  animation: contentEnter 0.4s ease forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.content-exit {
+  animation: contentExit 0.3s ease forwards;
+}
+
+.overlay-enter {
+  animation: overlayEnter 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+.overlay-exit {
+  animation: overlayExit 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+} 
