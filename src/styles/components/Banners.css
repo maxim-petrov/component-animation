@@ -1,0 +1,163 @@
+/* Banner Component Styles */
+
+.card-banner-f1b-0-0-4 {
+    display: flex;
+    position: relative;
+    transition: background-color .3s ease;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 1
+}
+
+.card-banner-f1b-0-0-4:after {
+    content: " ";
+    inset: 0;
+    position: absolute;
+    z-index: 2
+}
+
+.card-banner-f1b-0-0-4.card-clickable-77a-0-0-4 {
+    cursor: pointer
+}
+
+.card-banner-f1b-0-0-4.card-primary-c1a-0-0-4 {
+    background-color: var(--color_bg_control_secondary_default,#e7eef3)
+}
+
+.card-banner-f1b-0-0-4.card-primary-c1a-0-0-4:hover {
+    background-color: var(--color_bg_control_secondary_hover,#e0e4e9)
+}
+
+.card-banner-f1b-0-0-4.card-primary-c1a-0-0-4:active {
+    background-color: var(--color_bg_control_secondary_active,#d5d8dc)
+}
+
+.card-banner-f1b-0-0-4.card-secondary-ac8-0-0-4 {
+    background-color: var(--color_bg_control_primary_default,#fff)
+}
+
+.card-banner-f1b-0-0-4.card-secondary-ac8-0-0-4:hover {
+    background-color: var(--color_bg_control_primary_hover,#f6f7f9)
+}
+
+.card-banner-f1b-0-0-4.card-secondary-ac8-0-0-4:active {
+    background-color: var(--color_bg_control_primary_active,#dedfe3)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-1-dd7-0-0-4 {
+    background-color: var(--color_bg_accent_success_default,#e5f8ec)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-1-dd7-0-0-4:hover {
+    background-color: var(--color_bg_accent_success_hover,#ccf1d9)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-1-dd7-0-0-4:active {
+    background-color: var(--color_bg_accent_success_active,#bbedcc)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-2-43b-0-0-4 {
+    background-color: var(--color_bg_accent_6_default,#fff3f8)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-2-43b-0-0-4:hover {
+    background-color: var(--color_bg_accent_6_hover,#ffdfed)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-2-43b-0-0-4:active {
+    background-color: var(--color_bg_accent_6_active,#ffc3dd)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-3-e2e-0-0-4 {
+    background-color: var(--color_bg_accent_info_hover,#d9ecff)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-3-e2e-0-0-4:hover {
+    background-color: var(--color_bg_accent_info_active,#c8dff6)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-3-e2e-0-0-4:active {
+    background-color: var(--color_bg_control_secondary_active,#d5d8dc)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-4-1eb-0-0-4 {
+    background-color: var(--color_bg_accent_1_default,#ffecd6)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-4-1eb-0-0-4:hover {
+    background-color: var(--color_bg_accent_1_hover,#ffe0bf)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-4-1eb-0-0-4:active {
+    background-color: var(--color_bg_accent_1_active,#fed2a1)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-5-288-0-0-4 {
+    background-color: var(--color_bg_accent_warning_default,#fff9e4)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-5-288-0-0-4:hover {
+    background-color: var(--color_bg_accent_warning_hover,#fff1c5)
+}
+
+.card-banner-f1b-0-0-4.card-color-theme-5-288-0-0-4:active {
+    background-color: var(--color_bg_accent_warning_active,#ffe7a8)
+}
+
+.card-banner-f1b-0-0-4.card-medium-cfd-0-0-4 {
+    border-radius: 20px;
+    padding: 24px
+}
+
+.card-banner-f1b-0-0-4.card-small-277-0-0-4,.card-banner-f1b-0-0-4.card-xSmall-db8-0-0-4 {
+    border-radius: 12px;
+    padding: 16px
+}
+
+.card-subTitle-75a-0-0-4,.card-title-834-0-0-4 {
+    margin-bottom: 8px
+}
+
+.card-icon-236-0-0-4 {
+    color: var(--color_icon_secondary_default,#8593a5);
+    margin-right: 8px
+}
+
+.card-content-884-0-0-4 {
+    flex: 1
+}
+
+/* Banner specific styles */
+.banner-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.animated-banner {
+    animation: bannerAppear 0.4s var(--easing-gentle) forwards;
+    opacity: 0;
+}
+
+.animated-banner:nth-child(1) { animation-delay: 0.1s; }
+.animated-banner:nth-child(2) { animation-delay: 0.5s; }
+.animated-banner:nth-child(3) { animation-delay: 0.9s; }
+.animated-banner:nth-child(4) { animation-delay: 1.3s; }
+.animated-banner:nth-child(5) { animation-delay: 1.7s; }
+
+/* For QIMpV and wOzPG classes */
+.QIMpV {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.wOzPG {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aMRDQ {
+    border-radius: 20px;
+    overflow: hidden;
+} 

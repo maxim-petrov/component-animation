@@ -1,5 +1,6 @@
 import React from 'react';
 import '../animations/bannerAnimations.css';
+import '../styles/components/Banners.css';
 import '../global.css';
 
 const Banner = ({ id, title, subtitle, index }) => {
