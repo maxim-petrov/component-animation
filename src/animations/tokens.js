@@ -18,7 +18,16 @@ export const Duration = {
   S: 0.15,     // 150ms - небольшие UI-изменения (кнопки, переключатели)
   M: 0.25,     // 250ms - стандартные переходы (модальные окна, выпадающие меню)
   L: 0.3,      // 300ms - крупные изменения (карточки, панели)
-  XL: 0.4      // 400ms - сложные/выразительные анимации, декоративные эффекты
+  XL: 0.4,     // 400ms - сложные/выразительные анимации
+  XXL: 0.7     // 700ms - особо выразительные анимации
+  
+  // Альтернативные имена из design-tokens.js
+  // fast01: 0.07,   // 70ms
+  // fast02: 0.11,   // 110ms
+  // moderate01: 0.15, // 150ms
+  // moderate02: 0.24, // 240ms
+  // slow01: 0.4,    // 400ms
+  // slow02: 0.7     // 700ms
 };
 
 // Кривые ускорения (easing)
@@ -28,14 +37,39 @@ export const Easing = {
   entrance: [0.0, 0.0, 0.3, 1.0],    // Для появления элементов
   exit: [0.4, 0.14, 1.0, 1.0],       // Для исчезновения элементов
   spring: [0.43, 0.28, 0.52, 1.23],  // Пружинная кривая
+  
+  // Из design-tokens.js
+  productive: {
+    standard: [0.2, 0, 0.38, 0.9],   // Эффективный, ясный переход
+    entrance: [0, 0, 0.38, 0.9],     // Быстрый вход с плавным замедлением 
+    exit: [0.2, 0, 1, 0.9]           // Плавный старт с быстрым уходом
+  },
+  expressive: {
+    standard: [0.4, 0.14, 0.3, 1],   // Более выразительное движение
+    entrance: [0, 0, 0.3, 1],        // Более плавный, заметный вход
+    exit: [0.4, 0.14, 1, 1]          // Более драматичный уход
+  }
 };
 
 // Строковые значения для CSS
 export const EasingCSS = {
+  // Базовые 
   standard: `cubic-bezier(${Easing.standard.join(', ')})`,
   entrance: `cubic-bezier(${Easing.entrance.join(', ')})`,
   exit: `cubic-bezier(${Easing.exit.join(', ')})`,
-  spring: `cubic-bezier(${Easing.spring.join(', ')})`
+  spring: `cubic-bezier(${Easing.spring.join(', ')})`,
+  
+  // Расширенные
+  productive: {
+    standard: `cubic-bezier(${Easing.productive.standard.join(', ')})`,
+    entrance: `cubic-bezier(${Easing.productive.entrance.join(', ')})`,
+    exit: `cubic-bezier(${Easing.productive.exit.join(', ')})`
+  },
+  expressive: {
+    standard: `cubic-bezier(${Easing.expressive.standard.join(', ')})`,
+    entrance: `cubic-bezier(${Easing.expressive.entrance.join(', ')})`,
+    exit: `cubic-bezier(${Easing.expressive.exit.join(', ')})`
+  }
 };
 
 // Задержки анимаций (в секундах)
@@ -43,15 +77,17 @@ export const Delay = {
   none: 0,      // без задержки, мгновенный отклик
   short: 0.05,  // 50мс - для последовательного появления элементов
   medium: 0.1,  // 100мс - средняя задержка
-  long: 0.2     // 200мс - для более ощутимой паузы
+  long: 0.2,    // 200мс - для более ощутимой паузы
+  extended: 0.5, // 500мс
+  extra: 1.0    // 1000мс
 };
 
 // Параметры пружинной анимации (spring)
 export const Spring = {
   // Готовые конфигурации для различных сценариев
-  Strong: { stiffness: 290, damping: 22, mass: 1 },  // энергичный эффект для быстрых и отзывчивых элементов, включая аккордеон
-  Medium: { stiffness: 200, damping: 18, mass: 1 },    // сбалансированный эффект для большинства интерфейсных анимаций
-  Gentle: { stiffness: 120, damping: 14, mass: 1.2 },  // мягкий, плавный эффект для больших элементов и эмоциональных анимаций
+  Strong: { stiffness: 290, damping: 22, mass: 1 },   // энергичный эффект для быстрых и отзывчивых элементов, включая аккордеон
+  Medium: { stiffness: 200, damping: 18, mass: 1 },   // сбалансированный эффект для большинства интерфейсных анимаций
+  Gentle: { stiffness: 120, damping: 14, mass: 1.2 }, // мягкий, плавный эффект для больших элементов и эмоциональных анимаций
   
   // Жесткость пружины (stiffness)
   Stiffness: {
@@ -109,6 +145,74 @@ export const createSpringConfig = ({
     mass,
     delay,
     ...rest
+  }
+});
+
+/**
+ * Создает конфигурацию для анимации входа (появления)
+ */
+export const createEntranceAnimation = ({
+  duration = Duration.M,
+  easing = Easing.entrance,
+  delay = Delay.none,
+  ...rest
+}) => ({
+  transition: {
+    type: "tween",
+    duration,
+    ease: easing,
+    delay,
+    ...rest
+  }
+});
+
+/**
+ * Создает конфигурацию для анимации выхода (исчезновения)
+ */
+export const createExitAnimation = ({
+  duration = Duration.S,
+  easing = Easing.exit,
+  delay = Delay.none,
+  ...rest
+}) => ({
+  transition: {
+    type: "tween",
+    duration,
+    ease: easing,
+    delay,
+    ...rest
+  }
+});
+
+/**
+ * Создает конфигурацию для hover-эффектов
+ */
+export const createHoverAnimation = ({
+  duration = Duration.XS,
+  easing = Easing.standard,
+  scale = 1.05
+}) => ({
+  whileHover: { scale },
+  transition: {
+    type: "tween",
+    duration,
+    ease: easing
+  }
+});
+
+/**
+ * Создает конфигурацию для эффектов нажатия
+ */
+export const createTapAnimation = ({
+  duration = Duration.S,
+  easing = Easing.standard,
+  scale = 0.95
+}) => ({
+  whileTap: { scale },
+  transition: {
+    type: "tween",
+    duration,
+    ease: easing
   }
 });
 
@@ -235,6 +339,18 @@ export const ComponentAnimations = {
       duration: Duration.M,
       easing: Easing.entrance
     }
+  },
+  
+  // Уведомления и тосты
+  notification: {
+    appear: {
+      duration: Duration.M,
+      easing: Easing.entrance,
+    },
+    disappear: {
+      duration: Duration.M,
+      easing: Easing.exit,
+    }
   }
 };
 
@@ -286,6 +402,62 @@ export const MotionPresets = {
         damping: Spring.Damping.High,
         mass: Spring.Mass.Default
       }
+    }
+  },
+  
+  // Для кнопок
+  buttonHover: {
+    whileHover: { scale: 1.05 },
+    whileTap: { scale: 0.95 },
+    transition: {
+      duration: Duration.S,
+      ease: Easing.standard
+    }
+  },
+  
+  // Для модальных окон
+  modalEnter: {
+    initial: { opacity: 0, y: -20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -10 },
+    transition: {
+      duration: Duration.M,
+      ease: Easing.entrance
+    }
+  },
+  
+  // Для выпадающих списков
+  dropdownEnter: {
+    initial: { opacity: 0, scaleY: 0.7, transformOrigin: "top" },
+    animate: { opacity: 1, scaleY: 1 },
+    exit: { opacity: 0, scaleY: 0.7 },
+    transition: {
+      duration: Duration.M,
+      ease: Easing.entrance
+    }
+  },
+  
+  // Для аккордеона
+  accordionExpand: {
+    initial: { height: 0, opacity: 0 },
+    animate: { height: "auto", opacity: 1 },
+    exit: { height: 0, opacity: 0 },
+    transition: {
+      duration: Duration.M,
+      ease: Easing.entrance
+    }
+  },
+  
+  // Для карточек
+  cardHover: {
+    whileHover: { 
+      scale: 1.03, 
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)" 
+    },
+    whileTap: { scale: 0.98 },
+    transition: {
+      duration: Duration.S,
+      ease: Easing.standard
     }
   }
 };
