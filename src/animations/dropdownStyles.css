@@ -1,0 +1,40 @@
+/**
+ * Dropdown Animation Styles
+ * Contains animations and utilities for dropdown menus
+ */
+
+/* Утилиты для выпадающих меню */
+.dropdown-enter {
+  animation: dropdownEnter var(--duration-150) var(--motion-ease-out) forwards;
+}
+
+.dropdown-exit {
+  animation: dropdownExit var(--duration-150) var(--motion-ease-out) forwards;
+}
+
+/* Ключевые кадры для выпадающих меню */
+@keyframes dropdownEnter {
+  from {
+    opacity: 0;
+    transform: scaleY(0.7);
+    transform-origin: top center;
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top center;
+  }
+}
+
+@keyframes dropdownExit {
+  from {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top center;
+  }
+  to {
+    opacity: 0;
+    transform: scaleY(0.7);
+    transform-origin: top center;
+  }
+} 

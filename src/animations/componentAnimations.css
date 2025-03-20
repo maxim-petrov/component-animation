@@ -1,0 +1,29 @@
+/**
+ * Component-specific Animation Styles
+ * Contains animations and utilities for specific UI components
+ */
+
+/* Примеры для конкретных компонентов */
+.button-hover {
+  transition: transform var(--duration-150) var(--motion-ease-in-out);
+}
+
+.button-hover:hover {
+  transform: scale(1.05);
+}
+
+.dropdown-appear {
+  transition: opacity var(--duration-200) var(--motion-ease-out),
+              transform var(--duration-200) var(--motion-ease-out);
+  transform-origin: top;
+}
+
+.accordion-expand {
+  transition: height var(--duration-200) var(--motion-ease-out),
+              opacity var(--duration-200) var(--motion-ease-out);
+}
+
+.card-hover {
+  transition: transform var(--duration-150) var(--motion-ease-in-out),
+              box-shadow var(--duration-150) var(--motion-ease-in-out);
+} 

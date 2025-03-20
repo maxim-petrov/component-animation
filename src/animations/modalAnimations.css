@@ -1,0 +1,36 @@
+/**
+ * Modal Animation Styles
+ * Contains animations and utilities for modal dialogs
+ */
+
+/* Утилиты для модальных окон */
+.modal-enter {
+  animation: modalEnter var(--duration-250) var(--motion-ease-out) forwards;
+}
+
+.modal-exit {
+  animation: modalExit var(--duration-150) var(--motion-ease-out) forwards;
+}
+
+/* Ключевые кадры для модальных окон */
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+} 
