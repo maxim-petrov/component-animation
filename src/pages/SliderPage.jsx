@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion';
 import Slider from '../components/Slider';
-import { Spring } from '../animations/tokens';
 import '../global.css';
+
+// Параметры пружинной анимации (spring)
+const Spring = {
+  // Готовые конфигурации для различных сценариев
+  Strong: { stiffness: 290, damping: 22, mass: 1 },
+  Medium: { stiffness: 200, damping: 18, mass: 1 },
+  Gentle: { stiffness: 120, damping: 14, mass: 1.2 }
+};
 
 const SliderPage = () => {
   return (

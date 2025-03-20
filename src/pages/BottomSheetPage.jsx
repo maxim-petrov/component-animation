@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import BottomSheet from '../components/BottomSheet';
-import { Spring } from '../animations/tokens';
 import '../global.css';
+
+// Параметры пружинной анимации (spring)
+const Spring = {
+  // Готовые конфигурации для различных сценариев
+  Strong: { stiffness: 290, damping: 22, mass: 1 },   // энергичный эффект для быстрых и отзывчивых элементов
+  Medium: { stiffness: 200, damping: 18, mass: 1 },   // сбалансированный эффект для большинства интерфейсных анимаций
+  Gentle: { stiffness: 120, damping: 14, mass: 1.2 }  // мягкий, плавный эффект для больших элементов и эмоциональных анимаций
+};
 
 const BottomSheetPage = () => {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
