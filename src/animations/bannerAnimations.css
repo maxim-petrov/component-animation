@@ -1,0 +1,80 @@
+/**
+ * Banner Animation Styles
+ * CSS equivalent of the previous JavaScript-based animations
+ */
+
+/* Animation values from tokens.js */
+:root {
+    --duration-xs: 0.1s;    /* 100ms - fast micro animations */
+    --duration-s: 0.15s;    /* 150ms - small UI changes */
+    --duration-m: 0.25s;    /* 250ms - standard transitions */
+    --duration-l: 0.3s;     /* 300ms - larger changes */
+    
+    --easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1.0);
+    --easing-spring: cubic-bezier(0.43, 0.28, 0.52, 1.23);
+    --easing-gentle: cubic-bezier(0.2, 0.0, 0.4, 1.0);
+  }
+  
+  /* Banner hover animation */
+  .animated-banner {
+    position: relative;
+    transition: all var(--duration-m) var(--easing-spring);
+    transform-origin: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .animated-banner:hover {
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Banner icon animation */
+  .banner-icon {
+    transition: transform var(--duration-s) var(--easing-spring), 
+                color var(--duration-s) var(--easing-standard);
+    transform-origin: center;
+  }
+  
+  .animated-banner:hover .banner-icon {
+    transform: scale(1.2) rotate(10deg);
+    color: #ff4157;
+  }
+  
+  /* Banner image animation */
+  .banner-image {
+    transition: transform var(--duration-l) var(--easing-gentle);
+    transform-origin: center;
+  }
+  
+  .animated-banner:hover .banner-image {
+    transform: scale(1.1);
+  }
+  
+  /* Banner appear animation (for container) */
+  @keyframes bannerAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .banner-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  /* Animation for individual banners with staggered delay */
+  .animated-banner {
+    animation: bannerAppear 0.4s var(--easing-gentle) forwards;
+    opacity: 0;
+  }
+  
+  .animated-banner:nth-child(1) { animation-delay: 0.1s; }
+  .animated-banner:nth-child(2) { animation-delay: 0.5s; }
+  .animated-banner:nth-child(3) { animation-delay: 0.9s; }
+  .animated-banner:nth-child(4) { animation-delay: 1.3s; }
+  .animated-banner:nth-child(5) { animation-delay: 1.7s; } 
