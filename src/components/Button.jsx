@@ -1,5 +1,6 @@
 import React from 'react';
 import '../animations/buttonAnimations.css';
+import '../styles/components/Button.css';
 import '../global.css';
 
 const Button = ({ 
