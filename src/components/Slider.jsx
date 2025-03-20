@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Duration, Easing, Spring, createSpringConfig } from '../animations/tokens';
+import { useSliderAnimation, getSliderTransitionStyle, getInputDraggingStyle, SLIDER_ANIMATION } from '../animations/sliderAnimations';
 import '../global.css';
 import '../styles/components/Slider.css';
 import '../styles/typography.css';
@@ -18,7 +19,7 @@ const Slider = ({
 }) => {
   const [value, setValue] = useState(defaultValue);
   const [isDragging, setIsDragging] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isAnimating, startAnimation, stopAnimation] = useSliderAnimation();
   const [isFocused, setIsFocused] = useState(false);
   const sliderRef = useRef(null);
   const inputRef = useRef(null);
@@ -31,7 +32,7 @@ const Slider = ({
     const newValue = Math.min(Math.max(parseInt(e.target.value) || min, min), max);
     setValue(newValue);
     // Включаем анимацию при изменении через инпут
-    setIsAnimating(true);
+    startAnimation();
     if (onChange) onChange(newValue);
   };
   
@@ -59,14 +60,14 @@ const Slider = ({
       const newValue = Math.min(value + step, max);
       setValue(newValue);
       // Отключаем анимацию при изменении через клавиатуру
-      setIsAnimating(false);
+      stopAnimation();
       if (onChange) onChange(newValue);
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
       const newValue = Math.max(value - step, min);
       setValue(newValue);
       // Отключаем анимацию при изменении через клавиатуру
-      setIsAnimating(false);
+      stopAnimation();
       if (onChange) onChange(newValue);
     }
   };
@@ -90,7 +91,7 @@ const Slider = ({
     let newValue = min + Math.round((newPercentage / 100) * (max - min) / step) * step;
     
     // При перетаскивании анимация отключена
-    setIsAnimating(false);
+    stopAnimation();
     setValue(newValue);
     
     // Предотвращаем выделение текста
@@ -102,7 +103,7 @@ const Slider = ({
     console.log('Drag start');
     setIsDragging(true);
     // При перетаскивании анимация отключена
-    setIsAnimating(false);
+    stopAnimation();
     
     // Предотвращаем выделение текста и всплытие события
     e.preventDefault();
@@ -129,17 +130,6 @@ const Slider = ({
       document.removeEventListener('mouseup', handleDragEnd);
     };
   }, [isDragging]);
-
-  // Сбрасываем анимацию после завершения
-  useEffect(() => {
-    if (isAnimating) {
-      const timer = setTimeout(() => {
-        setIsAnimating(false);
-      }, 400); // Время чуть больше длительности анимации
-      
-      return () => clearTimeout(timer);
-    }
-  }, [isAnimating, value]);
   
   // Обработчик клика по оси
   const handleAxisClick = (e) => {
@@ -159,7 +149,7 @@ const Slider = ({
     setIsDragging(true);
     
     // Включаем анимацию при клике на линию
-    setIsAnimating(true);
+    startAnimation();
     
     // Добавляем обработчики для слежения за мышью и отпусканием кнопки
     document.addEventListener('mouseup', handleDragEnd);
@@ -185,7 +175,7 @@ const Slider = ({
     setIsDragging(true);
     
     // Включаем анимацию при клике на значение
-    setIsAnimating(true);
+    startAnimation();
     
     // Добавляем обработчики для слежения за мышью и отпусканием кнопки
     document.addEventListener('mouseup', handleDragEnd);
@@ -224,7 +214,7 @@ const Slider = ({
     setIsDragging(true);
     
     // Включаем анимацию при клике на область между цифрами
-    setIsAnimating(true);
+    startAnimation();
     
     // Добавляем обработчики для слежения за мышью и отпусканием кнопки
     document.addEventListener('mouseup', handleDragEnd);
@@ -239,33 +229,17 @@ const Slider = ({
     document.body.style.userSelect = 'none';
   };
   
-  // Определяем стиль для анимации
-  const getTransitionStyle = () => {
-    if (isDragging && !isAnimating) {
-      return 'none'; // Без анимации при перетаскивании
-    }
-    return isAnimating ? 'left 0.35s cubic-bezier(0.4, 0, 0.2, 1), right 0.35s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
-  };
-  
-  // Стиль для инпута при перетаскивании
-  const getInputDraggingStyle = () => {
-    if (isDragging) {
-      return { pointerEvents: 'none' };
-    }
-    return {};
-  };
-  
   // Вариант с текстовым полем ввода
   const renderWithInput = () => (
     <div className="_Gq5_ ql7Up" data-e2e-id="slider-default">
       <div style={{ width: '282px' }}>
         <div className={`slider-inputRoot-bee-11-0-8 ${isDragging ? 'slider-dragging-input' : ''}`} data-e2e-id="slider">
-          <div className="inpt-fluid-199-12-3-0" style={getInputDraggingStyle()}>
+          <div className="inpt-fluid-199-12-3-0" style={getInputDraggingStyle(isDragging)}>
             <div 
               className={`inpt-root-670-12-3-0 inpt-large-258-12-3-0 inpt-primary-8dd-12-3-0 inpt-notEmpty-432-12-3-0 inpt-fluid-199-12-3-0 inpt-hasLabel-14b-12-3-0 nmbr-inp-root-220-11-1-0 ${isFocused ? 'inpt-focused-b65-12-3-0' : ''}`} 
               data-e2e-id="slider-input"
               onClick={handleInputContainerClick}
-              style={getInputDraggingStyle()}
+              style={getInputDraggingStyle(isDragging)}
             >
               <div className="inpt-inputContainer-d7e-12-3-0">
                 <input
@@ -295,7 +269,7 @@ const Slider = ({
                   className="slider-axisFill-f1d-11-0-8" 
                   style={{ 
                     right: `${100 - percentage}%`, 
-                    transition: getTransitionStyle() 
+                    transition: getSliderTransitionStyle(isDragging, isAnimating) 
                   }}
                 />
               </span>
@@ -305,7 +279,7 @@ const Slider = ({
                 data-e2e-id="slider-slider-thumb" 
                 style={{ 
                   left: `${percentage}%`, 
-                  transition: getTransitionStyle(), 
+                  transition: getSliderTransitionStyle(isDragging, isAnimating), 
                   cursor: isDragging ? 'grabbing' : 'grab' 
                 }}
                 onMouseDown={handleDragStart}
@@ -362,7 +336,7 @@ const Slider = ({
                 className="slider-axisFill-f1d-11-0-8" 
                 style={{ 
                   right: `${100 - percentage}%`, 
-                  transition: getTransitionStyle() 
+                  transition: getSliderTransitionStyle(isDragging, isAnimating) 
                 }}
               />
             </span>
@@ -372,7 +346,7 @@ const Slider = ({
               data-e2e-id="slider-thumb" 
               style={{ 
                 left: `${percentage}%`, 
-                transition: getTransitionStyle(), 
+                transition: getSliderTransitionStyle(isDragging, isAnimating), 
                 cursor: isDragging ? 'grabbing' : 'grab' 
               }}
               onMouseDown={handleDragStart}
