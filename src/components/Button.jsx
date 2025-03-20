@@ -1,12 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  buttonAnimationConfig, 
-  buttonHoverAnimation, 
-  iconAnimation
-} from '../animations/buttonAnimations';
-import '../styles/components/Button.css';
-import '../styles/typography.css';
+import React from 'react';
+import '../animations/buttonAnimations.css';
+import '../global.css';
 
 const Button = ({ 
   text = 'Кнопка', 
@@ -17,7 +11,7 @@ const Button = ({
 }) => {
   // Иконка сердца для кнопки
   const HeartIcon = () => (
-    <div className="icon-root-864-6-0-3" style={{ pointerEvents: 'none' }}>
+    <div className="icon-root-864-6-0-3">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
         <path 
           fill="currentColor" 
@@ -28,135 +22,20 @@ const Button = ({
       </svg>
     </div>
   );
-  
-  // State для ripple эффекта и отслеживания нажатия
-  const [ripple, setRipple] = useState(null);
-  const [isPressed, setIsPressed] = useState(false);
-  const buttonRef = useRef(null);
-  
-  // Добавляем ripple эффект при mouse down
-  const handleRipple = (e) => {
-    const button = buttonRef.current;
-    if (!button) return;
-    
-    const buttonRect = button.getBoundingClientRect();
-    const size = Math.max(buttonRect.width, buttonRect.height) * 2;
-    const x = e.clientX - buttonRect.left;
-    const y = e.clientY - buttonRect.top;
-    
-    // Создаем новый ripple элемент
-    const newRipple = {
-      id: Date.now(),
-      x,
-      y,
-      size,
-      show: true
-    };
-    
-    setRipple(newRipple);
-    setIsPressed(true);
-  };
-  
-  // Обработчик mouseDown - создаем ripple эффект
-  const handleMouseDown = (e) => {
-    handleRipple(e);
-  };
-  
-  // Обработчик mouseUp - скрываем ripple эффект
-  const handleMouseUp = () => {
-    if (ripple) {
-      setIsPressed(false);
-      // Удаляем ripple с задержкой для плавного исчезновения
-      setTimeout(() => {
-        setRipple(null);
-      }, 600);
-    }
-  };
-  
-  // Обработчик mouseLeave - скрываем ripple эффект при выходе курсора за пределы кнопки
-  const handleMouseLeave = () => {
-    if (isPressed) {
-      handleMouseUp();
-    }
-  };
-  
-  // Добавляем глобальные обработчики событий для случая, если mouseUp происходит вне кнопки
-  useEffect(() => {
-    const handleGlobalMouseUp = () => {
-      if (isPressed) {
-        handleMouseUp();
-      }
-    };
-    
-    window.addEventListener('mouseup', handleGlobalMouseUp);
-    
-    return () => {
-      window.removeEventListener('mouseup', handleGlobalMouseUp);
-    };
-  }, [isPressed]);
-  
+
   return (
     <div className="_Gq5_ ql7Up" data-e2e-id="button-default">
       <div className="CqkE8">
-        <motion.button 
-          ref={buttonRef}
-          className={`btn-root-119-18-1-1 btn-${variant}-a30-18-1-1 btn-${size}-9e4-18-1-1 btn-typeButtonReset-268-18-1-1 btn-withIcon-a49-18-1-1 btn-ripple-container`} 
+        <button 
+          className={`btn-root-119-18-1-1 btn-${variant}-a30-18-1-1 btn-${size}-9e4-18-1-1 btn-typeButtonReset-268-18-1-1 btn-withIcon-a49-18-1-1 animated-button`} 
           type={type}
           onClick={onClick}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseLeave}
-          whileHover={buttonHoverAnimation.whileHover}
-          transition={buttonHoverAnimation.transition}
         >
-          {/* Ripple элемент */}
-          <AnimatePresence>
-            {ripple && (
-              <motion.span
-                key={ripple.id}
-                className="btn-ripple"
-                style={{
-                  position: 'absolute',
-                  left: ripple.x,
-                  top: ripple.y,
-                  transformOrigin: 'center center',
-                  background: '#00822C',
-                }}
-                initial={{ 
-                  width: 0, 
-                  height: 0, 
-                  opacity: 0.5,
-                  transform: 'translate(-50%, -50%) scale(0)',
-                }}
-                animate={{ 
-                  width: ripple.size, 
-                  height: ripple.size, 
-                  opacity: isPressed ? 0.7 : 0,
-                  transform: 'translate(-50%, -50%) scale(1)',
-                }}
-                exit={{ opacity: 0 }}
-                transition={{ 
-                  width: { duration: 0.25, ease: "easeOut" },
-                  height: { duration: 0.25, ease: "easeOut" },
-                  transform: { duration: 0.25, ease: "easeOut" },
-                  opacity: { duration: isPressed ? 0 : 0.5, ease: "easeOut" }
-                }}
-              />
-            )}
-          </AnimatePresence>
-          
-          <motion.span 
-            className="btn-icon-72f-18-1-1 btn-icon--left-5a5-18-1-1"
-            initial="initial"
-            whileHover="hover"
-            whileTap="tap"
-            variants={iconAnimation}
-            style={{ pointerEvents: 'none' }}
-          >
+          <span className="btn-icon-72f-18-1-1 btn-icon--left-5a5-18-1-1 button-icon">
             <HeartIcon />
-          </motion.span>
+          </span>
           <span className="btn-text-398-18-1-1">{text}</span>
-        </motion.button>
+        </button>
       </div>
     </div>
   );
