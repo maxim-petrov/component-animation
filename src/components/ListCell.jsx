@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import '../global.css';
 import '../styles/components/ListCell.css';
 import '../styles/typography.css';
+import '../animations/listCellAnimation.css';
 
 /**
  * Компонент ListCell - элемент списка с выбором через чекбокс.
@@ -96,12 +97,10 @@ const ListCell = ({
   return (
     <div 
       ref={cellRef}
-      className={`list-cell-root-0ea-2-2-1 list-cell-withControls-744-2-2-1 ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''}`} 
+      className={`list-cell-root-0ea-2-2-1 list-cell-withControls-744-2-2-1 ${isSelected ? 'list-cell-selected-0f3-2-2-1' : ''} list-cell`} 
       style={{ 
         padding: '14px 16px', 
         cursor: 'pointer',
-        backgroundColor: getBackgroundColor(),
-        transition: 'background-color 0.1s ease-in-out',
         position: 'relative'
       }}
       tabIndex="0" 
@@ -138,7 +137,7 @@ const ListCell = ({
               style={{ position: 'relative', zIndex: 1 }}
             />
             <div className="checkbox-iconContainer-80d-9-1-0" style={{ position: 'relative', zIndex: 1 }}>
-              <div className="icon-root-864-6-0-3 checkbox-icon-044-9-1-0" style={{ position: 'relative', zIndex: 1 }}>
+              <div className={`icon-root-864-6-0-3 checkbox-icon-044-9-1-0 list-cell-radio ${isSelected ? 'checked' : ''}`} style={{ position: 'relative', zIndex: 1 }}>
                 {isSelected && (
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" style={{ position: 'relative', zIndex: 1 }}>
                     <path fill="currentColor" fillRule="evenodd" d="M14.015 4.092a.863.863 0 0 1-.018 1.202l-6.58 6.513a1.232 1.232 0 0 1-1.755-.014L1.994 8.049a.863.863 0 0 1 0-1.203.822.822 0 0 1 1.179 0l3.378 3.448 6.285-6.22a.822.822 0 0 1 1.179.018Z" clipRule="evenodd"></path>
@@ -157,7 +156,7 @@ const ListCell = ({
       
       {imageSrc && (
         <div className="list-cell-rightSide-e72-2-2-1" style={{ position: 'relative', zIndex: 1 }}>
-          <div className="avtr-root-912-1-1-4 avtr-small-b73-1-1-4 avtr-circle-5ee-1-1-4">
+          <div className="avtr-root-912-1-1-4 avtr-small-b73-1-1-4 avtr-circle-5ee-1-1-4 list-cell-avatar">
             <div className="avtr-inner-125-1-1-4 avtr-primary-9ed-1-1-4">
               <div className="picture-picture-f61-4-0-1" style={{ width: '40px', height: '40px' }}>
                 <picture className="picture-pictureContent-486-4-0-1">

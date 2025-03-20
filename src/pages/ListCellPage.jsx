@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import ListCell from '../components/ListCell';
-import { Spring } from '../animations/tokens';
 import '../global.css';
+import '../animations/listCellAnimation.css';
 
 const ListCellPage = () => {
   const [selectedItems, setSelectedItems] = useState({
